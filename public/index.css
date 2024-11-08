@@ -1,0 +1,23 @@
+:root {
+    --background: '#FEF7DD';
+    --accent-yellow: '#F8C10B';
+    --accent-blue: '#0B42F8';
+    --accent-red: '#F84A0B';
+    --accent-black: '#1A1A1A';
+}
+
+.hover-underline {
+    text-decoration: none;
+}
+
+.hover-underline:hover {
+    text-decoration: underline;
+}
+
+.shadow-inner {
+    box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+}
+
+.z {
+    z-index: 100;
+}
