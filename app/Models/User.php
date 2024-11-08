@@ -17,9 +17,15 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
+        'username',
         'name',
         'email',
-        'password',
+        'phone_number',
+        'profile_image',
+        'gender',
+        'date_of_birth',
+        'role',
+        'cart_id',
     ];
 
     /**
@@ -43,5 +49,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function cart() 
+    {
+        return $this->belongsTo(Cart::class);
+    }
+
+    public function transactionHeaders()
+    {
+        return $this->hasMany(TransactionHeader::class);
+    }
+
+    public function userAddresses()
+    {
+        return $this->hasMany(UserAddress::class);
     }
 }
