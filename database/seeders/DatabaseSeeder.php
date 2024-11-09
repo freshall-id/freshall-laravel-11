@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cart;
+use App\Models\Product;
+use App\Models\ProductCategory;
 use App\Models\User;
+use App\Models\Voucher;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,11 +17,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Seed the User table
+        User::factory()->count(5)->create();
         User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+            'username' => 'admin',
+            'email' => 'admin@freshall.id',
+            'role' => 'ADMIN',
         ]);
+
+        // Seed the ProductCategory table
+        ProductCategory::factory()->count(5)->create();
+
+        // Seed the Product table
+        Product::factory()->count(50)->create();
+
+        // Seed the Voucher table
+        Voucher::factory()->count(5)->create();
     }
 }
