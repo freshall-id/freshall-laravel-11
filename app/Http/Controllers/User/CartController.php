@@ -46,7 +46,7 @@ class CartController extends Controller
     {
         $cart = Auth::user()->cart;
         
-        return view('sections.user.cart', [
+        return view('user.cart', [
             'cart' => $cart
         ]);
     }

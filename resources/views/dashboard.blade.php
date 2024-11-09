@@ -24,40 +24,16 @@
             </div>
         </section>
 
-        @if (Auth::check())
-            <section class="mt-3">
-                <div class="pt-3 pt-sm-5">
-                    <h2>Transaction</h2>
-                </div>
-                @if (!$transactions || $transactions->isEmpty())
-                    <div class="alert alert-warning mt-3" role="alert">
-                        You don't have any transaction yet.
-                    </div>
-                @else
-                    <div class="mt-5">
-                        @foreach ($transactions as $transaction)
-                            <div class="card">
-                                <div class="card-header">
-                                    {{ $transaction->status}}
-                                </div>
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $transaction->invoice_number }}</h5>
-                                    <p class="card-text">{{ $transaction->total_price }}</p>
-                                    <a href="#" class="btn btn-primary">Check Detail</a>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            </section>
-        @endif
-
         <section class="mt-3 gap-5">
             <div class="pt-3 pt-sm-5">
+                <h5 class="text-muted">
+                    <small>
+                        Find exactly what you need
+                    </small>
+                </h5>
                 <h2>Fresh Categories</h2>
             </div>
-            
-            <div class="mt-5 d-flex flex-row gap-4 overflow-auto">
+            <div class="mt-4 d-flex flex-row gap-4 overflow-auto">
                 <div class="d-flex flex-row gap-3">
                     <div class="ratio ratio-1x1 border" style="width: 14rem;">
                         <div class="position-absolute w-100 h-100 top-0 start-0">
@@ -95,39 +71,98 @@
                 </div>
             </div>
         </section>
-        
+
         <section class="mt-3 gap-5">
             <div class="pt-3 pt-sm-5">
-                <h2>Fresh Categories</h2>
+                <h5 class="text-muted">
+                    <small>
+                        Quickly locate the products you're looking for
+                    </small>
+                </h5>
+                <h2>Explore Subcategories</h2>
             </div>
-            @if (!$product_categories || $product_categories->isEmpty())
-                <div class="alert alert-warning mt-3" role="alert">
-                    There is no product category yet.
-                </div>
-            @else
-                <div class="mt-5 d-flex gap-4 overflow-auto">
-                    @foreach ($product_categories as $product_category)
-                        <a class="text-decoration-none text-dark" href="">
-                            <div class="p-4 pb-5 text-center rounded" style="width: 10rem; background-color: var(--background)">
-                                <img src="{{ asset('default/product_category.png') }}" class="img-fluid" alt="{{ $product_category->name }}">
-                                <h1 class="mt-3 fs-5 fw-medium text-black" style="color">{{ $product_category->name }}</h1>
-                            </div>
-                        </a>
+            <div class="mt-4 d-flex flex-row gap-4 overflow-auto">
+                <div class="d-flex flex-row gap-5">
+                    @foreach ($product_categories as $category)
+                    <div class="d-flex flex-column gap-3 align-items-center justify-content-center">
+                        <div class="ratio ratio-1x1 border rounded-circle overflow-hidden" style="width: 5rem;">
+                            <a href="">
+                                <img src="{{ asset($category->image) }}" class="w-100 h-100" alt="FRESHALL-CATEGORY-FRUITS">
+                            </a>
+                        </div>
+                        <h6 class="text-muted">{{ $category->name }}</h6>
+                    </div>
                     @endforeach
                 </div>
-            @endif
+            </div>
         </section>
 
+        <section class="mt-3 gap-5">
+            <div class="pt-3 pt-sm-5">
+                <h5 class="text-muted">
+                    <small>
+                        Save more with the best vouchers available!
+                    </small>
+                </h5>
+                <h2>Voucher Offers</h2>
+            </div>
+            <div class="mt-4 d-flex flex-row gap-4 overflow-auto scrollbar-none">
+                <div class="d-flex flex-row gap-5">
+                    @foreach ($vouchers as $voucher)
+                        <div class="card" style="width: 20rem">
+                            <div class="card-header" style="background: var(--background)">
+                                {{ $voucher->discount * 10 }}% Off on All Items, up to Rp. {{ round($voucher->max_discount,0) }}
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                <p>CODE: <b>{{ $voucher->code }}</b></p>
+                                <footer class="blockquote-footer">Until {{ $voucher->expired_at }}</footer>
+                                </blockquote>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+        
         <section class="mt-5">
             <div class="pt-5">
-                <h2>Fresh Products</h2>
+                <h5 class="text-muted">
+                    <small>
+                        Explore our selection of hand-picked fruits, vegetables, and quality meats for your healthiest meals.
+                    </small>
+                </h5>
+                <h2>Farm Fresh Produce Delivered to Your Door</h2>
             </div>
+            <div class="my-4 mb-2 rounded-5 d-flex flex-row align-items-center justify-content-between w-100">
+                <div class="d-inline-flex flex-row align-items-center" style="background-color: var(--background);">
+                    <a href="!#" class="m-0 text-reset text-decoration-none btn btn-primary">
+                        <i class="fa-solid fa-arrow-down-z-a text-white"></i>
+                    </a>
+
+                    <a href="#!" class="m-0 text-reset text-decoration-none btn filter">
+                        <i class="fa-solid fa-arrow-up-z-a text-white"></i>
+                    </a>
+                </div>
+                <div>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Filter by <b>Price</b>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Price</a></li>
+                            <li><a class="dropdown-item" href="#">Rating</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-top mb-3"></div>
             @if (!$products || $products->isEmpty())
                 <div class="alert alert-warning mt-3" role="alert">
                     There is no product yet.
                 </div>
             @else
-                <div class="mt-5">
+                <div class="mt-3">
                     <div class="row justify-content-start">
                         @foreach ($products as $product)
                             <div class="mb-3 col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,7 @@ class DashboardController extends Controller
 
         $product_categories = ProductCategory::orderBy('name', 'asc')->get();
         $products = Product::paginate(12);
+        $vouchers = Voucher::where('expired_at', '>', now())->get();
 
         if(Auth::check()) {
             $transactions = Auth::user()->transactions;
@@ -27,10 +29,11 @@ class DashboardController extends Controller
         // login
         Auth::loginUsingId(1);
 
-        return view('user.dashboard', [
+        return view('dashboard', [
             'products' => $products,
             'product_categories' => $product_categories,
-            'transactions' => $transactions
+            'transactions' => $transactions,
+            'vouchers' => $vouchers,
         ]);
     }
 }
