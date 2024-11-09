@@ -2,8 +2,8 @@
 
 @section('content')
     <x-cart-status />
-    <main class="px-3 px-sm-5">
-        <section class="py-sm-2">
+    <section>
+        <section class="py-sm-2 p-0 m-0">
             <div id="promotionCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
                 <div class="carousel-item active" data-bs-interval="5000">
@@ -65,7 +65,7 @@
                     @foreach ($product_categories as $product_category)
                         <a class="text-decoration-none text-dark" href="">
                             <div class="p-4 pb-5 text-center rounded" style="width: 10rem; background-color: var(--background)">
-                                <img src="{{ asset($product_category->banner_image ) }}" class="img-fluid" alt="{{ $product_category->name }}">
+                                <img src="{{ asset('default/product_category.png') }}" class="img-fluid" alt="{{ $product_category->name }}">
                                 <h1 class="mt-3 fs-5 fw-medium text-black" style="color">{{ $product_category->name }}</h1>
                             </div>
                         </a>
@@ -88,7 +88,7 @@
                         @foreach ($products as $product)
                             <div class="mb-3 col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
                                 <div class="card p-0 w-100">
-                                    <img src="{{ asset($product->image ) }}" class="card-img-top" alt="{{ $product->name }}">
+                                    <img src="{{ asset('default/product.png') }}" class="card-img-top" alt="{{ $product->name }}">
                                     <div class="card-body d-flex flex-column justify-content-between">
                                         <h5 class="card-title text-truncate fw-bold text-muted">{{ $product->name }}</h5>
                                         <p class="card-text text-muted">{{ $product->weight }}gr</p>
@@ -127,5 +127,5 @@
         <br>
         
         {{ $products->links() }}
-    </main  
+    </section  
 @endsection

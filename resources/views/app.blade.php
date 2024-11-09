@@ -18,12 +18,13 @@
     @include("components.alert")
     @include("components.navbar")
     
-    <section>
+    <main class="px-3 px-sm-5">
         @yield("content")
-    </section>
+    </main>
     
     @include("components.footer")
 </body>
+<script src="{{ asset('index.js') }}"></script>
 <script src="{{ asset('bootstrap-5.0.2-dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('bootstrap-5.0.2-dist/js/bootstrap.esm.min.js') }}"></script>

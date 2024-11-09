@@ -1,8 +1,8 @@
-<footer class="border-top pt-5 mt-5 container-fluid d-flex flex-column align-items-center">
-    <div class="row" style="width: 95%;">
+<footer class="border-top p-0 pt-5 w-100 mt-5 container-fluid d-flex flex-column align-items-center">
+    <div class="row w-100">
         <div class="col-lg-5 px-0 d-flex flex-column align-items-start justify-content-center">
             <img src="{{ asset('freshall/logo-with-text.svg') }}" alt="FRESHALL" width="200">
-            <p class="text-muted mt-3 ms-1">
+            <p class="text-muted mt-3 ms-lg-1">
                 Discover fresh products and unique offerings tailored for your needs. Explore our wide range of items!
             </p>
         </div>
@@ -61,22 +61,23 @@
             </ul>
         </div>
     </div>
-
-    <div class="border-top py-2 d-flex flex-column-reverse flex-sm-row align-items-center justify-content-between mt-5" style="width: 95%">
-        <h6 class="mt-3 mt-sm-0">
+    <div class="row border-top pt-3 d-flex flex-column-reverse flex-sm-row mt-5 p-0 m-0 w-100 pb-sm-0"">
+        <h6 class="col-12 text-center text-sm-start mb-5 mb-sm-0 py-3 py-sm-0 mt-2 mt-sm-0 col-sm-3 mt-sm-0 p-0 m-0">
             © 2024 FRESHALL.ID
         </h6>
-        <ul class="d-flex flex-column flex-sm-row text-center list-unstyled align-items-center gap-3 justify-content-evenly mt-2">
+        <ul class="col-12 p-0 mt-3 mt-sm-0 col-sm-9 d-flex flex-column flex-sm-row list-unstyled gap-3 gap-sm-5 justify-content-sm-end">
             <li>
-                <a href="" class="hover-underline text-muted">Support</a>
+                <a href="" class="hover-underline text-muted">Terms</a>
             </li>
             <li>
                 <a href="" class="hover-underline text-muted">Privacy Policy</a>
             </li>
             <li>
-                <a href="" class="hover-underline text-muted">Terms & Conditions</a>
+                <a href="" class="hover-underline text-muted">Support</a>
             </li>
         </ul>
     </div>
+
+    <br />
 
 </footer>

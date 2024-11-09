@@ -1,9 +1,10 @@
 :root {
-    --background: '#FEF7DD';
-    --accent-yellow: '#F8C10B';
-    --accent-blue: '#0B42F8';
-    --accent-red: '#F84A0B';
-    --accent-black: '#1A1A1A';
+    --background: #FEF7DD;
+    --accent-yellow: #F8C10B;
+    --accent-blue: #0B42F8;
+    --accent-red: #F84A0B;
+    --accent-black: #1A1A1A;
+    --accent-slate: #f1f5f9;
 }
 
 .hover-underline {
@@ -14,10 +15,19 @@
     text-decoration: underline;
 }
 
+.page-item.active .page-link {
+    background-color: var(--accent-yellow) !important;
+    border-color: var(--accent-yellow) !important;
+}
+
+.page-link {
+    color: var(--accent-black) !important;
+}
+
 .shadow-inner {
     box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
 }
 
-.z {
-    z-index: 100;
+.z-max {
+    z-index: 1000;
 }
