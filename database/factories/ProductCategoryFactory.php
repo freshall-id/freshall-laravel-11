@@ -20,6 +20,7 @@ class ProductCategoryFactory extends Factory
             'name' => $this->faker->word(),
             'image' => $this->faker->imageUrl(500, 500),
             'description' => $this->faker->sentence(3),
+            'label' => $this->faker->randomElement(['FRUIT', 'VEGETABLE', 'MEAT', 'OTHER']),
         ];
     }
 }

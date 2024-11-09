@@ -1,7 +1,57 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\User\CartController;
 use Illuminate\Support\Facades\Route;
+/*
+|---------------------------------------------------------------------------
+| Web Routes
+|---------------------------------------------------------------------------
+|
+| This file defines the routing conventions for the web application.
+|
+| **GET Routes:**
+| - Each GET route must have a corresponding controller method.
+| - The naming convention for these methods should follow the pattern:
+|   a 'view' prefix and a 'Page' suffix.
+|   Example: 
+|   - viewDashboardPage
+|   - viewLoginPage
+|   - viewSettingsPage
+|
+| - Each GET route must also have a defined route name that ends with the 'page' suffix.
+|   Example:
+|   - dashboard.page
+|   - login.page
+|   - create.product.page
+|
+| **POST, PUT, PATCH, DELETE Routes:**
+| - There are no specific naming conventions for controller methods for these routes, but 
+|   it is recommended to use an action verb as a prefix, such as 'get', 'store', 'update', 'delete'.
+| - However, each route must have a defined route name that ends with the 'action' suffix.
+|   Example:
+|   - login.action
+|   - create.product.action
+|   - update.product.action
+|
+| Please adhere to these conventions to maintain consistency and clarity in the codebase.
+*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
+
+Route::get('/search/{query?}', [])->name('search.page');
+Route::get('/login', [])->name('login.page');
+Route::get('/register', [])->name('register.page');
+Route::get('/logout', [])->name('logout.page');
+
+Route::get('/product-category/{product_category}', [])->name('product-category.page');
+Route::get('/product/{product}', [])->name('product-detail.page');
+
+Route::post('/add-to-cart/{cart}/{product}', [CartController::class, 'addToCart'])->name('add-to-cart.action');
+Route::get('/cart', [CartController::class, 'viewCartPage'])->name('cart.page');
+
+Route::put('/update-cart/{cart}', [])->name('update-cart.action');
+
+Route::put('/update-cart-item/{cart_item}/{status}', [CartController::class, 'updateCartItem'])->name('update-cart-item.action');
+Route::delete('/delete-cart-item/{cart_item}', [CartController::class, 'deleteCartItem'])->name('delete-cart-item.action');

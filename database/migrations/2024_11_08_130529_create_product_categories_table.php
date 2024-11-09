@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', 50)->unique();
             $table->string('image', 100)->nullable();
             $table->string('description', 100)->nullable();
+            $table->enum('label', ['FRUIT', 'VEGETABLE', 'MEAT', 'OTHER']);
 
             $table->timestamps();
         });
