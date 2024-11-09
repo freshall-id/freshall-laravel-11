@@ -25,7 +25,7 @@ class DashboardController extends Controller
         }
 
         // login
-        Auth::loginUsingId('9a839bcc-6d5a-47d3-8297-9f4ed02bc39b');
+        Auth::loginUsingId(1);
 
         return view('user.dashboard', [
             'products' => $products,

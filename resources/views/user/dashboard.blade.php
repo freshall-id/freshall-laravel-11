@@ -14,18 +14,18 @@
                 </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#promotionCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#promotionCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
                 </button>
             </div>
         </section>
 
         @if (Auth::check())
-            <section class="mt-5">
+            <section class="mt-3">
                 <div class="pt-3 pt-sm-5">
                     <h2>Transaction</h2>
                 </div>
@@ -52,7 +52,51 @@
             </section>
         @endif
 
-        <section class="mt-5 gap-5">
+        <section class="mt-3 gap-5">
+            <div class="pt-3 pt-sm-5">
+                <h2>Fresh Categories</h2>
+            </div>
+            
+            <div class="mt-5 d-flex flex-row gap-4 overflow-auto">
+                <div class="d-flex flex-row gap-3">
+                    <div class="ratio ratio-1x1 border" style="width: 14rem;">
+                        <div class="position-absolute w-100 h-100 top-0 start-0">
+                            <img src="{{ asset('freshall/app/fruits.jpg') }}" class="w-100 h-100" alt="FRESHALL-CATEGORY-FRUITS">
+                        </div>
+                        <div class="bg-opacity-20 d-flex flex-col align-items-center justify-content-center px-2">
+                            <a href="" class="btn btn-primary position-absolute w-75 d-flex justify-content-between align-items-center" style="bottom: 1rem;">
+                                Fruits
+                                <i class="fa-solid fa-arrow-right text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ratio ratio-1x1 border" style="width: 14rem;">
+                        <div class="position-absolute w-100 h-100 top-0 start-0">
+                            <img src="{{ asset('freshall/app/vegetables.png') }}" class="w-100 h-100" alt="FRESHALL-CATEGORY-FRUITS">
+                        </div>
+                        <div class="bg-opacity-20 d-flex flex-col align-items-center justify-content-center px-2">
+                            <a href="" class="btn btn-primary position-absolute w-75 d-flex justify-content-between align-items-center" style="bottom: 1rem;">
+                                Vegetables
+                                <i class="fa-solid fa-arrow-right text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="ratio ratio-1x1 border" style="width: 14rem;">
+                        <div class="position-absolute w-100 h-100 top-0 start-0">
+                            <img src="{{ asset('freshall/app/meats.png') }}" class="w-100 h-100" alt="FRESHALL-CATEGORY-FRUITS">
+                        </div>
+                        <div class="bg-opacity-20 d-flex flex-col align-items-center justify-content-center px-2">
+                            <a href="" class="btn btn-primary position-absolute w-75 d-flex justify-content-between align-items-center" style="bottom: 1rem;">
+                                Meats
+                                <i class="fa-solid fa-arrow-right text-white"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="mt-3 gap-5">
             <div class="pt-3 pt-sm-5">
                 <h2>Fresh Categories</h2>
             </div>
