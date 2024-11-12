@@ -55,3 +55,5 @@ Route::put('/update-cart/{cart}', [])->name('update-cart.action');
 
 Route::put('/update-cart-item/{cart_item}/{status}', [CartController::class, 'updateCartItem'])->name('update-cart-item.action');
 Route::delete('/delete-cart-item/{cart_item}', [CartController::class, 'deleteCartItem'])->name('delete-cart-item.action');
+
+Route::get('/test')->name('test');
