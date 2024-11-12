@@ -157,50 +157,17 @@
             </div>
         </div>
         <div class="border-top mb-3"></div>
-            @if (!$products || $products->isEmpty())
-                <div class="alert alert-warning mt-3" role="alert">
-                    There is no product yet.
+            <div class="mt-3">
+                <div class="row justify-content-start">
+                    @forelse ($products as $product)
+                        <x-product-card :product="$product" />
+                    @empty
+                        <div class="alert alert-warning" role="alert">
+                            There is no product yet.
+                        </div>
+                    @endforelse
                 </div>
-            @else
-                <div class="mt-3">
-                    <div class="row justify-content-start">
-                        @foreach ($products as $product)
-                            <div class="mb-3 col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-                                <div class="card p-0 w-100">
-                                    <img src="{{ asset('default/product.png') }}" class="card-img-top" alt="{{ $product->name }}">
-                                    <div class="card-body d-flex flex-column justify-content-between">
-                                        <h5 class="card-title text-truncate fw-bold text-muted">{{ $product->name }}</h5>
-                                        <p class="card-text text-muted">{{ $product->weight }}gr</p>
-
-                                        <h4 class="text-muted mt-2">
-                                            Rp {{ number_format($product->price, 0, ',', '.') }}
-                                        </h4>
-                                        @if (Auth::check())
-                                            <form 
-                                                action="{{ route('add-to-cart.action', [
-                                                        'cart' => Auth::user()->cart,
-                                                        'product' => $product,
-                                                    ]) }}" 
-                                                method="POST"
-                                                class="w-100 p-0"
-                                            >
-                                                @csrf
-                                                <button type="submit" class="btn w-100" style="background-color: var(--accent-yellow); color: white">
-                                                    Add to cart
-                                                </button>
-                                            </form>
-                                        @else
-                                            <button href="{{ route('login.page') }}" class="btn mt-1" style="background-color: var(--accent-yellow); color: white">
-                                                Add to cart
-                                            </button>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
+            </div>
         </div>
     </section>
     <br>
