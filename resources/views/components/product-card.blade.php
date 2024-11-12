@@ -1,8 +1,8 @@
-<div class="mb-3 col-12 col-sm-6 col-md-4 col-xl-3 col-xxl-2">
-    <div class="card p-0 w-100">
+<div class="mb-3 col-6 col-md-4 col-xl-3 col-xxl-2">
+    <div class="card p-0 pb-3 w-100">
 
         <img src="{{ asset('default/product.png') }}" class="card-img-top" alt="{{ $product->name }}">
-        <div class="card-body d-flex flex-column justify-content-between gap-3">
+        <div class="card-body d-flex flex-column pb-5 pb-md-0 justify-content-between gap-1 gap-sm-3">
             <div>
                 <h5 class="card-title text-truncate">{{ $product->name }}</h5>
                 <p class="card-text text-muted">
@@ -25,7 +25,7 @@
                             'product' => $product,
                         ]) }}" 
                     method="POST"
-                    class="p-3 m-3 position-absolute rounded-circle overflow-hidden ratio-1x1 ratio"
+                    class="p-3 m-2 m-sm-3 position-absolute rounded-circle overflow-hidden ratio-1x1 ratio"
                     style="width: 2.5rem; right: 0; bottom: 0;"
                 >
                     @csrf
