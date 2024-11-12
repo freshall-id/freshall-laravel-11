@@ -1,5 +1,6 @@
-@extends("app")
-@section("content")
+@extends('app')
+
+@section('content')
     <div>
         <section class="mt-5">
             <div>

@@ -1,9 +1,9 @@
 {{-- desktop view navbar --}}
-<section class="d-flex flex-row mt-3 mb-3 justify-content-center d-sm-none align-items-center">
+{{-- <section class="d-flex flex-row mt-3 mb-3 justify-content-center d-sm-none align-items-center">
     <a href="{{ route('dashboard.page') }}">
         <img width="120" src="{{ asset('freshall/logo-with-text.svg') }}" alt="FRESHALL">
     </a>
-</section>
+</section> --}}
 
 <section class="px-3 px-sm-5 bg-light overflow-auto border">
     <ul class="nav justify-content-end">
@@ -23,6 +23,7 @@
         </a>
 
         <section class="col-12 col-sm-5 px-1 px-sm-0 d-flex flex-row gap-3 align-items-center m-0 p-0 justify-content-start justify-content-sm-center bg-white">
+            
             <a href="{{ route('search.page', ['query' => ""]) }}" class=" d-sm-flex input-group text-decoration-none">
                 <span class="input-group-text">
                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -30,31 +31,34 @@
                 <input type="search" id="search-input" placeholder="Search" class="form-control">
             </a>
 
-            <a href="{{ route('cart.page') }}" class="text-reset p-2 pt-3 h5">
-                <i class="fa-solid fa-cart-shopping"></i>
-            </a>
-            <div class="position-relative" onmouseout="shrinkDropdown(this)" onmouseover="expandDropdown(this)">
-                <a class="d-none d-sm-block text-reset h5 pt-3 p-2 me-2" type="button" aria-expanded="false">
-                    <i class="fa-regular fa-user"></i>
+            <div class="d-flex flex-row gap-sm-2 ms-sm-2">
+                <a href="{{ route('cart.page') }}" class="text-reset p-2 pt-3 h5">
+                    <i class="fa-solid fa-cart-shopping"></i>
                 </a>
-                <ul class="position-absolute z-max d-none bg-white px-3 py-4 border list-unstyled p-0 m-0 end-0" onmouseover="expandDropdown(this)" onmouseout="shrinkDropdown(this.parentElement)">
-                    @if (!Auth::check())
-                        <li class="text-reset mb-4">
-                            <a href="{{ route('login.page') }}" class="btn btn-primary w-100 text-decoration-none text-white">Login or Register</a>
-                        </li>
-                    @endif
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                    <li><a class="dropdown-item" href="#">Orders</a></li>
-                    <li><a class="dropdown-item" href="#">Help and Support</a></li>
-
-                    @if (Auth::check())
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    @endif
-                </ul>
+    
+                <div class="position-relative" onmouseout="shrinkDropdown(this)" onmouseover="expandDropdown(this)">
+                    <a class="d-none d-sm-block text-reset h5 pt-3 p-2 me-2" type="button" aria-expanded="false">
+                        <i class="fa-regular fa-user"></i>
+                    </a>
+                    <ul class="position-absolute z-max d-none bg-white px-3 py-4 border list-unstyled p-0 m-0 end-0" onmouseover="expandDropdown(this)" onmouseout="shrinkDropdown(this.parentElement)">
+                        @if (!Auth::check())
+                            <li class="text-reset mb-4">
+                                <a href="{{ route('login.page') }}" class="btn btn-primary w-100 text-decoration-none text-white">Login or Register</a>
+                            </li>
+                        @endif
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Orders</a></li>
+                        <li><a class="dropdown-item" href="#">Help and Support</a></li>
+    
+                        @if (Auth::check())
+                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                        @endif
+                    </ul>
+                </div>
+                <a data-bs-toggle="offcanvas" href="#sidebar" role="button" aria-controls="sidebar" class="p-2 pt-3 h5 d-sm-none text-decoration-none text-reset">
+                    <i class="fa-solid fa-bars"></i>
+                </a>
             </div>
-            <a data-bs-toggle="offcanvas" href="#sidebar" role="button" aria-controls="sidebar" class="p-2 pt-3 h5 d-sm-none text-decoration-none text-reset">
-                <i class="fa-solid fa-bars"></i>
-            </a>
         </section>
     </section>
 

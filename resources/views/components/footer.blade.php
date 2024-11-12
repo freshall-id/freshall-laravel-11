@@ -1,4 +1,4 @@
-<footer class="border-top p-0 pt-5 w-100 mt-5 container-fluid d-flex flex-column align-items-center">
+<footer class="px-3 px-sm-5 border-top p-0 pt-5 m-0 w-100 mt-5 container-fluid d-flex flex-column align-items-center">
     <div class="row w-100">
         <div class="col-lg-5 px-0 d-flex flex-column align-items-start justify-content-center">
             <img src="{{ asset('freshall/logo-with-text.svg') }}" alt="FRESHALL" width="200">
