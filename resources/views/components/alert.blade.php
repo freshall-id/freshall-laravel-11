@@ -27,7 +27,7 @@
 @if (session("success"))
     <div class="toast position-fixed bg-success" style="opacity: 1; z-index: 100; right: 1rem; top: 1rem;" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header">
-            <strong class="me-auto">Warning</strong>
+            <strong class="me-auto">Success</strong>
             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
         </div>
         <div class="toast-body text-light">

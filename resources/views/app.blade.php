@@ -16,13 +16,16 @@
 </head>
 <body class="antialiased">
     @include("components.alert")
-    @include("components.navbar")
+    @if (!isset($hideNavbar) || !$hideNavbar)
+        @include("components.navbar")
+    @endif
     
     <main class="px-3 px-sm-5">
         @yield("content")
     </main>
-    
-    @include("components.footer")
+    @if (!isset($hideFooter) || !$hideFooter)
+        @include("components.footer")
+    @endif
 </body>
 <script src="{{ asset('index.js') }}"></script>
 <script src="{{ asset('bootstrap-5.0.2-dist/js/bootstrap.min.js') }}"></script>

@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 /*
 |---------------------------------------------------------------------------
@@ -41,9 +43,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
 
 Route::get('/search/{query?}', [])->name('search.page');
-Route::get('/login', [])->name('login.page');
-Route::get('/register', [])->name('register.page');
-Route::get('/logout', [])->name('logout.page');
+Route::get('/login', [LoginController::class, 'viewLoginpage'])->name('login.page');
+Route::post('/login', [LoginController::class, 'login'])->name('login.action');
+Route::get('/register', [RegisterController::class, 'viewRegisterPage'])->name('register.page');
+Route::post('/register', [RegisterController::class, 'register'])->name('register.action');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout.page');
 
 Route::get('/product-category/{product_category}', [])->name('product-category.page');
 Route::get('/product/{product}', [])->name('product-detail.page');
