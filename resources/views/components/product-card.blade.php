@@ -4,11 +4,21 @@
         <img src="{{ asset('default/product.png') }}" class="card-img-top" alt="{{ $product->name }}">
         <div class="card-body d-flex flex-column pb-5 pb-md-0 justify-content-between gap-1 gap-sm-3">
             <div>
-                <h5 class="card-title text-truncate">{{ $product->name }}</h5>
-                <p class="card-text text-muted">
-                    <i class="fa-solid fa-weight-hanging me-1" style="color: var(--accent-yellow);"></i>
+                <p class="card-text m-0 text-muted">
                     {{ $product->weight }}gr
                 </p>
+                <h5 class="card-title mt-0 text-truncate">{{ $product->name }}</h5>
+                <div class="d-flex flex-row align-items-center justify-content-start gap-2 m-0">
+                    <i class="fa-solid fa-star" style="color: var(--accent-yellow);"></i>
+                    <p class="card-text m-0 text-center text-muted">
+                        {{ number_format($product->rating, 1) }}
+                    </p>
+                    
+                    <i class="fa-solid fa-circle text-muted" style="font-size: 0.3rem;"></i>
+                    <p class="card-text m-0 text-center text-muted">
+                        {{ $product->total_sold }} sold
+                    </p>
+                </div>
             </div>
 
             <div>

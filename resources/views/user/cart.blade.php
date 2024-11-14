@@ -11,95 +11,102 @@
                 </h5>
                 <h2>Your Basket of Freshness</h2>
             </div>
-
-            <div class="mt-3">
-                            
-                @if ($cart->cartItems->isEmpty())
+            
+            <div class="mt-5 container-fluid m-0 p-0">
+                <div class="row m-0 mb-2">
+                    <div class="col-1 border-bottom py-3 text-start">
+                        <input type="checkbox" id="select-all-checkbox">
+                    </div>
+                    <div class="col-5 d-flex align-items-center border-bottom">
+                        <h6 class="text-muted fw-bold">PRODUCT</h6>
+                    </div>
+                    <div class="col-3 d-flex align-items-center border-bottom">
+                        <h6 class="text-muted fw-bold">QUANTITY</h6>
+                    </div>
+                    <div class="col-3 d-flex align-items-center border-bottom">
+                        <h6 class="text-muted fw-bold">PRICE</h6>
+                    </div>
+                </div>
+                @forelse ($cart->cartItems as $cart_item)
+                    <div class="row m-0 py-1">
+                        <div class="col-1 border-bottom pb-2 py-3 text-start">
+                            <input type="checkbox" name="{{ $cart_item->id }}">
+                        </div>
+                        <div class="col-5 container pb-2 d-flex align-items-center border-bottom">
+                            <div class="row">
+                                <div class="overflow-hidden col-4">
+                                    <img src="{{ asset($cart_item->product->image) }}" alt="{{ $cart_item->product->name }}" class="img-fluid">
+                                </div>
+                                <div class="col-8 pb-1 gap-2 d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h5 class="card-title mt-0 text-truncate">{{ $cart_item->product->name }}</h5>
+                                        <p class="card-text m-0 text-muted">
+                                            {{ $cart_item->product->weight }}gr
+                                        </p>
+                                    </div>
+                                    <div class="m-0 p-0">
+                                        @if ($cart_item->product->stock < $cart_item->quantity)
+                                            <span class="badge text-bg-secondary bg-danger">
+                                                Out of Stock
+                                            </span>
+                                        @elseif ($cart_item->product->stock == $cart_item->quantity)
+                                            <span class="badge text bg-secondary bg-warning">
+                                                Almost Out of Stock ({{ $cart_item->product->stock }} items left)
+                                            </span>
+                                        @else
+                                            <span class="badge text bg-secondary bg-success">
+                                                In Stock ({{ $cart_item->product->stock }} items left)
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex pb-2 justify-content-start px-0 align-items-start border-bottom">
+                            <div>
+                                <div class="d-flex flex-row gap-1">       
+                                    <form action="{{ route('update-cart-item.decrement.action', ['cart_item' => $cart_item]) }}" method="POST" class="m-0">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn">
+                                            @if ($cart_item->quantity == 1)
+                                                <i class="fa-solid fa-trash"></i>
+                                            @else
+                                                <i class="fa-solid fa-minus"></i>
+                                            @endif
+                                        </button>
+                                    </form>
+                                    
+                                    <input type="number" value={{ $cart_item->quantity }} class="w-50 p-0 m-0 text-center" disabled>
+                                    
+                                    <form action="{{ route('update-cart-item.increment.action', ['cart_item' => $cart_item]) }}" method="POST" class="m-0">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn">
+                                            <i class="fa-solid fa-plus"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 d-flex pb-2 align-items-start border-bottom">
+                            <div>
+                                <h4 class="">
+                                    Rp {{ number_format($cart_item->cartItemPrice(), 0, ',', '.') }}
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                @empty
                     <div class="alert alert-info mt-2">
                         Your cart is empty
                     </div>
-                @else
-                    <div class="table-responsive mt-5">
-                        <table class="table table-borderless align-middle">   
-                            <thead class="bg-transparent border-bottom">
-                                <tr class="text-muted">
-                                    <th class="w-5"><input type="checkbox"></th>
-                                    <th class="w-50">PRODUCT</th>
-                                    <th class="w-25">QUANTITY</th>
-                                    <th class="w-50">PRICE</th>
-                                </tr>
-                            </thead>
-                            <tbody class="">
-                                <tr
-                                    class="bg-transparent border-bottom"
-                                >
-                                    @foreach ($cart->cartItems as $cart_item)
-                                        
-                                        <th><input type="checkbox"></th>
-                                        <td class="d-flex flex-row">
-                                            <div class="ratio ratio-1x1" style="width: 8rem">
-                                                <img
-                                                    src="{{ asset($cart_item->product->image) }}"
-                                                    alt="{{ $cart_item->product->name }}"
-                                                    class="w-100 h-100"
-                                                />
-                                            </div>
-                                            <div class="ms-3">
-                                                <h5 class="text-truncate">{{ $cart_item->product->name }}</h5>
-                                                <p class="text-muted text-truncate">{{ Str::words($cart_item->product->description, 10) }} </p>
-
-                                                @if ($cart_item->product->stock < $cart_item->quantity)
-                                                    <span class="badge text-bg-secondary bg-danger">
-                                                        Out of Stock
-                                                    </span>
-                                                @elseif ($cart_item->product->stock == $cart_item->quantity)
-                                                    <span class="badge text bg-secondary bg-warning">
-                                                        Almost Out of Stock ({{ $cart_item->product->stock }} items left)
-                                                    </span>
-                                                @else
-                                                    <p class="badge text bg-secondary bg-success">
-                                                        In Stock ({{ $cart_item->product->stock }} items left)
-                                                    </p>
-                                                @endif
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="quantity-selector">       
-                                                <form action="{{ route('update-cart-item.action', ['cart_item' => $cart_item, 'status' => 'decrease']) }}" method="POST" class="m-0">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button type="submit">-</button>
-                                                </form>
-                                                <input type="number" value={{ $cart_item->quantity }} class="p-0 m-0 text-center" disabled>
-                                                
-                                                <form action="{{ route('update-cart-item.action', ['cart_item' => $cart_item, 'status' => 'increase']) }}" method="POST" class="m-0">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <button type="submit">+</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                        <td>Rp {{ number_format($cart_item->product->price, 0, ',', '.') }}</td>
-                                    @endforeach
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                
-                            </tfoot>
-                        </table>
-                    </div>
-                @endisset
+                @endforelse
             </div>
 
         </section>
         @if (!$cart->cartItems->isEmpty())
             <section class="mt-5 w-100 d-flex justify-content-end">
-                <form action="" method="POST">
-                    @csrf
-                    <button class="btn btn-danger me-2">
-                        Delete
-                    </button>
-                </form>
                 <form action="" method="POST">
                     @csrf
                     <button class="btn btn-success">
@@ -109,18 +116,26 @@
             </section>
         @endif
     </div>
-@endsection
 
-<script>
-    function updateQuantity(element, action) {
-        let quantityInput = element.parentNode.querySelector('input[name=quantity]');
-        if (action === 'increase') {
-            quantityInput.stepUp();
-        } else if (action === 'decrease') {
-            quantityInput.stepDown();
+    <script>
+        function updateQuantity(element, action) {
+            let quantityInput = element.parentNode.querySelector('input[name=quantity]');
+            if (action === 'increase') {
+                quantityInput.stepUp();
+            } else if (action === 'decrease') {
+                quantityInput.stepDown();
+            }
+            element.closest('form').submit();
         }
-
-        element.closest('form').submit();
-    }
-
-</script>
+    
+        const selectAllCheckbox = document.getElementById('select-all-checkbox');
+        
+        selectAllCheckbox.addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('input[type=checkbox]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = selectAllCheckbox.checked;
+            });
+        });
+    
+    </script>
+@endsection

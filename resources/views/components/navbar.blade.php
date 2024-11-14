@@ -41,18 +41,18 @@
                         <i class="fa-regular fa-user"></i>
                     </a>
                     <ul class="position-absolute z-max d-none bg-white px-3 py-4 border list-unstyled p-0 m-0 end-0" onmouseover="expandDropdown(this)" onmouseout="shrinkDropdown(this.parentElement)">
-                        @if (!Auth::check())
+                        @guest
                             <li class="text-reset mb-4">
                                 <a href="{{ route('login.page') }}" class="btn btn-primary w-100 text-decoration-none text-white">Login or Register</a>
                             </li>
-                        @endif
+                        @endguest
                         <li><a class="dropdown-item" href="#">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Orders</a></li>
                         <li><a class="dropdown-item" href="#">Help and Support</a></li>
     
-                        @if (Auth::check())
+                        @auth
                             <li><a class="dropdown-item" href="#">Logout</a></li>
-                        @endif
+                        @endauth
                     </ul>
                 </div>
                 <a data-bs-toggle="offcanvas" href="#sidebar" role="button" aria-controls="sidebar" class="p-2 pt-3 h5 d-sm-none text-decoration-none text-reset">

@@ -28,6 +28,7 @@ class DashboardController extends Controller
 
         // login
         Auth::loginUsingId(1);
+        // Auth::logout();
 
         return view('dashboard', [
             'products' => $products,
