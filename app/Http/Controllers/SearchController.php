@@ -20,9 +20,9 @@ class SearchController extends Controller
             $ascending = $validated_request['asc'] ?? true;
             
             $products = Product::where('name', 'like', '%' . $validated_request['query'] . '%')
-            ->orderBy($validated_request['order_by'], $ascending ? 'asc' : 'desc')
-            ->paginate(10)
-            ->withQueryString();
+                ->orderBy($validated_request['order_by'], $ascending ? 'asc' : 'desc')
+                ->paginate(10)
+                ->withQueryString();
 
             return view('search', [
                 'products' => $products
