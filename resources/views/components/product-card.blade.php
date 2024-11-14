@@ -44,9 +44,14 @@
                     </button>
                 </form>
             @else
-                <button href="{{ route('login.page') }}" class="btn mt-1" style="background-color: var(--accent-yellow); color: white">
-                    Add to cart
-                </button>
+                <div
+                    class="p-3 m-2 m-sm-3 position-absolute rounded-circle overflow-hidden ratio-1x1 ratio"
+                    style="width: 2.5rem; right: 0; bottom: 0;"
+                >
+                    <button type="submit" class="btn w-100" style="background-color: var(--accent-yellow); color: white">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
             @endif
         </div>
     </div>
