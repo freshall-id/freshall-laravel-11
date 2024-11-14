@@ -134,30 +134,9 @@
             </h5>
             <h2>Farm Fresh Produce Delivered to Your Door</h2>
         </div>
-        <div class="my-4 mb-2 rounded-5 d-flex flex-row align-items-center justify-content-between w-100">
-            <div class="d-inline-flex flex-row align-items-center" style="background-color: var(--background);">
-                <a href="!#" class="m-0 text-reset text-decoration-none btn btn-primary">
-                    <i class="fa-solid fa-arrow-down-z-a text-white"></i>
-                </a>
 
-                <a href="#!" class="m-0 text-reset text-decoration-none btn filter">
-                    <i class="fa-solid fa-arrow-up-z-a text-white"></i>
-                </a>
-            </div>
-            <div>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Filter by <b>Price</b>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Price</a></li>
-                        <li><a class="dropdown-item" href="#">Rating</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="border-top mb-3"></div>
-            <div class="mt-3">
+        <div class="mt-4 mb-3"></div>
+            <div class="mt-4">
                 <div class="row justify-content-start">
                     @forelse ($products as $product)
                         <x-product-card :product="$product" />
