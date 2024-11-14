@@ -26,10 +26,6 @@ class DashboardController extends Controller
             $transactions = null;
         }
 
-        // login
-        Auth::loginUsingId(1);
-        // Auth::logout();
-
         return view('dashboard', [
             'products' => $products,
             'product_categories' => $product_categories,

@@ -23,6 +23,7 @@ class User extends Authenticatable
         'phone_number',
         'profile_image',
         'gender',
+        'password',
         'date_of_birth',
         'role',
         'cart_id',
