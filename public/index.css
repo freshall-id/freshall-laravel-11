@@ -35,6 +35,10 @@
     border-color: var(--accent-yellow) !important;
 }
 
+.w-md-50 {
+    width: 100%;
+}
+
 @media (max-width: 576px) {
     .offcanvas {
         width: 100%;
@@ -114,4 +118,20 @@
 
 .quantity-selector button:focus, .quantity-selector input:focus {
     outline: none;
+}
+
+.card-registration {
+    width: 50%;
+}
+
+@media (max-width: 576px) {
+    .card-registration {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .card-registration {
+        width: 70%;
+    }
 }

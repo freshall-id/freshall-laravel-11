@@ -4,12 +4,12 @@
     <section class="h-100">
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="col" style="padding: 0px 17%">
+                <div class="col px-2 d-flex justify-content-center">
                     <div class="card card-registration my-4 shadow-sm">
                         <div class="row g-0 justify-content-center">
                             <div class="py-3">
                                 <div class="card-body p-md-5 text-black">
-                                    <h3 class="mb-5 text-uppercase text-center">Login</h3>
+                                    <h3 class="mb-5 text-uppercase text-center fw-bold">Login</h3>
 
                                     <form action="{{ route('login.action') }}" method="POST">
                                         @csrf

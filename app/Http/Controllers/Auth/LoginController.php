@@ -12,6 +12,7 @@ class LoginController extends Controller
     public function viewLoginpage(){
         return view('auth.login');
     }
+    
     public function login(Request $req){
         $validate_credentials = array_merge([
             'remember' => false,

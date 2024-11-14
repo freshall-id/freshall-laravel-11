@@ -41,7 +41,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
 
-Route::get('/search/{query?}', [])->name('search.page');
+// Route::get('/search/{query?}', [])->name('search.page');
 Route::get('/login', [LoginController::class, 'viewLoginpage'])->name('login.page');
 Route::post('/login', [LoginController::class, 'login'])->name('login.action');
 Route::get('/register', [RegisterController::class, 'viewRegisterPage'])->name('register.page');
