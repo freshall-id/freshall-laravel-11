@@ -91,4 +91,36 @@ class CartController extends Controller
 
         return redirect()->back();
     }
+
+    public function decrementCartItem(CartItem $cart_item)
+    {
+        if($cart_item->quantity == 1) {
+            $cart_item->delete();
+            return redirect()->back();
+        }
+
+        $cart_item->update([
+            'quantity' => $cart_item->quantity - 1
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function incrementCartItem(CartItem $cart_item)
+    {
+        if($cart_item->product->stock < $cart_item->quantity + 1) {
+            return redirect()->back()->with('error', 'Product stock is not enough');
+        }
+
+        $cart_item->update([
+            'quantity' => $cart_item->quantity + 1
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function deleteCartItems(Request $request)
+    {
+        dd($request->all());
+    }
 }

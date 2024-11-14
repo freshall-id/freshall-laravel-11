@@ -39,10 +39,9 @@ use Illuminate\Support\Facades\Route;
 | Please adhere to these conventions to maintain consistency and clarity in the codebase.
 */
 
-
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
 
-Route::get('/search/{query?}', [])->name('search.page');
+// Route::get('/search/{query?}', [])->name('search.page');
 Route::get('/login', [LoginController::class, 'viewLoginpage'])->name('login.page');
 Route::post('/login', [LoginController::class, 'login'])->name('login.action');
 Route::get('/register', [RegisterController::class, 'viewRegisterPage'])->name('register.page');
@@ -55,7 +54,10 @@ Route::get('/product/{product}', [])->name('product-detail.page');
 Route::post('/add-to-cart/{cart}/{product}', [CartController::class, 'addToCart'])->name('add-to-cart.action');
 Route::get('/cart', [CartController::class, 'viewCartPage'])->name('cart.page');
 
-Route::put('/update-cart/{cart}', [])->name('update-cart.action');
-
 Route::put('/update-cart-item/{cart_item}/{status}', [CartController::class, 'updateCartItem'])->name('update-cart-item.action');
 Route::delete('/delete-cart-item/{cart_item}', [CartController::class, 'deleteCartItem'])->name('delete-cart-item.action');
+
+Route::prefix('/cart')->group(function () {
+    Route::put('/increment/{cart_item}', [CartController::class, 'incrementCartItem'])->name('update-cart-item.increment.action');
+    Route::put('/decrement/{cart_item}', [CartController::class, 'decrementCartItem'])->name('update-cart-item.decrement.action');
+});

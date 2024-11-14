@@ -26,4 +26,9 @@ class CartItem extends Model
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function cartItemPrice(): float
+    {
+        return $this->product->price * $this->quantity;
+    }
 }

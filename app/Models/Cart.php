@@ -22,5 +22,11 @@ class Cart extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
+    public function cartPrice(): float
+    {
+        return $this->cartItem->sum(function ($cart_item) {
+            return $cart_item->product->price * $cart_item->quantity;
+        });
+    }
 }
