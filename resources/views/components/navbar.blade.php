@@ -23,7 +23,7 @@
         </a>
 
         <section class="col-12 col-sm-5 px-1 px-sm-0 d-flex flex-row gap-3 align-items-center m-0 p-0 justify-content-start justify-content-sm-center bg-white">
-            <form action="{{ route('search.page') }}" action="GET" class="d-sm-flex input-group text-decoration-none">
+            <a href="#" class=" d-sm-flex input-group text-decoration-none">
                 <span class="input-group-text">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
@@ -50,7 +50,7 @@
                         <li><a class="dropdown-item" href="#">Help and Support</a></li>
     
                         @auth
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li><a class="dropdown-item" href="{{ route('logout.page') }}">Logout</a></li>
                         @endauth
                     </ul>
                 </div>
