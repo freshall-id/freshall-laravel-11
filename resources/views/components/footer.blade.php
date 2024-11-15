@@ -67,10 +67,10 @@
         </h6>
         <ul class="col-12 p-0 mt-3 mt-sm-0 col-sm-9 d-flex flex-column flex-sm-row list-unstyled gap-3 gap-sm-5 justify-content-sm-end">
             <li>
-                <a href="" class="hover-underline text-muted">Terms</a>
+                <a href="{{route('termsandconditions.page')}}" class="hover-underline text-muted">Terms</a>
             </li>
             <li>
-                <a href="" class="hover-underline text-muted">Privacy Policy</a>
+                <a href="{{route('privacypolicy.page')}}" class="hover-underline text-muted">Privacy Policy</a>
             </li>
             <li>
                 <a href="" class="hover-underline text-muted">Support</a>
