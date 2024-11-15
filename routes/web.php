@@ -62,3 +62,6 @@ Route::prefix('/cart')->group(function () {
     Route::put('/increment/{cart_item}', [CartController::class, 'incrementCartItem'])->name('update-cart-item.increment.action');
     Route::put('/decrement/{cart_item}', [CartController::class, 'decrementCartItem'])->name('update-cart-item.decrement.action');
 });
+
+Route::view('/TermsAndConditions','companyInfo.termsandconditions')->name('termsandconditions.page');
+Route::view('/PrivacyPolicy','companyInfo.privacypolicy')->name('privacypolicy.page');

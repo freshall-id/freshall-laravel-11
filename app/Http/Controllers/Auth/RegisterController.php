@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Cart;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,8 @@ class RegisterController extends Controller
             'name' => ['required', 'min:8', 'max:50'],
             'gender' => ['required'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => ['required', 'min:8', 'max:50']
+            'password' => ['required', 'min:8', 'max:50'],
+            'terms and conditions' => ['required']
         ],  [ 'username.regex' => 'Username tidak boleh mengandung spasi.'
         ]);
         
