@@ -20,9 +20,13 @@ class Product extends Model
         'description',
         'total_sold',
         'rating',
-
         'product_category_id',
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'sku';
+    }
 
     public function productCategory()
     {

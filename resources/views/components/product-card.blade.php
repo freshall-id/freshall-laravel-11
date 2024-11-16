@@ -1,7 +1,9 @@
 <div class="mb-3 col-6 col-md-4 col-xl-3 col-xxl-2">
     <div class="card p-0 pb-3 w-100">
 
-        <img src="{{ asset('default/product.png') }}" class="card-img-top" alt="{{ $product->name }}">
+        <a href="{{ route('product-detail.page', ['product' => $product]) }}">
+            <img src="{{ asset($product->image) }}" class="card-img-top" alt="{{ $product->name }}">
+        </a>
         <div class="card-body d-flex flex-column pb-5 pb-md-0 justify-content-between gap-1 gap-sm-3">
             <div>
                 <p class="card-text m-0 text-muted">

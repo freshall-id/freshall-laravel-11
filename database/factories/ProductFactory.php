@@ -22,7 +22,7 @@ class ProductFactory extends Factory
         return [
             'sku' => strtolower($this->faker->unique()->word()),
             'name' => $this->faker->unique()->sentence(2),
-            'image' => $this->faker->imageUrl(),
+            'image' => 'default/product.png',
             'stock' => $this->faker->numberBetween(1, 100),
             'minimum_buy' => $this->faker->numberBetween(1, 5),
             'weight' => $this->faker->numberBetween(1, 10) * 100,
