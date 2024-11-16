@@ -27,6 +27,7 @@
         </div>
 
         <div>
+            <h6 class="text-muted">Stock: {{ $product->stock }}</h6>
             <h2 class="fw-bold">Rp {{ number_format($product->price, 0, ',', '.') }}</h2>
 
             @if (Auth::check())
@@ -36,7 +37,7 @@
                             'product' => $product,
                         ]) }}" 
                     method="POST"
-                    class="mt-3"
+                    class="mt-4"
                 >
                     @csrf
                     <button type="submit" class="btn w-100" style="background-color: var(--accent-yellow); color: white">
@@ -44,7 +45,7 @@
                     </button>
                 </form>
             @else
-                <div class="mt-3">
+                <div class="mt-4">
                     <a href="{{ route('login.page') }}" class="btn w-100"  style="background-color: var(--accent-yellow); color: white">
                         Add to Cart
                     </a>
