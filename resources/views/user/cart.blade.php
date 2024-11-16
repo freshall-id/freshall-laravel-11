@@ -12,7 +12,7 @@
                 <h2>Your Basket of Freshness</h2>
             </div>
             
-            <div class="mt-5 container-fluid m-0 p-0">
+            <div class="mt-5 container-fluid m-0 p-0 overflow-hidden">
                 <div class="row m-0 mb-2">
                     <div class="col-1 border-bottom py-3 text-start">
                         <input type="checkbox" id="select-all-checkbox">
@@ -33,11 +33,11 @@
                             <input type="checkbox" name="{{ $cart_item->id }}">
                         </div>
                         <div class="col-11 col-md-5 container pb-2 d-flex align-items-center border-md-bottom">
-                            <div class="row">
-                                <div class="overflow-hidden col-md-4">
+                            <div class="row m-0">
+                                <div class="overflow-hidden col-4 p-0">
                                     <img src="{{ asset($cart_item->product->image) }}" alt="{{ $cart_item->product->name }}" class="img-fluid">
                                 </div>
-                                <div class="col-md-8 pb-1 gap-2 d-flex flex-column justify-content-between">
+                                <div class="col-8 col-md-8 pb-1 gap-2 d-flex flex-column justify-content-between">
                                     <div>
                                         <h5 class="card-title mt-0 text-truncate">{{ $cart_item->product->name }}</h5>
                                         <p class="card-text m-0 text-muted">
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="offset-1 offset-md-0 col-md-3 d-flex pb-2 justify-content-start px-0 align-items-start border-md-bottom">
+                        <div class="offset-5 offset-md-0 col-md-3 d-flex pb-2 justify-content-start px-0 align-items-start border-md-bottom">
                             <div>
                                 <div class="d-flex flex-row gap-1">       
                                     <form action="{{ route('update-cart-item.decrement.action', ['cart_item' => $cart_item]) }}" method="POST" class="m-0">
@@ -89,7 +89,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="offset-1 offset-md-0 col-md-3 d-flex pb-2 align-items-start border-md-bottom">
+                        <div class="offset-5 offset-md-0 col-md-3 d-flex pb-2 align-items-start border-md-bottom">
                             <div>
                                 <h4 class="">
                                     Rp {{ number_format($cart_item->cartItemPrice(), 0, ',', '.') }}
