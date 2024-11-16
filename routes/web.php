@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 /*
@@ -50,7 +51,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('registe
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout.page');
 
 Route::get('/product-category/{product_category}', [])->name('product-category.page');
-Route::get('/product/{product}', [])->name('product-detail.page');
+Route::get('/product/{product}', [ProductController::class, 'viewProductDetailPage'])->name('product-detail.page');
 
 Route::post('/add-to-cart/{cart}/{product}', [CartController::class, 'addToCart'])->name('add-to-cart.action');
 Route::get('/cart', [CartController::class, 'viewCartPage'])->name('cart.page');
