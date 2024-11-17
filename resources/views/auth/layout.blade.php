@@ -26,8 +26,11 @@
         <main class="px-3 px-sm-5">
             @yield("content")
         </main>
-        <div class="d-flex flex-row justify-content-center">
-            <p class="text-muted">© 2024, FRESHALL.ID</p>
+        <div class="d-flex flex-row justify-content-center text-secondary ">
+            <p class="text-muted ">© 2024, FRESHALL.ID |&nbsp; </p>
+            <a class="text-decoration-none text-secondary" href="{{route('about.page')}}"> About |&nbsp;</a>
+            <a class="text-decoration-none text-secondary" href="{{route('termsandconditions.page')}}"> Terms And Conditions |&nbsp;</a>
+            <a class="text-decoration-none text-secondary" href="{{route('privacypolicy.page')}}"> Privacy Policy</a>
         </div>
     </body>
     <script src="{{ asset('index.js') }}"></script>

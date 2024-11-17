@@ -66,3 +66,4 @@ Route::prefix('/cart')->group(function () {
 
 Route::view('/TermsAndConditions','companyInfo.termsandconditions')->name('termsandconditions.page');
 Route::view('/PrivacyPolicy','companyInfo.privacypolicy')->name('privacypolicy.page');
+Route::view('/About','companyInfo.about')->name('about.page');
