@@ -42,7 +42,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
-
 Route::get('/search/{order_by}/{asc}', [SearchController::class, 'viewSearchPage'])->name('search.page');
 Route::get('/login', [LoginController::class, 'viewLoginpage'])->name('login.page');
 Route::post('/login', [LoginController::class, 'login'])->name('login.action');
