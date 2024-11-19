@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\Admin\DashboardController as DashboardAdminController;
 use Illuminate\Support\Facades\Route;
 /*
 |---------------------------------------------------------------------------
@@ -42,6 +43,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
+Route::get('/admin', [DashboardAdminController::class, 'viewDashboardPage'])->name('admin-dashboard.page');
 Route::get('/search/{order_by}/{asc}', [SearchController::class, 'viewSearchPage'])->name('search.page');
 Route::get('/login', [LoginController::class, 'viewLoginpage'])->name('login.page');
 Route::post('/login', [LoginController::class, 'login'])->name('login.action');

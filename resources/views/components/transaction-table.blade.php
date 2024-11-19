@@ -1,63 +1,60 @@
-<div class="container-fluid">
-    <h2 class="mb-4">{{$tableTitle}}</h2>
-    <div class="table-responsive">
-        <table class="table table-hover table-bordered text-center align-middle">
-            <thead class="table-warning">
+<div class="table-responsive">
+    <table class="table table-hover table-bordered text-center align-middle">
+        <thead class="table-warning">
+            <tr>
+                @foreach (['Id', 'Customer Name', 'Price Total', 'Status', 'Date', 'Address', 'Notes', 'Action'] as $th)
+                    <th style="min-width: 10vw">{{$th}}</th>
+                @endforeach
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($transactions as $transaction)
                 <tr>
-                    @foreach ($transactionHeaders as $th)
-                        <th>{{$th}}</th>
-                    @endforeach
+                    <td>{{$transaction->id}}</td>
+                    <td>{{$transaction->user->name}}</td>
+                    <td>{{$transaction->price_total}}</td>
+                    <td>{{$transaction->status}}</td>
+                    <td>{{$transaction->created_at->format("d F Y H:i:s")}}</td>
+                    <td>{{$transaction->userAddress->full_address}}</td>
+                    <td>{{ $transaction->notes ? $transaction->notes : '-' }}</td>
+                    <td>
+                        <div class="d-flex flex-row gap-3">
+                            <a href="#transactionDetail.page" class="btn btn-primary btn-sm">View Detail</a>
+                            @if ($canUpdateOrDelete)
+                                <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal" data-title="Edit Status Transaction" data-content="Edit status for transaction ID: {{ $transaction->id }}" data-route="#editTransactionStatus.action">Edit Status</button>
+                                <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal" data-title="Delete Transaction" data-content="Are you sure you want to delete transaction ID: {{ $transaction->id }}?" data-route="#deleteTransaction.action">Delete Transaction</button>
+                            @endif
+                        </div>
+                    </td>
+                </tr>                     
+            @empty
+                <tr>
+                    <td colspan="10" class="text-center">No Transactions</td>
                 </tr>
-            </thead>
-            <tbody>
-                @forelse ($transactions as $transaction)
-                    <tr>
-                        <td>{{$transaction->id}}</td>
-                        <td>{{$transaction->user->name}}</td>
-                        <td>{{$transaction->price_total}}</td>
-                        <td>{{$transaction->status}}</td>
-                        <td>{{$transaction->created_at}}</td>
-                        <td style="max-width: 10vw; overflow: hidden; text-overflow: ellipsis;">
-                            {{ $transaction->notes ? $transaction->notes : '-' }}
-                        </td>
-                        <td>
-                            <div class="d-flex flex-column align-items-start gap-3">
-                                <a href="#transactionDetail.page" class="btn btn-primary btn-sm">View Detail</a>
-                                @if ($canUpdateOrDelete)
-                                    <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modal" data-title="Edit Status Transaction" data-content="Edit status for transaction ID: {{ $transaction->id }}" data-route="#editTransactionStatus.action">Edit Status</button>
-                                    <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal" data-title="Delete Transaction" data-content="Are you sure you want to delete transaction ID: {{ $transaction->id }}?" data-route="#deleteTransaction.action">Delete Transaction</button>
-                                @endif
-                            </div>
-                        </td>
-                    </tr>                     
-                @empty
-                    <tr>
-                        <td colspan="6" class="text-center">No Transactions</td>
-                    </tr>
-                @endforelse
+            @endforelse
 
-                <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="modalLabel">Modal Title</h5>
-                                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div id="modalContent">Modal Content</div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <a href="#" class="btn btn-danger" id="confirmButton">Confirm</a>
-                            </div>
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel">Modal Title</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div id="modalContent">Modal Content</div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <a href="#" class="btn btn-danger" id="confirmButton">Confirm</a>
                         </div>
                     </div>
                 </div>
-            </tbody>
-        </table>
-    </div>
+            </div>
+        </tbody>
+    </table>
+    {{ $transactions->links() }}
 </div>
 
 <script>

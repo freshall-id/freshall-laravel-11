@@ -8,15 +8,13 @@ use App\Models\TransactionHeader;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Enums\TransactionStatus;
 
 class DashboardController extends Controller
 {
     public function viewDashboardPage()
     {
         if(Auth::check() && Auth::user()->role == 'ADMIN') {
-            $transactions = TransactionHeader::all();
-            return view('admin.dashboard', ['transactions' => $transactions]);
+            return redirect()->route('admin-dashboard.page');
         }
 
         $product_categories = ProductCategory::orderBy('name', 'asc')->get();
