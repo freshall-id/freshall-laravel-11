@@ -21,8 +21,7 @@ return new class extends Migration
             $table->double('price_discount', 8, 2)->default(0);
             $table->double('price_insurance', 8, 2)->default(0);
             $table->double('price_fee', 8, 2)->default(0);
-        
-            $table->double('total_price', 8, 2)->default(0);
+            $table->double('price_total', 8, 2)->default(0);
 
             $table->timestamps();
         });

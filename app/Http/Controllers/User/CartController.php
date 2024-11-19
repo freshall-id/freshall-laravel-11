@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Product;
+use App\Models\Static\ShippingProvider;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,7 @@ class CartController extends Controller
             ]);
 
             $cart->update([
-                'total_price' => $cart->total_price + $product->price
+                'price_total' => $cart->price_total + $product->price
             ]); 
 
             return redirect()->back();
@@ -37,7 +38,7 @@ class CartController extends Controller
         ]);
 
         $cart->update([
-            'total_price' => $cart->total_price + $product->price
+            'price_total' => $cart->price_total + $product->price
         ]);
 
         return redirect()->back();
@@ -76,7 +77,7 @@ class CartController extends Controller
         }
 
         $cart_item->cart->update([
-            'total_price' => $cart_item->cart->total_price + ($cart_item->product->price * ($status == "increase" ? 1 : -1))
+            'price_total' => $cart_item->cart->price_total + ($cart_item->product->price * ($status == "increase" ? 1 : -1))
         ]);
 
         return redirect()->back();
@@ -87,7 +88,7 @@ class CartController extends Controller
         $cart_item->delete();
 
         $cart_item->cart->update([
-            'total_price' => $cart_item->cart->total_price - ($cart_item->product->price * $cart_item->quantity)
+            'price_total' => $cart_item->cart->price_total - ($cart_item->product->price * $cart_item->quantity)
         ]);
 
         return redirect()->back();
@@ -100,9 +101,8 @@ class CartController extends Controller
             return redirect()->back();
         }
 
-        $cart_item->update([
-            'quantity' => $cart_item->quantity - 1
-        ]);
+        $cart_item->quantity = $cart_item->quantity - 1;
+        $cart_item->save();
 
         return redirect()->back();
     }
@@ -113,9 +113,8 @@ class CartController extends Controller
             return redirect()->back()->with('error', 'Product stock is not enough');
         }
 
-        $cart_item->update([
-            'quantity' => $cart_item->quantity + 1
-        ]);
+        $cart_item->quantity = $cart_item->quantity + 1;
+        $cart_item->save();
 
         return redirect()->back();
     }
@@ -167,5 +166,21 @@ class CartController extends Controller
             'shipping_providers' => $shipping_providers,
             'payment_methods' => $payment_methods,
         ]);
+    }
+
+    public function updateShippingProvider(Request $request)
+    {
+        $validated_request = $request->validate([
+            'shipping_provider' => 'required|integer'
+        ]);
+
+        $cart = Auth::user()->cart;
+        $shipping_provider = ShippingProvider::getShippingProviderById($validated_request["shipping_provider"]);
+
+        $cart->shipping_provider = $shipping_provider['name'];
+        $cart->price_shipping = $shipping_provider['price'];
+        $cart->save();
+
+        return redirect()->back();
     }
 }

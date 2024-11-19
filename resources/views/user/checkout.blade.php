@@ -39,7 +39,7 @@
                     <div class="p-3 border">
                         <h5>Review Order <span class="text-danger">*</span></h5>
                         <div class="container d-flex flex-column gap-4">
-                            @foreach (Auth::user()->cart->cartItems as $cartItem)
+                            @foreach ($cart->cartItems as $cartItem)
                                 <div class="row">
                                     <div class="col-2 p-0 m-0">
                                         <img src="{{ asset($cartItem->product->image) }}" alt="PRODUCT_IMAGE" class="img-fluid">
@@ -69,10 +69,10 @@
                         <h5>Ship to <span class="text-danger">*</span></h5>
                         <div class="container p-0">
                             <div class="p-0 m-0">
-                                @isset(Auth::user()->userAddresses)
+                                @isset($userAddresses)
                                     <select class="form-select" aria-label="Shipping Address" required>
                                         <option selected>Select Address</option>
-                                        @foreach (Auth::user()->userAddresses as $address)
+                                        @foreach ($userAddresses as $address)
                                             <option value="{{ $address->id }}" class="text-truncate">
                                                 <h6 class="text-truncate">
                                                     {{ $address->label }} - {{ $address->full_address }}
@@ -82,7 +82,7 @@
                                     </select>
                                 @endisset
                                 
-                                @empty(Auth::user()->userAddresses)
+                                @empty($userAddresses)
                                     <div class="alert alert-info mt-2">
                                         You have no address yet
                                     </div>
@@ -93,18 +93,39 @@
                             </div>
                             <div class="mt-3">
                                 <h6 class="text-muted">Delivery</h6>
-                                @forelse ($shipping_providers as $shipping_provider)
-                                    <div class="mt-2 d-flex flex-row">
-                                        <input class="form-check-input" type="radio" name="shipping_provider" id="{{ $shipping_provider["id"] }}" value="{{ $shipping_provider["id"] }}">
-                                        <label class="form-check-label ms-2" for="{{ $shipping_provider["id"] }}">
-                                            {{ $shipping_provider["name"] }} - Rp. {{ number_format($shipping_provider["price"], 0, ",", ".") }}
-                                        </label>
-                                    </div>
-                                @empty
+                                @empty($shipping_providers)
                                     <div class="alert alert-info mt-2">
                                         No shipping provider available
                                     </div>
-                                @endforelse
+                                @endempty
+
+                                @isset($shipping_providers)
+                                <form action="{{ route('update-shipping-provider.action') }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    @foreach($shipping_providers as $shipping_provider)
+                                        <div class="mt-2 d-flex flex-row">
+                                            <input 
+                                                class="form-check-input" 
+                                                type="radio" 
+                                                name="shipping_provider" 
+                                                id="{{ $shipping_provider["id"] }}" 
+                                                value="{{ $shipping_provider["id"] }}"
+                                                @if ($shipping_provider["name"] == $cart->shipping_provider)
+                                                    checked
+                                                @endif
+                                            >
+                                            <label class="form-check-label ms-2" for="{{ $shipping_provider["id"] }}">
+                                                {{ $shipping_provider["name"] }} - Rp. {{ number_format($shipping_provider["price"], 0, ",", ".") }}
+                                            </label>
+                                        </div>
+                                    @endforeach
+
+                                    <button type="submit" class="mt-3 btn btn-primary">
+                                        Update Shipping
+                                    </button>
+                                </form>
+                                @endisset
                             </div>
                         </div>
                     </div>
@@ -112,12 +133,13 @@
                     {{-- voucher --}}
                     <div class="p-3 border mt-3">
                         <h5>Voucher</h5>
-                        @isset(Auth::user()->cart->voucher)
-                            <x-voucher-card :voucher="Auth::user()->cart->voucher"/>
+                        @isset($cart->voucher)
+                            <x-voucher-card :voucher="$cart->voucher"/>
                         @endisset
                         <form action="{{ route('use-voucher.action') }}" method="POST" class="container p-0 mt-2">
                             @csrf
-                            <input value="{{ Auth::user()->cart->voucher->code ?? '' }}" type="text" name="voucher_code" id="voucher_code" class="form-control" placeholder="Enter your voucher code here">
+                            @method('PUT')
+                            <input value="{{ $cart->voucher->code ?? '' }}" type="text" name="voucher_code" id="voucher_code" class="form-control" placeholder="Enter your voucher code here">
                             <div class="text-end mt-3">
                                 <button type="submit" class="btn btn-primary">
                                     Apply Voucher
@@ -175,15 +197,23 @@
                         <div class="container mt-3">
                             <div class="d-flex justify-content-between">
                                 <h6>Subtotal</h6>
-                                <h6>Rp. 0</h6>
+                                <h6>{{ $cart->totalItemPriceToNumberFormat() }} </h6>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <h6>Discount</h6>
+                                <h6>- {{ $cart->totalDiscountPriceToNumberFormat() }}</h6>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <h6>Insurance <small class="text-muted">(2%)</small></h6>
+                                <h6>{{ $cart->totalInsurancePriceToNumberFormat() }}</h6>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <h6>Shipping</h6>
-                                <h6 id="shipping">Rp. 0</h6>
+                                <h6>{{ $cart->shippingPriceToNumberFormat() }}</h6>
                             </div>
                             <div class="d-flex justify-content-between">
                                 <h6>Total</h6>
-                                <h6 id="total">Rp. 0</h6>
+                                <h6>{{ $cart->totalPriceToNumberFormat() }}</h6>
                             </div>
                         </div>
     
