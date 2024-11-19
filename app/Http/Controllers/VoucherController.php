@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 
 class VoucherController extends Controller
 {
-    public function useVoucher(Request $request) {
+    public function useVoucherFromInput(Request $request) {
         $validated_request = $request->validate([
             'voucher_code' => 'nullable|string|max:20',
         ]);

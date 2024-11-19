@@ -70,6 +70,8 @@ Route::view('/About','companyInfo.about')->name('about.page');
 
 Route::get('/checkout', [CartController::class, 'viewCheckoutPage'])->name('checkout.page');
 
-Route::put('/use-voucher', [VoucherController::class, 'useVoucher'])->name('use-voucher.action');
+Route::put('/use-voucher-from-input', [VoucherController::class, 'useVoucherFromInput'])->name('use-voucher.action');
 
 Route::put('/update-shipping-provider', [CartController::class, 'updateShippingProvider'])->name('update-shipping-provider.action');
+
+Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout.action');

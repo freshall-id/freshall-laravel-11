@@ -84,11 +84,6 @@ class Cart extends Model
         return 'Rp ' . number_format($this->totalInsurancePrice(), 0, ',', '.');
     }
 
-    public function shippingPriceToNumberFormat(): string
-    {
-        return 'Rp ' . number_format($this->price_shipping, 0, ',', '.');
-    }
-
     public function totalPrice(): float
     {
         $subtotal = $this->totalItemPrice();
@@ -102,5 +97,10 @@ class Cart extends Model
     public function totalPriceToNumberFormat(): string
     {
         return 'Rp ' . number_format($this->totalPrice(), 0, ',', '.');
+    }
+
+    public function priceFeeToNumberFormat(): string
+    {
+        return 'Rp ' . number_format($this->price_fee, 0, ',', '.');
     }
 }
