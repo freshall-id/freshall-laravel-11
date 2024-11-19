@@ -39,6 +39,10 @@
     width: 100%;
 }
 
+.resize-none {
+    resize: none;
+}
+
 @media (max-width: 576px) {
     .offcanvas {
         width: 100%;

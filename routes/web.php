@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
 /*
 |---------------------------------------------------------------------------
@@ -66,3 +67,7 @@ Route::prefix('/cart')->group(function () {
 Route::view('/TermsAndConditions','companyInfo.termsandconditions')->name('termsandconditions.page');
 Route::view('/PrivacyPolicy','companyInfo.privacypolicy')->name('privacypolicy.page');
 Route::view('/About','companyInfo.about')->name('about.page');
+
+Route::get('/checkout', [CartController::class, 'viewCheckoutPage'])->name('checkout.page');
+
+Route::post('/use-voucher', [VoucherController::class, 'useVoucher'])->name('use-voucher.action');

@@ -32,11 +32,11 @@
                                     </span>
                                 @elseif ($cart_item->product->stock == $cart_item->quantity)
                                     <span class="m-0 badge text bg-secondary bg-warning">
-                                        ({{ $cart_item->product->stock }} items left)
+                                        {{ $cart_item->product->stock }} items left
                                     </span>
                                 @else
                                     <span class="m-0 badge text bg-secondary bg-success">
-                                        ({{ $cart_item->product->stock }} items left)
+                                        {{ $cart_item->product->stock }} items left
                                     </span>
                                 @endif
                             </div>
@@ -83,20 +83,12 @@
                 <h6 class="text-muted">Total Price</h6>
                 <h5>Rp {{number_format($cart->total_price, 0, ',', '.') }}</h5>
             </div>
-            <form action="" method="POST">
-                @csrf
-                <button class="btn btn-success">
-                    Checkout
-                </button>
-            </form>
+            <a href="{{ route('checkout.page') }}" class="btn btn-success">
+                Checkout
+            </a>
         </section>
     @endif
     
 </div>
 
-
-<script>
-
-
-</script>
 @endsection

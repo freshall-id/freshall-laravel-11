@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Product;
+use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -122,5 +123,49 @@ class CartController extends Controller
     public function deleteCartItems(Request $request)
     {
         dd($request->all());
+    }
+
+    public function viewCheckoutPage()
+    {
+        $cart = Auth::user()->cart;
+
+        $shipping_providers = [
+            [
+                'id' => 1,
+                'name' => 'JNE',
+                'price' => 10000,
+            ],
+            [
+                'id' => 2,
+                'name' => 'J&T',
+                'price' => 12000,
+            ],
+            [
+                'id' => 3,
+                'name' => 'POS',
+                'price' => 15000,
+            ]
+        ];
+
+        $payment_methods = [
+            [
+                'id' => 1,
+                'name' => 'Bank Transfer',
+                'guidelines' => 'Transfer to BCA 1234567890 a/n PT. Toko Online',
+                'image' => 'freshall/app/bca.png',
+            ],
+            [
+                'id' => 2,
+                'name' => 'QRIS',
+                'guidelines' => 'Scan the QRIS code',
+                'image' => 'freshall/app/qris.png',
+            ]
+        ];  
+
+        return view('user.checkout', [
+            'cart' => $cart,
+            'shipping_providers' => $shipping_providers,
+            'payment_methods' => $payment_methods,
+        ]);
     }
 }

@@ -38,6 +38,10 @@ return new class extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->foreignId('product_category_id')->nullable()->constrained();
         });
+
+        Schema::table('carts', function (Blueprint $table) {
+            $table->foreignId('voucher_id')->nullable()->constrained();
+        });
     }
 
     /**
@@ -71,6 +75,10 @@ return new class extends Migration
 
         Schema::table('products', function (Blueprint $table) {
             $table->dropForeign(['product_category_id']);
+        });
+
+        Schema::table('carts', function (Blueprint $table) {
+            $table->dropForeign(['voucher_id']);
         });
     }
 };
