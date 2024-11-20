@@ -6,6 +6,8 @@ use App\Models\Cart;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\User;
+use App\Models\UserAddress;
+use App\Models\TransactionHeader;
 use App\Models\Voucher;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -33,5 +35,11 @@ class DatabaseSeeder extends Seeder
 
         // Seed the Voucher table
         Voucher::factory()->count(5)->create();
+
+        //Seed the User Address table
+        UserAddress::factory()->count(5)->create();
+
+        //Seed the Transaction Header table
+        TransactionHeader::factory()->count(5)->create();
     }
 }
