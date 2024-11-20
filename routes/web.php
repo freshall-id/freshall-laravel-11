@@ -59,6 +59,9 @@ Route::get('/cart', [CartController::class, 'viewCartPage'])->name('cart.page');
 Route::put('/update-cart-item/{cart_item}/{status}', [CartController::class, 'updateCartItem'])->name('update-cart-item.action');
 Route::delete('/delete-cart-item/{cart_item}', [CartController::class, 'deleteCartItem'])->name('delete-cart-item.action');
 
+Route::post('/admin/product',[ProductController::class,'storeCreatedProduct'])->name('create.product.action');
+Route::get('/admin/product/create',[ProductController::class,'createProduct'])->name('create.product.page');
+
 Route::prefix('/cart')->group(function () {
     Route::put('/increment/{cart_item}', [CartController::class, 'incrementCartItem'])->name('update-cart-item.increment.action');
     Route::put('/decrement/{cart_item}', [CartController::class, 'decrementCartItem'])->name('update-cart-item.decrement.action');
