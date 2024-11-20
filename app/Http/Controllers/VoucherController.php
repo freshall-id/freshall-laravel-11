@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class VoucherController extends Controller
 {
-    public function useVoucherFromInput(Request $request) {
+    public function useVoucher(Request $request) 
+    {
         $validated_request = $request->validate([
             'voucher_code' => 'nullable|string|max:20',
         ]);
@@ -30,5 +31,15 @@ class VoucherController extends Controller
         Auth::user()->cart->save(); 
         
         return redirect()->back()->with('success', 'Voucher has been successfully applied');
+    }
+
+    public function getVoucher(Voucher $voucher) 
+    {
+        Auth::user()->cart->voucher_id = $voucher->id;
+        Auth::user()->cart->save();
+        
+        return view('user.voucher', [
+            'voucher' => $voucher
+        ]);
     }
 }

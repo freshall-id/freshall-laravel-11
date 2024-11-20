@@ -23,7 +23,7 @@
         </a>
 
         <section class="col-12 col-sm-5 px-1 px-sm-0 d-flex flex-row gap-3 align-items-center m-0 p-0 justify-content-start justify-content-sm-center bg-white">
-            <a href="#" class=" d-sm-flex input-group text-decoration-none">
+            <form action="{{ route('search.page') }}" method="GET" class=" d-sm-flex input-group text-decoration-none">
                 <span class="input-group-text">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
@@ -42,7 +42,7 @@
                     <ul class="position-absolute z-max d-none bg-white px-3 py-4 border list-unstyled p-0 m-0 end-0" onmouseover="expandDropdown(this)" onmouseout="shrinkDropdown(this.parentElement)">
                         @guest
                             <li class="text-reset mb-4">
-                                <a href="{{ route('login.page') }}" class="btn btn-primary w-100 text-decoration-none text-white">Login or Register</a>
+                                <a href="{{ route('login') }}" class="btn btn-primary w-100 text-decoration-none text-white">Login or Register</a>
                             </li>
                         @endguest
                         <li><a class="dropdown-item" href="#">Profile</a></li>

@@ -24,14 +24,14 @@ class SearchController extends Controller
                 ->paginate(10)
                 ->withQueryString();
 
-            return view('search', [
+            return view('guest.search', [
                 'products' => $products
             ]);
         }
 
         $products = Product::where('name', 'like', '%' . $validated_request['query'] . '%')->paginate(10)->withQueryString() ?? [];
             
-        return view('search', [
+        return view('guest.search', [
             'products' => $products
         ]);
     }

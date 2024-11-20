@@ -29,7 +29,7 @@ class DashboardController extends Controller
             $transactions = null;
         }
 
-        return view('dashboard', [
+        return view('guest.dashboard', [
             'products' => $products,
             'product_categories' => $product_categories,
             'transactions' => $transactions,
