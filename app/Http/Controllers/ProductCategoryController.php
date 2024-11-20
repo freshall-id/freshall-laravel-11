@@ -27,8 +27,10 @@ class ProductCategoryController extends Controller
 
     public function viewProductCategoryByCategoryPage(ProductCategory $category)
     {
+        $products = $category->products()->paginate(10);
+
         return view('guest.product-category', [
-            'products' => $category->products->paginate(10),
+            'products' => $products,
             'category' => $category
         ]);
     }
