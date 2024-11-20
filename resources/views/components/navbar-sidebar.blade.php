@@ -2,32 +2,57 @@
     <section class="offcanvas-header justify-content-end px-5 mt-4">
         <button type="button" class="px-sm-1 btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </section>
-    <section class="offcanvas-body px-5">
-        
-        <div class="accordion accordion-flush mt-3" id="accordion">
-            @if ($product_categories->count() > 0)
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                            Product Categories
-                        </button>
-                    </h2>
-                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordion">
-                        <div class="accordion-body">
-                            <ul class="list-unstyled">
-                                @foreach ($product_categories as $product_category)
-                                    <li>
-                                        <a href="" class="hover-underline text-muted">
-                                            {{ $product_category->name }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            @endif
-        </div>
+
+    <section class="ms-5 mt-5">
+        <ul class="list-unstyled d-flex flex-column gap-2">
+            <li>
+                <a href="" class="text-muted hover-underline">
+                    Profile
+                </a>
+            </li>
+            <li>
+                <a href="" class="text-muted hover-underline">
+                    Orders
+                </a>
+            </li>
+            <li>
+                <a href="" class="text-muted hover-underline">
+                    Help & Support
+                </a>
+            </li>
+            @auth
+                <li>
+                    <a href="{{ route('logout.page') }}" class="text-muted hover-underline">
+                        Logout
+                    </a>
+                </li>
+            @endauth
+        </ul>
+    </section>
+
+    <section class="m-5 mt-2 pt-3 border-top">
+        <ul class="list-unstyled d-flex flex-column gap-2">
+            <li>
+                <a href="{{ route('dashboard.page') }}" class="hover-underline text-muted">
+                    Home
+                </a>
+            </li>
+            <li>
+                <a href="" class="hover-underline text-muted">
+                    News
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('register.page') }}" class="hover-underline text-muted">
+                    Best Sellers
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('logout.page') }}" class="hover-underline text-muted">
+                    Vouchers
+                </a>
+            </li>
+        </ul>
     </section>
 
 </aside>
