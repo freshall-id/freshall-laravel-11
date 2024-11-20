@@ -1,4 +1,4 @@
-@extends('auth.layout')
+@extends('layouts.auth')
 
 @section('content')
     <section class="h-100">

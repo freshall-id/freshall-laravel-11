@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends("layouts.default")
 
-    <title>FRESHALL | Fresh Groceries, Delivered with Care</title>
-    
-    <link rel="icon" href="{{ asset('freshall/logo-light-mode.svg') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('index.css') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-</head>
-<body>
+@section("content")
+
     @include('components.alert')
 
     <div class="container">
@@ -90,7 +80,7 @@
                 <div class="mt-3 mt-md-0 col-12 col-md-5">
                     <form action="{{ route('checkout.action') }}" method="POST">
                         @csrf
-                                     
+                                        
                         {{-- Deliver to --}}
                         <div class="p-3 border">
                             <h5>Deliver to</h5>
@@ -231,31 +221,29 @@
                     </form>  
                 </div>
 
-              
+                
             </div>
         </section>
     </div>
-</body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-<script src="{{ asset('index.js') }}"></script>
-<script>
-    const shipping_providers = @json($shipping_providers);
-    const shipping_provider_radios = document.querySelectorAll('.shipping_provider_radio');
-    const shipping_price = document.getElementById('shipping_price');
 
-    const formatCurrency = (number) => {
-        return new Intl.NumberFormat('id-ID', {
-            style: 'currency',
-            currency: 'IDR',
-            minimumFractionDigits: 0
-        }).format(number);
-};
+    <script>
+        const shipping_providers = @json($shipping_providers);
+        const shipping_provider_radios = document.querySelectorAll('.shipping_provider_radio');
+        const shipping_price = document.getElementById('shipping_price');
 
-    shipping_provider_radios.forEach(radio => {
-        radio.addEventListener('change', (e) => {
-            const selected_shipping_provider = shipping_providers.find(sp => sp.id == e.target.value);
-            shipping_price.innerText = `${formatCurrency(selected_shipping_provider.price)}`;
+        const formatCurrency = (number) => {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(number);
+        };
+
+        shipping_provider_radios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                const selected_shipping_provider = shipping_providers.find(sp => sp.id == e.target.value);
+                shipping_price.innerText = `${formatCurrency(selected_shipping_provider.price)}`;
+            });
         });
-    });
-</script>
-</html>
+    </script>
+@endsection
