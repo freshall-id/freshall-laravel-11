@@ -135,17 +135,8 @@
             <div class="mt-4 d-flex flex-row gap-4 overflow-auto scrollbar-none">
                 <div class="d-flex flex-row gap-5">
                     @foreach ($vouchers as $voucher)
-                        <div class="card" style="width: 20rem">
-                            <div class="card-header" style="background: var(--background)">
-                                {{ $voucher->discount * 10 }}% Off on All Items, up to Rp.
-                                {{ round($voucher->max_discount, 0) }}
-                            </div>
-                            <div class="card-body">
-                                <blockquote class="blockquote mb-0">
-                                    <p>CODE: <b>{{ $voucher->code }}</b></p>
-                                    <footer class="blockquote-footer">Until {{ $voucher->expired_at }}</footer>
-                                </blockquote>
-                            </div>
+                        <div style="width: 20rem">
+                            <x-voucher-card :voucher="$voucher" />
                         </div>
                     @endforeach
                 </div>
