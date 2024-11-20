@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\VoucherController;
@@ -87,9 +88,13 @@ Route::middleware('admin')->prefix('/admin')->group(function () {
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
 Route::get('/search/{order_by?}/{asc?}', [SearchController::class, 'viewSearchPage'])->name('search.page');
 
-Route::get('/product-category/{product_category}', [])->name('product-category.page');
 Route::get('/product/{product}', [ProductController::class, 'viewProductDetailPage'])->name('product-detail.page');
 
 Route::view('/TermsAndConditions','guest.terms-and-conditions')->name('termsandconditions.page');
 Route::view('/PrivacyPolicy','guest.privacy-policy')->name('privacypolicy.page');
 Route::view('/About','guest.about')->name('about.page');
+
+Route::prefix('/product-category')->group(function () {
+    Route::get('/label/{label}', [ProductCategoryController::class, 'viewProductCategoryByLabelPage'])->name('product-category-by-label.page');
+    Route::get('/category/{category}', [ProductCategoryController::class, 'viewProductCategoryByCategoryPage'])->name('product-category-by-category.page');
+});
