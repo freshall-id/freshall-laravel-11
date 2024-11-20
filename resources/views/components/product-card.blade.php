@@ -48,7 +48,8 @@
             @guest
                 <div class="p-3 m-2 m-sm-3 position-absolute rounded-circle overflow-hidden ratio-1x1 ratio"
                     style="width: 2.5rem; right: 0; bottom: 0;">
-                    <a href="{{ route('login.page') }}" class="btn w-100" style="background-color: var(--accent-yellow); color: white">
+                    <a href="{{ route('login') }}" class="btn w-100"
+                        style="background-color: var(--accent-yellow); color: white">
                         <i class="fa-solid fa-plus"></i>
                     </a>
                 </div>

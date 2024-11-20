@@ -42,7 +42,7 @@
                     <ul class="position-absolute z-max d-none bg-white px-3 py-4 border list-unstyled p-0 m-0 end-0" onmouseover="expandDropdown(this)" onmouseout="shrinkDropdown(this.parentElement)">
                         @guest
                             <li class="text-reset mb-4">
-                                <a href="{{ route('login.page') }}" class="btn btn-primary w-100 text-decoration-none text-white">Login or Register</a>
+                                <a href="{{ route('login') }}" class="btn btn-primary w-100 text-decoration-none text-white">Login or Register</a>
                             </li>
                         @endguest
                         <li><a class="dropdown-item" href="#">Profile</a></li>
