@@ -1,9 +1,9 @@
 {{-- desktop view navbar --}}
-{{-- <section class="d-flex flex-row mt-3 mb-3 justify-content-center d-sm-none align-items-center">
+<section class="d-flex flex-row mt-3 mb-3 justify-content-center d-sm-none align-items-center">
     <a href="{{ route('dashboard.page') }}">
         <img width="120" src="{{ asset('freshall/logo-with-text.svg') }}" alt="FRESHALL">
     </a>
-</section> --}}
+</section>
 
 <section class="px-3 px-sm-5 bg-light overflow-auto border">
     <ul class="nav justify-content-end">
@@ -91,7 +91,7 @@
     </section>
 </nav>
 
-<x-navbar-sidebar />
+@include('components.navbar-sidebar')
 
 {{-- mobile view navbar --}}
 <nav class="position-fixed bg-white d-sm-none w-100 d-flex bottom-0 m-0 p-0 overflow-hidden p-3 px-2 pt-4 shadow-inner z-max">

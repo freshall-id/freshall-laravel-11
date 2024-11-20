@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
 @section('content')
-    <section class="mt-5">
-        <div class="pt-5">
+    <section class="mt-3">
+        <div class="pt-3">
             <h5 class="text-muted">
                 <small>
                     Fresh from the market for you
@@ -17,7 +17,7 @@
             @endisset
         </div>
 
-        <div class="border-top mb-3"></div>
+        <div class="my-5"></div>
         <div class="mt-3">
             <div class="row justify-content-start">
                 @forelse ($products as $product)
