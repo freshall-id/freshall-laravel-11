@@ -14,6 +14,7 @@
     @endauth
 
     <section>
+        {{-- carousel --}}
         <section class="py-sm-2 p-0 m-0">
             <div id="promotionCarousel" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
@@ -37,6 +38,7 @@
             </div>
         </section>
 
+        {{-- product categories by label --}}
         <section class="mt-3 gap-5">
             <div class="pt-3 pt-sm-5">
                 <h5 class="text-muted">
@@ -48,52 +50,52 @@
             </div>
             <div class="mt-4 d-flex flex-row gap-4 overflow-auto">
                 <div class="d-flex flex-row gap-3">
-                    <div class="ratio ratio-1x1 border" style="width: 14rem;">
-                        <div class="position-absolute w-100 h-100 top-0 start-0">
-                            <img src="{{ asset('freshall/app/fruits.jpg') }}" class="w-100 h-100"
-                                alt="FRESHALL-CATEGORY-FRUITS">
+                    @php
+                        $labels = [
+                            [
+                                'label' => 'FRUIT',
+                                'name' => 'Fruits',
+                                'image' => 'freshall/app/fruits.jpg'
+                            ],
+                            [
+                                'label' => 'VEGETABLE',
+                                'name' => 'Vegetables',
+                                'image' => 'freshall/app/vegetables.png'
+                            ],
+                            [
+                                'label' => 'MEAT',
+                                'name' => 'Meats',
+                                'image' => 'freshall/app/meats.png'
+                            ],
+                            [
+                                'label' => 'OTHER',
+                                'name' => 'Others',
+                                'image' => 'freshall/app/others.png'
+                            ]
+                        ];
+                    @endphp
+
+                    @foreach ($labels as $label)
+                        <div class="ratio ratio-1x1 border" style="width: 14rem;">
+                            <div class="position-absolute w-100 h-100 top-0 start-0">
+                                <img src="{{ asset($label["image"]) }}" class="w-100 h-100"
+                                    alt="FRESHALL-CATEGORY-{{$label["label"]}}">
+                            </div>
+                            <div class="bg-opacity-20 d-flex flex-col align-items-center justify-content-center px-2">
+                                <a href="{{ route('product-category-by-label.page', ['label' => $label["label"]]) }}"
+                                    class="btn btn-primary position-absolute w-75 d-flex justify-content-between align-items-center"
+                                    style="bottom: 1rem;">
+                                    {{{ $label["name"] }}}
+                                    <i class="fa-solid fa-arrow-right text-white"></i>
+                                </a>
+                            </div>
                         </div>
-                        <div class="bg-opacity-20 d-flex flex-col align-items-center justify-content-center px-2">
-                            <a href=""
-                                class="btn btn-primary position-absolute w-75 d-flex justify-content-between align-items-center"
-                                style="bottom: 1rem;">
-                                Fruits
-                                <i class="fa-solid fa-arrow-right text-white"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ratio ratio-1x1 border" style="width: 14rem;">
-                        <div class="position-absolute w-100 h-100 top-0 start-0">
-                            <img src="{{ asset('freshall/app/vegetables.png') }}" class="w-100 h-100"
-                                alt="FRESHALL-CATEGORY-FRUITS">
-                        </div>
-                        <div class="bg-opacity-20 d-flex flex-col align-items-center justify-content-center px-2">
-                            <a href=""
-                                class="btn btn-primary position-absolute w-75 d-flex justify-content-between align-items-center"
-                                style="bottom: 1rem;">
-                                Vegetables
-                                <i class="fa-solid fa-arrow-right text-white"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="ratio ratio-1x1 border" style="width: 14rem;">
-                        <div class="position-absolute w-100 h-100 top-0 start-0">
-                            <img src="{{ asset('freshall/app/meats.png') }}" class="w-100 h-100"
-                                alt="FRESHALL-CATEGORY-FRUITS">
-                        </div>
-                        <div class="bg-opacity-20 d-flex flex-col align-items-center justify-content-center px-2">
-                            <a href=""
-                                class="btn btn-primary position-absolute w-75 d-flex justify-content-between align-items-center"
-                                style="bottom: 1rem;">
-                                Meats
-                                <i class="fa-solid fa-arrow-right text-white"></i>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </section>
 
+        {{-- product categories  --}}
         <section class="mt-3 gap-5">
             <div class="pt-3 pt-sm-5">
                 <h5 class="text-muted">
@@ -108,7 +110,7 @@
                     @foreach ($product_categories as $category)
                         <div class="d-flex flex-column gap-3 align-items-center justify-content-center">
                             <div class="ratio ratio-1x1 border rounded-circle overflow-hidden" style="width: 5rem;">
-                                <a href="">
+                                <a href="{{ route('product-category-by-category.page', ['category' => $category]) }}">
                                     <img src="{{ asset($category->image) }}" class="w-100 h-100"
                                         alt="FRESHALL-CATEGORY-FRUITS">
                                 </a>
@@ -120,6 +122,7 @@
             </div>
         </section>
 
+        {{-- voucher --}}
         <section class="mt-3 gap-5">
             <div class="pt-3 pt-sm-5">
                 <h5 class="text-muted">
@@ -149,6 +152,7 @@
             </div>
         </section>
 
+        {{-- products --}}
         <section class="mt-5">
             <div class="pt-5">
                 <h5 class="text-muted">
@@ -174,6 +178,7 @@
             </div>
             </div>
         </section>
+
         <br>
 
         {{ $products->links() }}
