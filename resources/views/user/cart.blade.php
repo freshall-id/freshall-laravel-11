@@ -25,7 +25,7 @@
                                     <h5 class="fw-normal text-truncate">{{ $cart_item->product->name }} Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus, officiis nihil aspernatur deleniti voluptate impedit est debitis iste aperiam suscipit natus unde nesciunt dolorem magnam dolores a ex mollitia eaque, iusto voluptates fugiat saepe. Distinctio omnis, obcaecati possimus nobis iste quia, vitae velit aliquam provident qui nisi tempore praesentium maiores aperiam ratione, illo beatae hic cum facilis dolor voluptatibus autem temporibus animi. Laboriosam delectus architecto omnis impedit ducimus, facilis animi libero? Nobis porro blanditiis repellendus, eligendi facere animi est ut vitae quis dolor excepturi ipsa natus dicta eaque neque quidem, iusto voluptatum ducimus tempora! Fugit cumque adipisci nobis quaerat quisquam.</h5>
                                 </div>
                                 <div class="d-flex flex-row gap-3 align-items-center">
-                                    <h5 class="fw-bold m-0">{{ $cart_item->totalPriceToNumberFormat() }}</h5>
+                                    <h5 class="fw-bold m-0">{{ $cart_item->product->priceToNumberFormat() }}</h5>
                                     @if ($cart_item->product->stock < $cart_item->quantity)
                                         <span class="m-0 badge text-bg-secondary bg-danger">
                                             Out of Stock
@@ -55,7 +55,7 @@
                                         </button>
                                     </form>
                                     
-                                    <input type="number" value={{ $cart_item->quantity }} class="w-75 p-0 m-0 text-center" disabled>
+                                    <input type="number" value={{ $cart_item->quantity }} class="w-25 p-0 m-0 text-center" disabled>
                                     
                                     <form action="{{ route('update-cart-item.increment.action', ['cart_item' => $cart_item]) }}" method="POST" class="m-0">
                                         @csrf

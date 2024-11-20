@@ -33,7 +33,6 @@
                         @endisset
                         <form action="{{ route('use-voucher.action') }}" method="POST" class="container p-0 mt-2">
                             @csrf
-                            @method('PUT')
                             <div class="row d-flex align-items-center">
                                 <div class="col-9">
                                     <input value="{{ $cart->voucher->code ?? '' }}" type="text" name="voucher_code" id="voucher_code" class="form-control" placeholder="Enter your voucher code here">

@@ -27,7 +27,7 @@ class Cart extends Model
         });
     }
 
-    // the relationship with other model
+    // model relationships
     public function cartItems()
     {
         return $this->hasMany(CartItem::class);

@@ -54,9 +54,20 @@ Route::middleware('auth')->group(function () {
     
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout.page');
     
+    
+    Route::get('/checkout', [CartController::class, 'viewCheckoutPage'])->name('checkout.page');
+
+    Route::put('/update-shipping-provider', [CartController::class, 'updateShippingProvider'])->name('update-shipping-provider.action');
+
+    Route::prefix('voucher')->group(function () {
+        Route::get('/use/{voucher}', [VoucherController::class, 'getVoucher'])->name('use-voucher.page');
+        Route::post('/use', [VoucherController::class, 'useVoucher'])->name('use-voucher.action');
+    });
+    
     Route::prefix('/cart')->group(function () {
         Route::get('/', [CartController::class, 'viewCartPage'])->name('cart.page');
         
+        Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout.action');
         Route::post('/add-to-cart/{cart}/{product}', [CartController::class, 'addToCart'])->name('add-to-cart.action');
         
         Route::put('/increment/{cart_item}', [CartController::class, 'incrementCartItem'])->name('update-cart-item.increment.action');
@@ -82,11 +93,3 @@ Route::get('/product/{product}', [ProductController::class, 'viewProductDetailPa
 Route::view('/TermsAndConditions','guest.terms-and-conditions')->name('termsandconditions.page');
 Route::view('/PrivacyPolicy','guest.privacy-policy')->name('privacypolicy.page');
 Route::view('/About','guest.about')->name('about.page');
-
-Route::get('/checkout', [CartController::class, 'viewCheckoutPage'])->name('checkout.page');
-
-Route::put('/use-voucher-from-input', [VoucherController::class, 'useVoucherFromInput'])->name('use-voucher.action');
-
-Route::put('/update-shipping-provider', [CartController::class, 'updateShippingProvider'])->name('update-shipping-provider.action');
-
-Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout.action');
