@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-            $table->double('total_price', 8, 2)->default(0);
+            $table->string('shipping_provider', 50)->nullable();
+            $table->string('payment_method', 50)->nullable();
+            
+            $table->double('price_fee', 8, 2)->default(0);
 
             $table->timestamps();
         });

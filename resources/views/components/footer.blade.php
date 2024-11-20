@@ -10,7 +10,7 @@
             <h6>FRESHALL</h6>
             <ul class="list-unstyled">
                 <li>
-                    <a href="" class="hover-underline text-muted">Company Info</a>
+                    <a href="{{route('about.page')}}" class="hover-underline text-muted">Company Info</a>
                 </li>
                 <li>
                     <a href="" class="hover-underline text-muted">Careers</a>

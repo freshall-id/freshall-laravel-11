@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\VoucherController;
 use Illuminate\Support\Facades\Route;
 /*
 |---------------------------------------------------------------------------
@@ -42,7 +43,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
-
 Route::get('/search/{order_by}/{asc}', [SearchController::class, 'viewSearchPage'])->name('search.page');
 Route::get('/login', [LoginController::class, 'viewLoginpage'])->name('login.page');
 Route::post('/login', [LoginController::class, 'login'])->name('login.action');
@@ -69,3 +69,12 @@ Route::prefix('/cart')->group(function () {
 
 Route::view('/TermsAndConditions','companyInfo.termsandconditions')->name('termsandconditions.page');
 Route::view('/PrivacyPolicy','companyInfo.privacypolicy')->name('privacypolicy.page');
+Route::view('/About','companyInfo.about')->name('about.page');
+
+Route::get('/checkout', [CartController::class, 'viewCheckoutPage'])->name('checkout.page');
+
+Route::put('/use-voucher-from-input', [VoucherController::class, 'useVoucherFromInput'])->name('use-voucher.action');
+
+Route::put('/update-shipping-provider', [CartController::class, 'updateShippingProvider'])->name('update-shipping-provider.action');
+
+Route::post('/checkout', [CartController::class, 'checkout'])->name('checkout.action');
