@@ -1,11 +1,16 @@
-<nav class="navbar navbar-light fixed-top">
+<nav class="navbar navbar-light bg-light sticky-top">
   <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="d-flex flex-row gap-3">
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a href="{{ route('admin-dashboard.page') }}" class="col-sm-3 d-none d-sm-block">
+        <img width="120" src="{{ asset('freshall/logo-with-text.svg') }}" alt="FRESHALL">
+      </a>
+    </div>
     <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dark offcanvas</h5>
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Freshall</h5>
         <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -33,6 +38,44 @@
               <li><a class="dropdown-item" href="#">Voucher</a></li>
             </ul>
           </li>
+          {{-- <li class="nav-item">
+            <div class="accordion accordion-flush" id="accordionManage">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingManage">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseManage" aria-expanded="false" aria-controls="collapseManage">
+                    Manage
+                  </button>
+                </h2>
+                <div id="collapseManage" class="accordion-collapse collapse" aria-labelledby="headingManage" data-bs-parent="#accordionManage">
+                  <div class="accordion-body">
+                    <ul class="list-unstyled">
+                      <li>
+                        <a href="#" class="text-muted">User</a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li>
+                        <a href="#" class="text-muted">Product</a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li>
+                        <a href="#" class="text-muted">Category</a>
+                      </li>
+                      <li>
+                        <hr class="dropdown-divider">
+                      </li>
+                      <li>
+                        <a href="#" class="text-muted">Voucher</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{{ route('logout.page') }}">Logout</a>
           </li>

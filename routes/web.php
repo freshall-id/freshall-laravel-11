@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\DashboardController as DashboardAdminController;
+use App\Http\Controllers\Admin\TransactionController;
 use Illuminate\Support\Facades\Route;
 /*
 |---------------------------------------------------------------------------
@@ -50,6 +51,9 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.action');
 Route::get('/register', [RegisterController::class, 'viewRegisterPage'])->name('register.page');
 Route::post('/register', [RegisterController::class, 'register'])->name('register.action');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout.page');
+
+Route::put('update-transaction-header/{id}', [TransactionController::class, 'updateTransactionHeader'])->name('update-transaction-header.action');
+Route::delete('delete-transaction-header/{transactionHeader}', [TransactionController::class, 'deleteTransactionHeader'])->name('delete-transaction-header.action');
 
 Route::get('/product-category/{product_category}', [])->name('product-category.page');
 Route::get('/product/{product}', [ProductController::class, 'viewProductDetailPage'])->name('product-detail.page');

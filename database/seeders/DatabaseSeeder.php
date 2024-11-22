@@ -8,6 +8,7 @@ use App\Models\ProductCategory;
 use App\Models\User;
 use App\Models\UserAddress;
 use App\Models\TransactionHeader;
+use App\Models\TransactionDetail;
 use App\Models\Voucher;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -40,6 +41,9 @@ class DatabaseSeeder extends Seeder
         UserAddress::factory()->count(5)->create();
 
         //Seed the Transaction Header table
-        TransactionHeader::factory()->count(5)->create();
+        TransactionHeader::factory()->count(50)->create();
+
+        //Seed the Transaction Detail table
+        TransactionDetail::factory()->count(150)->create();
     }
 }
