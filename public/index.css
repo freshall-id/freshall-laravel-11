@@ -39,6 +39,10 @@
     width: 100%;
 }
 
+.resize-none {
+    resize: none;
+}
+
 @media (max-width: 576px) {
     .offcanvas {
         width: 100%;
@@ -124,6 +128,10 @@
     width: 50%;
 }
 
+.w-75-md-25 {
+    width: 25%;
+}
+
 @media (max-width: 576px) {
     .card-registration {
         width: 100%;
@@ -133,5 +141,18 @@
 @media (max-width: 768px) {
     .card-registration {
         width: 70%;
+    }
+
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+
+    .w-75-md-25 {
+        width: 75%;
     }
 }

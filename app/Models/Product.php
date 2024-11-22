@@ -28,6 +28,7 @@ class Product extends Model
         return 'sku';
     }
 
+    // model relationships
     public function productCategory()
     {
         return $this->belongsTo(ProductCategory::class);
@@ -36,5 +37,11 @@ class Product extends Model
     public function cartItems()
     {
         return $this->hasMany(CartItem::class);
+    }
+
+    // model method
+    public function priceToNumberFormat(): string
+    {
+        return 'Rp ' . number_format($this->price, 0, ',', '.');
     }
 }

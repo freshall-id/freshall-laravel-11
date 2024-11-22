@@ -1,4 +1,4 @@
-@extends('auth.layout')
+@extends('layouts.auth')
 
 @section('content')
     <section class="h-100">
@@ -15,26 +15,30 @@
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="email">Email</label>
-                                        <input type="email" id="email" name="email" class="form-control form-control-lg" />
+                                        <input type="email" id="email" name="email"
+                                            class="form-control form-control-lg" />
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="password">Password</label>
-                                        <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                                        <input type="password" id="password" name="password"
+                                            class="form-control form-control-lg" />
                                     </div>
                                     <div class="form-outline mb-4">
                                         <div class="form-check">
                                             <label class="form-check-label" for="remember"> Remember me </label>
-                                            <input class="form-check-input" type="checkbox" value="true" id="remember" name="remember" />
+                                            <input class="form-check-input" type="checkbox" value="true" id="remember"
+                                                name="remember" />
                                         </div>
                                     </div>
 
                                     <div class="d-flex justify-content-start pt-3">
-                                        <button  type="submit" class="btn btn-warning btn-lg w-100">Login</button>
+                                        <button type="submit" class="btn btn-warning btn-lg w-100">Login</button>
                                     </div>
                                 </form>
                                 <div class="d-flex flex-row justify-content-center gap-2 mt-2">
                                     <p>Don't have an account?</p>
-                                    <a href="{{ route('register.page') }}" class="text-decoration-none text-primary">Register</a>
+                                    <a href="{{ route('register.page') }}"
+                                        class="text-decoration-none text-primary">Register</a>
                                 </div>
                             </div>
                         </div>

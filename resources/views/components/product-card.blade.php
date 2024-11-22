@@ -15,7 +15,7 @@
                     <p class="card-text m-0 text-center text-muted">
                         {{ number_format($product->rating, 1) }}
                     </p>
-                    
+
                     <i class="fa-solid fa-circle text-muted" style="font-size: 0.3rem;"></i>
                     <p class="card-text m-0 text-center text-muted">
                         {{ $product->total_sold }} sold
@@ -30,31 +30,30 @@
             </div>
 
 
-            @if (Auth::check())
-                <form 
+            @auth
+                <form
                     action="{{ route('add-to-cart.action', [
-                            'cart' => Auth::user()->cart,
-                            'product' => $product,
-                        ]) }}" 
-                    method="POST"
-                    class="p-3 m-2 m-sm-3 position-absolute rounded-circle overflow-hidden ratio-1x1 ratio"
-                    style="width: 2.5rem; right: 0; bottom: 0;"
-                >
+                        'cart' => Auth::user()->cart,
+                        'product' => $product,
+                    ]) }}"
+                    method="POST" class="p-3 m-2 m-sm-3 position-absolute rounded-circle overflow-hidden ratio-1x1 ratio"
+                    style="width: 2.5rem; right: 0; bottom: 0;">
                     @csrf
                     <button type="submit" class="btn w-100" style="background-color: var(--accent-yellow); color: white">
                         <i class="fa-solid fa-plus"></i>
                     </button>
                 </form>
-            @else
-                <div
-                    class="p-3 m-2 m-sm-3 position-absolute rounded-circle overflow-hidden ratio-1x1 ratio"
-                    style="width: 2.5rem; right: 0; bottom: 0;"
-                >
-                    <button type="submit" class="btn w-100" style="background-color: var(--accent-yellow); color: white">
+            @endauth
+
+            @guest
+                <div class="p-3 m-2 m-sm-3 position-absolute rounded-circle overflow-hidden ratio-1x1 ratio"
+                    style="width: 2.5rem; right: 0; bottom: 0;">
+                    <a href="{{ route('login') }}" class="btn w-100"
+                        style="background-color: var(--accent-yellow); color: white">
                         <i class="fa-solid fa-plus"></i>
-                    </button>
+                    </a>
                 </div>
-            @endif
+            @endguest
         </div>
     </div>
 </div>

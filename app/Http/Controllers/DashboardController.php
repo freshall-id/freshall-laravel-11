@@ -8,6 +8,7 @@ use App\Models\TransactionHeader;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Enums\TransactionStatus;
 
 class DashboardController extends Controller
 {
@@ -27,7 +28,7 @@ class DashboardController extends Controller
             $transactions = null;
         }
 
-        return view('dashboard', [
+        return view('guest.dashboard', [
             'products' => $products,
             'product_categories' => $product_categories,
             'transactions' => $transactions,
