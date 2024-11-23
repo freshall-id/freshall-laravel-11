@@ -88,7 +88,7 @@ Route::middleware('admin')->prefix('/admin')->group(function () {
 });
 
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
-Route::get('/search/{order_by?}/{asc?}', [SearchController::class, 'viewSearchPage'])->name('search.page');
+Route::get('/search', [SearchController::class, 'viewSearchPage'])->name('search.page');
 
 Route::get('/product/{product}', [ProductController::class, 'viewProductDetailPage'])->name('product-detail.page');
 
