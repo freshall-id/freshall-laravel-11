@@ -10,6 +10,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\VoucherController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 /*
 |---------------------------------------------------------------------------
@@ -79,7 +80,7 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::middleware('admin')->prefix('/admin')->group(function () {
+Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
     Route::get('/dashboard', [AdminDashboardController::class, 'viewDashboardPage'])->name('admin-dashboard.page');
     Route::put('/update-transaction-header/{id}', [TransactionController::class, 'updateTransactionHeader'])->name('update-transaction-header.action');
     Route::delete('/delete-transaction-header/{transactionHeader}', [TransactionController::class, 'deleteTransactionHeader'])->name('delete-transaction-header.action');
