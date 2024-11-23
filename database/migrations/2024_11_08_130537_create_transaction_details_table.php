@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('transaction_details', function (Blueprint $table) {
             $table->id();
             $table->integer('quantity')->default(1);
-            $table->double('rating', 8, 2)->nullable();
+            $table->double('rating', 3, 2)->nullable();
             $table->timestamps();
         });
     }
