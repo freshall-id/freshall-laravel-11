@@ -3,7 +3,9 @@
 return [
     'promotions' => 'Promotions',
     'freshall-care' => 'Freshall Care',
+
     'search' => 'Search',
+
     'home' => 'Home',
     'news' => 'News',
     'best-sellers' => 'Best Sellers',
@@ -12,16 +14,24 @@ return [
 
     'profile' => 'Profile',
     'my-orders' => 'My Orders',
-    'my-vouchers' => 'My Vouchers',
     'help-and-support' => 'Help & Support',
 
-    'find-exactly-what-you-need' => 'Find exactly what you need',
-    'fresh-categories' => 'Fresh Categories',
-    'quickly-locate-the-products-you-are-looking-for' => 'Quickly locate the products you are looking for',
-    'explore-subcategories' => 'Explore Subcategories',
-    'save-more-with-the-best-vouchers-available' => 'Save more with the best vouchers available!',
-    'voucher-offers' => 'Voucher Offers',
+    'login-or-register' => 'Login or Register',
+    'login' => 'Login',
+    'register' => 'Register',
+    'logout' => 'Logout',
 
-    'explore-our-selection-of-hand-picked-fruits-vegetables-and-meats-for-your-healthiest-meals' => 'Explore our selection of hand-picked fruits, vegetables, and meats for your healthiest meals',
-    'farm-fresh-produce-delivered-to-your-door' => 'Farm fresh produce delivered to your door',
+    'subtitle-fresh-categories' => 'Find exactly what you need',
+    'fresh-categories' => 'Fresh Categories',
+
+    'subtitle-explore-subcategories' => 'Quickly locate the products you are looking for',
+    'explore-subcategories' => 'Explore Subcategories',
+    
+    'subtitle-voucher-offers' => 'Save more with the best vouchers available!',
+    'voucher-offers' => 'Voucher Offers',
+    
+    'subtitle-products-recommendation' => 'Explore our selection of hand-picked fruits, vegetables, and meats for your healthiest meals',
+    'products-recommendation' => 'Farm Fresh Produce Delivered to Your Door',
+
+    'no-products' => 'No products found',
 ];

@@ -7,23 +7,23 @@
         <ul class="list-unstyled d-flex flex-column gap-2">
             <li>
                 <a href="" class="text-muted hover-underline">
-                    Profile
+                    @lang('messages.profile')
                 </a>
             </li>
             <li>
                 <a href="" class="text-muted hover-underline">
-                    Orders
+                    @lang('messages.my-orders')
                 </a>
             </li>
             <li>
                 <a href="" class="text-muted hover-underline">
-                    Help & Support
+                    @lang('messages.help-and-support')
                 </a>
             </li>
             @auth
                 <li>
                     <a href="{{ route('logout.page') }}" class="text-muted hover-underline">
-                        Logout
+                        @lang('messages.logout')
                     </a>
                 </li>
             @endauth
@@ -34,22 +34,23 @@
         <ul class="list-unstyled d-flex flex-column gap-2">
             <li>
                 <a href="{{ route('dashboard.page') }}" class="hover-underline text-muted">
-                    Home
+                    @lang('messages.home')
                 </a>
             </li>
             <li>
                 <a href="" class="hover-underline text-muted">
-                    News
+                    @lang('messages.news')
                 </a>
             </li>
             <li>
                 <a href="{{ route('register.page') }}" class="hover-underline text-muted">
-                    Best Sellers
+                    @lang('messages.best-sellers')
                 </a>
             </li>
             <li>
                 <a href="{{ route('logout.page') }}" class="hover-underline text-muted">
-                    Vouchers
+                    
+                    @lang('messages.vouchers')
                 </a>
             </li>
         </ul>

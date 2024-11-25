@@ -43,10 +43,10 @@
             <div class="pt-3 pt-sm-5">
                 <h5 class="text-muted">
                     <small>
-                        Find exactly what you need
+                        @lang('messages.subtitle-fresh-categories')
                     </small>
                 </h5>
-                <h2>Fresh Categories</h2>
+                <h2>@lang('messages.fresh-categories')</h2>
             </div>
             <div class="mt-4 d-flex flex-row gap-4 overflow-auto">
                 <div class="d-flex flex-row gap-3">
@@ -100,10 +100,10 @@
             <div class="pt-3 pt-sm-5">
                 <h5 class="text-muted">
                     <small>
-                        Quickly locate the products you're looking for
+                        @lang('messages.subtitle-explore-subcategories')
                     </small>
                 </h5>
-                <h2>Explore Subcategories</h2>
+                <h2>@lang('messages.explore-subcategories')</h2>
             </div>
             <div class="mt-4 d-flex flex-row gap-4 overflow-auto">
                 <div class="d-flex flex-row gap-5">
@@ -127,10 +127,10 @@
             <div class="pt-3 pt-sm-5">
                 <h5 class="text-muted">
                     <small>
-                        Save more with the best vouchers available!
+                        @lang('messages.subtitle-voucher-offers')
                     </small>
                 </h5>
-                <h2>Voucher Offers</h2>
+                <h2>@lang('messages.voucher-offers')</h2>
             </div>
             <div class="mt-4 d-flex flex-row gap-4 overflow-auto scrollbar-none">
                 <div class="d-flex flex-row gap-5">
@@ -148,11 +148,10 @@
             <div class="pt-5">
                 <h5 class="text-muted">
                     <small>
-                        Explore our selection of hand-picked fruits, vegetables, and quality meats for your healthiest
-                        meals.
+                        @lang('messages.subtitle-products-recommendation')
                     </small>
                 </h5>
-                <h2>Farm Fresh Produce Delivered to Your Door</h2>
+                <h2>@lang('messages.products-recommendation')</h2>
             </div>
 
             <div class="mt-4 mb-3"></div>
@@ -162,7 +161,7 @@
                         <x-product-card :product="$product" />
                     @empty
                         <div class="alert alert-warning" role="alert">
-                            There is no product yet.
+                            @lang('messages.no-products')
                         </div>
                     @endforelse
                 </div>
