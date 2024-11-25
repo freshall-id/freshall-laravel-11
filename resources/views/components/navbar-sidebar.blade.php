@@ -55,4 +55,13 @@
         </ul>
     </section>
 
+    <section class="dropdown m-5 ">
+        <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+            <div class="btn-group me-2" role="group" aria-label="First group">
+              <a href="{{ route('set-locale.action', ['lang' => 'en']) }}" class="btn btn-primary">EN</a>
+              <a href="{{ route('set-locale.action', ['lang' => 'idn']) }}" class="btn btn-primary">IDN</a>
+            </div>
+        </div>
+    </section>
+
 </aside>

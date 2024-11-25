@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -101,3 +102,5 @@ Route::prefix('/product-category')->group(function () {
     Route::get('/label/{label}', [ProductCategoryController::class, 'viewProductCategoryByLabelPage'])->name('product-category-by-label.page');
     Route::get('/category/{category}', [ProductCategoryController::class, 'viewProductCategoryByCategoryPage'])->name('product-category-by-category.page');
 });
+
+Route::get('/locale/{lang}', [LocaleController::class, 'setLocale'])->name('set-locale.action');

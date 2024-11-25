@@ -8,10 +8,10 @@
 <section class="px-3 px-sm-5 bg-light overflow-auto border">
     <ul class="nav justify-content-end">
         <li class="nav-item">
-          <a class="nav-link text-muted hover-underline pe-0 text-end" href="#">Promotions</a>
+          <a class="nav-link text-muted hover-underline pe-0 text-end" href="#">@lang('messages.promotions')</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-muted hover-underline pe-0 text-end" href="#">Freshall Care</a>
+          <a class="nav-link text-muted hover-underline pe-0 text-end" href="#">@lang('messages.freshall-care')</a>
         </li>
       </ul>
 </section>
@@ -27,7 +27,7 @@
                 <span class="input-group-text">
                     <i class="fa-solid fa-magnifying-glass"></i>
                 </span>
-                <input name="query" type="search" id="search-input" placeholder="Search" class="form-control">
+                <input name="query" type="search" id="search-input" placeholder="@lang('messages.search')" class="form-control">
             </form>
 
             <div class="d-flex flex-row gap-sm-2 ms-sm-2">
@@ -45,9 +45,9 @@
                                 <a href="{{ route('login') }}" class="btn btn-primary w-100 text-decoration-none text-white">Login or Register</a>
                             </li>
                         @endguest
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Orders</a></li>
-                        <li><a class="dropdown-item" href="#">Help and Support</a></li>
+                        <li><a class="dropdown-item" href="#">@lang('messages.profile')</a></li>
+                        <li><a class="dropdown-item" href="#">@lang('messages.profile')</a></li>
+                        <li><a class="dropdown-item" href="#">@lang('messages.help-and-support')</a></li>
     
                         @auth
                             <li><a class="dropdown-item" href="{{ route('logout.page') }}">Logout</a></li>
@@ -64,18 +64,18 @@
     <section class="navbar d-none d-sm-flex border-bottom">
         <ul class="navbar-nav d-none d-sm-flex flex-row justify-content-center align-items-center gap-3">
             <li class="nav-item">
-                <a href="{{ route('dashboard.page') }}" class="hover-underline text-muted">
-                    HOME
+                <a href="{{ route('dashboard.page') }}" class="uppercase hover-underline text-muted">
+                   @lang('messages.home')
                 </a>
             </li>
             <li class="nav-item">
-                <a class="hover-underline text-muted">
-                    NEWS
+                <a class="uppercase hover-underline text-muted">
+                    @lang('messages.news')
                 </a>
             </li>
             
             <li class="nav-item">
-                <a href="{{ route('register.page') }}" class="hover-underline text-muted">
+                <a href="{{ route('register.page') }}" class="uppercase hover-underline text-muted">
                     BEST SELLERS
                 </a>
             </li>

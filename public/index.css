@@ -43,6 +43,14 @@
     resize: none;
 }
 
+.uppercase {
+    text-transform: uppercase;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
 @media (max-width: 576px) {
     .offcanvas {
         width: 100%;
