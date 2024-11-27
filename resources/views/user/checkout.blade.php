@@ -1,6 +1,6 @@
-@extends("layouts.default")
+@extends('layouts.default')
 
-@section("content")
+@section('content')
 
     @include('components.alert')
 
@@ -22,20 +22,21 @@
         </section>
 
         <section class="my-3 py-3">
-            <div class="mt-3 row"> 
+            <div class="mt-3 row">
                 <div class="col-12 col-md-7">
-                    
+
                     {{-- voucher --}}
                     <div class="p-3 border">
                         <h5>Voucher</h5>
                         @isset($cart->voucher)
-                            <x-voucher-card :voucher="$cart->voucher"/>
+                            <x-voucher-card :voucher="$cart->voucher" />
                         @endisset
                         <form action="{{ route('use-voucher.action') }}" method="POST" class="container p-0 mt-2">
                             @csrf
                             <div class="row d-flex align-items-center">
                                 <div class="col-9">
-                                    <input value="{{ $cart->voucher->code ?? '' }}" type="text" name="voucher_code" id="voucher_code" class="form-control" placeholder="Enter your voucher code here">
+                                    <input value="{{ $cart->voucher->code ?? '' }}" type="text" name="voucher_code"
+                                        id="voucher_code" class="form-control" placeholder="Enter your voucher code here">
                                 </div>
                                 <div class="text-end col-3">
                                     <button type="submit" class="w-100 btn btn-primary">
@@ -43,7 +44,7 @@
                                     </button>
                                 </div>
                             </div>
-                        </form> 
+                        </form>
                     </div>
 
                     {{-- review order --}}
@@ -53,24 +54,26 @@
                             @foreach ($cart->cartItems as $cartItem)
                                 <div class="row">
                                     <div class="col-2 p-0 m-0">
-                                        <img src="{{ asset($cartItem->product->image) }}" alt="PRODUCT_IMAGE" class="img-fluid">
+                                        <img src="{{ asset($cartItem->product->image) }}" alt="PRODUCT_IMAGE"
+                                            class="img-fluid">
                                     </div>
                                     <div class="col-10">
                                         <h6 class="fw-normal">
                                             {{ $cartItem->product->name }} - {{ $cartItem->product->weight }}gr
                                         </h6>
                                         <h6 class="fw-bold">
-                                            Rp. {{ number_format($cartItem->product->price, 0, ",", ".") }}
+                                            Rp. {{ number_format($cartItem->product->price, 0, ',', '.') }}
                                         </h6>
                                         <div class="mt-3 d-flex flex-column">
                                             <label for="quantity">
-                                                Quantity 
+                                                Quantity
                                             </label>
-                                            <input type="number" name="quantity" id="quantity" value="{{ $cartItem->quantity }}" class="form-control mt-2 w-25 d-inline" disabled>
+                                            <input type="number" name="quantity" id="quantity"
+                                                value="{{ $cartItem->quantity }}" class="form-control mt-2 w-25 d-inline"
+                                                disabled>
                                         </div>
                                     </div>
                                 </div>
-                                
                             @endforeach
                         </div>
                     </div>
@@ -79,13 +82,13 @@
                 <div class="mt-3 mt-md-0 col-12 col-md-5">
                     <form action="{{ route('checkout.action') }}" method="POST">
                         @csrf
-                                        
+
                         {{-- Deliver to --}}
                         <div class="p-3 border">
                             <h5>Deliver to</h5>
                             <div class="container p-0">
                                 <div class="p-0 m-0">
-                                    
+
                                     <h6 class="text-muted">Address <span class="text-danger">*</span></h6>
 
                                     @isset(Auth::user()->userAddresses)
@@ -100,13 +103,13 @@
                                             @endforeach
                                         </select>
                                     @endisset
-                                    
+
                                     @empty(Auth::user()->userAddresses)
                                         <div class="alert alert-info mt-2">
                                             You have no address yet
                                         </div>
                                     @endempty
-                                    
+
                                     <a href="" class="btn btn-primary">
                                         Edit or Add Address
                                     </a>
@@ -117,15 +120,12 @@
 
                                     @forelse ($shipping_providers as $shipping_provider)
                                         <div class="mt-2 d-flex flex-row">
-                                            <input 
-                                                class="form-check-input shipping_provider_radio" 
-                                                type="radio" 
-                                                name="shipping_provider" 
-                                                id="{{ $shipping_provider["id"] }}" 
-                                                value="{{ $shipping_provider["id"] }}"
-                                            >
-                                            <label class="form-check-label ms-2" for="{{ $shipping_provider["id"] }}">
-                                                {{ $shipping_provider["name"] }} - Rp {{ number_format($shipping_provider["price"], 0, ",", ".") }}
+                                            <input class="form-check-input shipping_provider_radio" type="radio"
+                                                name="shipping_provider" id="{{ $shipping_provider['id'] }}"
+                                                value="{{ $shipping_provider['id'] }}">
+                                            <label class="form-check-label ms-2" for="{{ $shipping_provider['id'] }}">
+                                                {{ $shipping_provider['name'] }} - Rp
+                                                {{ number_format($shipping_provider['price'], 0, ',', '.') }}
                                             </label>
                                         </div>
                                     @empty
@@ -140,12 +140,14 @@
                         {{-- order notes --}}
                         <div class="p-3 border mt-3">
                             <h5>Order Notes</h5>
-                            <label for="notes" class="text-muted">Provide notes for us <small class="text-muted">(optional)</small></label>
+                            <label for="notes" class="text-muted">Provide notes for us <small
+                                    class="text-muted">(optional)</small></label>
                             <div class="container p-0">
-                                <textarea name="notes" id="notes" cols="30" rows="5" class="form-control resize-none" placeholder="Write your notes here"></textarea>
+                                <textarea name="notes" id="notes" cols="30" rows="5" class="form-control resize-none"
+                                    placeholder="Write your notes here"></textarea>
                             </div>
                         </div>
-                        
+
                         {{-- pay with --}}
                         <div class="p-3 border mt-3">
                             <h5>Pay with</h5>
@@ -153,21 +155,30 @@
                             <div class="container d-flex flex-column gap-3 p-0 mt-3">
                                 @forelse ($payment_methods as $payment_method)
                                     <div class="form-check d-flex align-items-center">
-                                        <input class="form-check-input" type="radio" name="payment_method" id="{{ $payment_method["id"] }}" value="{{ $payment_method["id"] }}">
-                                        <label class="form-check-label w-100" for="{{ $payment_method["id"] }}">
-                                            <div class="accordion ms-3 accordion-flush border" id="a-{{ $payment_method["id"]}}">
+                                        <input class="form-check-input" type="radio" name="payment_method"
+                                            id="{{ $payment_method['id'] }}" value="{{ $payment_method['id'] }}">
+                                        <label class="form-check-label w-100" for="{{ $payment_method['id'] }}">
+                                            <div class="accordion ms-3 accordion-flush border"
+                                                id="a-{{ $payment_method['id'] }}">
                                                 <div class="accordion-item w-100">
                                                     <h2 class="accordion-header">
-                                                    <button class="accordion-button collapsed w-100" type="button" data-bs-toggle="collapse" data-bs-target="#fc-{{ $payment_method["id"]}}" aria-expanded="false" aria-controls="fc-{{ $payment_method["id"]}}">
-                                                        <div style="width: 2.5rem;">
-                                                            <img src="{{ asset($payment_method["image"]) }}" alt="PAYMENT_METHOD_IMAGE" class="img-fluid">
-                                                        </div>
-                                                    </button>
+                                                        <button class="accordion-button collapsed w-100" type="button"
+                                                            data-bs-toggle="collapse"
+                                                            data-bs-target="#fc-{{ $payment_method['id'] }}"
+                                                            aria-expanded="false"
+                                                            aria-controls="fc-{{ $payment_method['id'] }}">
+                                                            <div style="width: 2.5rem;">
+                                                                <img src="{{ asset($payment_method['image']) }}"
+                                                                    alt="PAYMENT_METHOD_IMAGE" class="img-fluid">
+                                                            </div>
+                                                        </button>
                                                     </h2>
-                                                    <div id="fc-{{ $payment_method["id"]}}" class="accordion-collapse collapse" data-bs-parent="#a-{{ $payment_method["id"]}}">
-                                                    <div class="accordion-body">
-                                                        {{ $payment_method["guidelines"] }}
-                                                    </div>
+                                                    <div id="fc-{{ $payment_method['id'] }}"
+                                                        class="accordion-collapse collapse"
+                                                        data-bs-parent="#a-{{ $payment_method['id'] }}">
+                                                        <div class="accordion-body">
+                                                            {{ $payment_method['guidelines'] }}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -210,17 +221,16 @@
                                     <h6>{{ $cart->totalPriceToNumberFormat() }}</h6>
                                 </div>
                             </div>
-        
+
                             <div class="mt-3">
                                 <button type="submit" class="btn btn-primary w-100">
                                     Place Order
                                 </button>
                             </div>
                         </div>
-                    </form>  
+                    </form>
                 </div>
 
-                
             </div>
         </section>
     </div>
