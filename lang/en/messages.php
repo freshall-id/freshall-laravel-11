@@ -34,4 +34,28 @@ return [
     'products-recommendation' => 'Farm Fresh Produce Delivered to Your Door',
 
     'no-products' => 'No products found',
+
+    'footer-text' => 'Discover fresh products and unique offerings tailored for your needs. Explore our wide range of items!',
+
+    'freshall' => 'Freshall',
+    'company-info' => 'Company Info',
+    'careers' => 'Careers',
+    'blogs' => 'Blogs',
+    'investors' => 'Investors',
+    'advertisers' => 'Advertisers',
+
+    'information-center' => 'Information Center',
+    'refund-policy' => 'Refund Policy',
+    'delivery-information' => 'Delivery Information',
+    'payment-information' => 'Payment Information',
+    'contact-center' => 'Contact Center',
+    
+    'community' => 'Community',
+    'community-guidelines' => 'Community Guidelines',
+    'discussion' => 'Discussion',
+    'reviews' => 'Reviews',
+
+    'terms' => 'Terms',
+    'privacy' => 'Privacy Policy',
+    'support' => 'Support',
 ];
