@@ -25,7 +25,7 @@ class RegisterController extends Controller
             'gender' => ['required'],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'min:8', 'max:50'],
-            'terms and conditions' => ['required']
+            'terms_and_conditions' => ['required','accepted']
         ],  [ 'username.regex' => 'Username tidak boleh mengandung spasi.'
         ]);
         

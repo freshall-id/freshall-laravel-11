@@ -57,8 +57,8 @@
                                     </div>
 
                                     <div class="form-check mb-4 d-flex align-items-center">
-                                        <input type="checkbox" class="form-check-input" id="btncheck1"
-                                            name="terms and conditions" value="yes">
+                                        <input type="checkbox" class="form-check-input" id="terms_and_conditions"
+                                            name="terms_and_conditions" value="yes">
                                         <label class="ms-2">
                                             <label class="form-check-label">By registering, I agree to the
                                                 <a href="#"
