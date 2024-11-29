@@ -94,15 +94,15 @@
 @include('components.navbar-sidebar')
 
 {{-- mobile view navbar --}}
-<nav class="position-fixed bg-white d-sm-none w-100 d-flex bottom-0 m-0 p-0 overflow-hidden p-3 px-2 pt-4 shadow-inner z-max">
+<nav class="position-fixed bg-white d-sm-none w-100 d-flex bottom-0 m-0 p-0 overflow-hidden p-3 px-3 pt-4 shadow-inner z-max">
     <ul class="d-flex flex-row w-100 m-0 p-0 justify-content-between">
         <li class="list-unstyled m-0 p-0">
-            <a href="" class="text-reset p-3">
+            <a href="{{ route('dashboard.page') }}" class="text-reset p-3">
                 <i class="fa-solid fa-home h5"></i>
             </a>
         </li>
         <li class="list-unstyled m-0 p-0">
-            <a href="" class="text-reset p-3">
+            <a href="{{ route('search.page') }}" class="text-reset p-3">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </a>
         </li>
