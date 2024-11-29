@@ -7,6 +7,22 @@
     },
     "routes": [
         {
+            "src": "/index.css",
+            "dest": "public/index.css"
+        },
+        {
+            "src": "/index.js",
+            "dest": "public/index.js"
+        },
+        {
+            "src": "/freshall/(.*)",
+            "dest": "/public/freshall/$1"
+        },
+        {
+            "src": "/default/(.*)",
+            "dest": "/public/default/$1"
+        },
+        {
             "src": "/(.*)",
             "dest": "/api/index.php"
         }
@@ -25,5 +41,6 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie"
     },
-    "outputDirectory": "public"
+    "outputDirectory": "public",
+    "public": true
 }
