@@ -18,11 +18,14 @@
         <form class="mt-4" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-
+            @php
+                $profileImagePath = 'public/profile/' . $profile->profile_image;
+                $imageUrl = Storage::exists($profileImagePath) ? asset('storage/' . $profileImagePath) : asset('default/user.png');
+            @endphp
             <div class="d-flex gap-5 ">
                 <div class="card" style="width: 18rem;">
                     <img id="preview_image"
-                        src="{{ $profile->profile_image ? asset('storage/public/profile/' . $profile->profile_image) : asset('default/user.png') }}"
+                        src="{{$imageUrl}}"
                         class="card-img-top" style="height:300px" alt="Profile Picture">
                     <div class="card-body">
                         <input type="file" class="d-none" name="profile_image" id="profile_image" value="Choose Photo"

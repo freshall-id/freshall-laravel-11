@@ -45,7 +45,7 @@ class ProfileController extends Controller
             'gender' => ['required'],
             'email' => ['required', 'email', Rule::unique('users', 'email')->ignore($user->id)],
             'phone_number' => ['nullable', 'min:6', 'max:20'],
-            'date_of_birth' => ['nullable', 'date', 'before:' . now()->subYears(7)->toDateString()],
+            'date_of_birth' => ['nullable', 'date', 'before:today'],
             'profile_image' => ['image', 'max:5000'],
         ],  [
             'username.regex' => 'Username tidak boleh mengandung spasi.'

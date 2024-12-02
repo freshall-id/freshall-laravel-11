@@ -25,7 +25,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => strtolower($this->faker->unique()->word()),
+            'username' => strtolower(substr(str_repeat($this->faker->unique()->word(), 2), 0, rand(4, 50))),
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
