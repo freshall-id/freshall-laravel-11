@@ -45,7 +45,7 @@
                                 <a href="{{ route('login') }}" class="btn btn-primary w-100 text-decoration-none text-white">Login or Register</a>
                             </li>
                         @endguest
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="{{route('profile.page')}}">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Orders</a></li>
                         <li><a class="dropdown-item" href="#">Help and Support</a></li>
     

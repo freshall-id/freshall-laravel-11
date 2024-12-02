@@ -9,6 +9,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\TransactionController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -60,7 +61,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CartController::class, 'viewCheckoutPage'])->name('checkout.page');
 
     Route::put('/update-shipping-provider', [CartController::class, 'updateShippingProvider'])->name('update-shipping-provider.action');
+    
+    Route::get('/profile',[ProfileController::class,'viewProfilePage'])->name('profile.page');
+    
+    Route::put('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
+    Route::get('/profile/addresses',[ProfileController::class,'viewProfileAddressesPage'])->name('profileAddresses.page');
+    
+    Route::put('/profile/addresses/{id}', [ProfileController::class, 'updateAddresses'])->name('profileAddresses.update');
+
+    Route::post('profile/addresses/insert',[ProfileController::class,'addAddresses'])->name('profileAddresses.insert'); 
+    
     Route::prefix('voucher')->group(function () {
         Route::get('/use/{voucher}', [VoucherController::class, 'getVoucher'])->name('use-voucher.page');
         Route::post('/use', [VoucherController::class, 'useVoucher'])->name('use-voucher.action');
@@ -78,6 +89,7 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('/delete-cart-item/{cart_item}', [CartController::class, 'deleteCartItem'])->name('delete-cart-item.action');
     });
+
 });
 
 Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
