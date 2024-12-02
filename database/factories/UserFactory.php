@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'phone_number' => $this->faker->phoneNumber(),
-            'profile_image' => 'assets/default/user.png',
+            'profile_image' => 'user.png',
             'gender' => $this->faker->randomElement(['MALE', 'FEMALE']),
             'date_of_birth' => $this->faker->date(),
             'role' => 'USER',
