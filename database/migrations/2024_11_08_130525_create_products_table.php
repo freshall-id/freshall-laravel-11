@@ -25,6 +25,7 @@ return new class extends Migration
             $table->double('rating', 8, 2)->default(5);
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -33,6 +34,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropSoftDeletes();
+        });
         Schema::dropIfExists('products');
     }
 };

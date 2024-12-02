@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ProductCategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SearchController;
-use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\VoucherController;
 use App\Http\Middleware\AdminMiddleware;
@@ -81,11 +81,17 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
-    Route::get('/dashboard', [AdminDashboardController::class, 'viewDashboardPage'])->name('admin-dashboard.page');
+    Route::get('/dashboard', [AdminPageController::class, 'viewDashboardPage'])->name('admin-dashboard.page');
+    Route::prefix('/product')->group(function (){
+        Route::get('/', [AdminPageController::class, 'viewProductPage'])->name('admin-product.page');
+        Route::post('/', [ProductController::class, 'storeCreatedProduct'])->name('create.product.action');
+        Route::get('/create', [ProductController::class, 'createProduct'])->name('create.product.page');
+        Route::delete('/delete/{product}', [ProductController::class, 'deleteProduct'])->name('delete-product.action');
+        Route::get('/update/{product}', [AdminPageController::class, 'viewUpdateProductPage'])->name('update-product.page');
+        Route::put('/update/{product}', [ProductController::class, 'updateProduct'])->name('update-product.action');
+    });
     Route::put('/update-transaction-header/{id}', [TransactionController::class, 'updateTransactionHeader'])->name('update-transaction-header.action');
     Route::delete('/delete-transaction-header/{transactionHeader}', [TransactionController::class, 'deleteTransactionHeader'])->name('delete-transaction-header.action');
-    Route::post('/product', [ProductController::class, 'storeCreatedProduct'])->name('create.product.action');
-    Route::get('/product/create', [ProductController::class, 'createProduct'])->name('create.product.page');
 });
 
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
