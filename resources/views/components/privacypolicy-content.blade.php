@@ -37,9 +37,8 @@
             <li>Alamat pengiriman</li>
             <li>Informasi pembayaran</li>
         </ul>
-        
-    </div>
 
+    </div>
 
     <p class="ms-4">
         b. Informasi Penggunaan
@@ -118,37 +117,37 @@
 
     <p class="fw-bold">
         6. Penyimpanan Data
-        <p class="ms-4">
-            Kami akan menyimpan informasi pribadi Anda hanya selama diperlukan untuk
-            memenuhi tujuan yang dijelaskan dalam Kebijakan Privasi ini, kecuali
-            jika waktu penyimpanan yang lebih lama diperlukan atau diizinkan oleh
-            hukum yang berlaku.
-        </p>
+    <p class="ms-4">
+        Kami akan menyimpan informasi pribadi Anda hanya selama diperlukan untuk
+        memenuhi tujuan yang dijelaskan dalam Kebijakan Privasi ini, kecuali
+        jika waktu penyimpanan yang lebih lama diperlukan atau diizinkan oleh
+        hukum yang berlaku.
+    </p>
     </p>
 
     <p class="fw-bold">
         7. Perubahan pada Kebijakan Privasi
-        <p class="ms-4">
-            Kami dapat memperbarui kebijakan ini dari waktu ke waktu untuk
-            mencerminkan perubahan dalam praktik kami atau perubahan hukum yang
-            berlaku. Setiap perubahan akan diposting pada halaman ini dengan tanggal
-            efektif yang baru. Kami mendorong Anda untuk memeriksa halaman ini
-            secara berkala untuk memperoleh informasi terbaru mengenai kebijakan
-            privasi kami.
-        </p>
+    <p class="ms-4">
+        Kami dapat memperbarui kebijakan ini dari waktu ke waktu untuk
+        mencerminkan perubahan dalam praktik kami atau perubahan hukum yang
+        berlaku. Setiap perubahan akan diposting pada halaman ini dengan tanggal
+        efektif yang baru. Kami mendorong Anda untuk memeriksa halaman ini
+        secara berkala untuk memperoleh informasi terbaru mengenai kebijakan
+        privasi kami.
+    </p>
     </p>
 
     <p class="fw-bold">
         8. Hubungi Kami
-        <p class="ms-4">
-            Jika Anda memiliki pertanyaan atau kekhawatiran mengenai kebijakan
-            privasi ini atau cara kami menangani informasi pribadi Anda, jangan ragu
-            untuk menghubungi kami di:
-    
-            Email: Freshall_id@gmail.com <br>
-            Telepon: 0812312312 <br>
-            Alamat: Jln. Badak Cibudut Raya No.32 <br>
-        </p>
+    <p class="ms-4">
+        Jika Anda memiliki pertanyaan atau kekhawatiran mengenai kebijakan
+        privasi ini atau cara kami menangani informasi pribadi Anda, jangan ragu
+        untuk menghubungi kami di:
+
+        Email: Freshall_id@gmail.com <br>
+        Telepon: 0812312312 <br>
+        Alamat: Jln. Badak Cibudut Raya No.32 <br>
+    </p>
     </p>
 
 </div>

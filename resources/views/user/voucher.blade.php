@@ -1,6 +1,6 @@
-@extends("layouts.dashboard")
+@extends('layouts.dashboard')
 
-@section("content")
+@section('content')
     <section class="mt-5">
         <div class="mb-3">
             <h5 class="text-muted">

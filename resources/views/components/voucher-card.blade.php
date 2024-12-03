@@ -1,6 +1,6 @@
 <div class="card w-100">
     <div class="card-header" style="background: var(--background)">
-        {{ $voucher->discount * 10 }}% Off on All Items, up to Rp. {{ round($voucher->max_discount,0) }}
+        {{ $voucher->discount * 10 }}% Off on All Items, up to Rp. {{ round($voucher->max_discount, 0) }}
     </div>
     <div class="card-body">
         <blockquote class="blockquote mb-0">

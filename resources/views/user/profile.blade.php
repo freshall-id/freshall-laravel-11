@@ -11,7 +11,7 @@
                 <a class="nav-link active" aria-current="page" href="{{ route('profile.page') }}">Profile</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-muted" href="{{route('profileAddresses.page')}}">Address List</a>
+                <a class="nav-link text-muted" href="{{ route('profileAddresses.page') }}">Address List</a>
             </li>
         </ul>
 
@@ -20,13 +20,14 @@
             @method('PUT')
             @php
                 $profileImagePath = 'public/profile/' . $profile->profile_image;
-                $imageUrl = Storage::exists($profileImagePath) ? asset('storage/' . $profileImagePath) : asset('default/user.png');
+                $imageUrl = Storage::exists($profileImagePath)
+                    ? asset('storage/' . $profileImagePath)
+                    : asset('default/user.png');
             @endphp
             <div class="d-flex gap-5 ">
                 <div class="card" style="width: 18rem;">
-                    <img id="preview_image"
-                        src="{{$imageUrl}}"
-                        class="card-img-top" style="height:300px" alt="Profile Picture">
+                    <img id="preview_image" src="{{ $imageUrl }}" class="card-img-top" style="height:300px"
+                        alt="Profile Picture">
                     <div class="card-body">
                         <input type="file" class="d-none" name="profile_image" id="profile_image" value="Choose Photo"
                             onchange="previewFile()">
@@ -108,8 +109,8 @@
                     <div class="mb-3 d-flex">
                         <label for="new_confirmation_password" class="form-label mb-0 align-items-center d-flex"
                             style="width:160px">Confirm Password</label>
-                        <input type="password" id="new_confirmation_password" name="new_confirmation_password" class="form-control"
-                            style="width:200px">
+                        <input type="password" id="new_confirmation_password" name="new_confirmation_password"
+                            class="form-control" style="width:200px">
                     </div>
 
                 </div>

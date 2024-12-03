@@ -10,7 +10,7 @@
             <h6>FRESHALL</h6>
             <ul class="list-unstyled">
                 <li>
-                    <a href="{{route('about.page')}}" class="hover-underline text-muted">Company Info</a>
+                    <a href="{{ route('about.page') }}" class="hover-underline text-muted">Company Info</a>
                 </li>
                 <li>
                     <a href="" class="hover-underline text-muted">Careers</a>
@@ -65,12 +65,13 @@
         <h6 class="col-12 text-center text-sm-start mb-5 mb-sm-0 py-3 py-sm-0 mt-2 mt-sm-0 col-sm-3 mt-sm-0 p-0 m-0">
             © 2024 FRESHALL.ID
         </h6>
-        <ul class="col-12 p-0 mt-3 mt-sm-0 col-sm-9 d-flex flex-column flex-sm-row list-unstyled gap-3 gap-sm-5 justify-content-sm-end">
+        <ul
+            class="col-12 p-0 mt-3 mt-sm-0 col-sm-9 d-flex flex-column flex-sm-row list-unstyled gap-3 gap-sm-5 justify-content-sm-end">
             <li>
-                <a href="{{route('termsandconditions.page')}}" class="hover-underline text-muted">Terms</a>
+                <a href="{{ route('termsandconditions.page') }}" class="hover-underline text-muted">Terms</a>
             </li>
             <li>
-                <a href="{{route('privacypolicy.page')}}" class="hover-underline text-muted">Privacy Policy</a>
+                <a href="{{ route('privacypolicy.page') }}" class="hover-underline text-muted">Privacy Policy</a>
             </li>
             <li>
                 <a href="" class="hover-underline text-muted">Support</a>

@@ -125,8 +125,7 @@
                                 </form>
                                 <div class="d-flex flex-column flex-md-row justify-content-center gap-0 gap-md-2 mt-2">
                                     <p>Already have an account?</p>
-                                    <a href="{{ route('login') }}"
-                                        class="text-decoration-none text-primary">Login</a>
+                                    <a href="{{ route('login') }}" class="text-decoration-none text-primary">Login</a>
                                 </div>
                             </div>
                         </div>
