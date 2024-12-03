@@ -11,13 +11,13 @@ use App\Utils\Formatter;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class DashboardController extends Controller
+class PageController extends Controller
 {
     public function viewDashboardPage(Request $req)
     {
         $selected = $req->query('selected', 'PENDING');
         $allTransactions = TransactionHeader::all();
-        $transactions = TransactionHeader::with('transactionDetails')->where('status', $selected)->paginate(5)->withQueryString();
+        $transactions = TransactionHeader::with('transactionDetails')->where('status', $selected)->orderBy('created_at', 'desc')->paginate(5)->withQueryString();
 
         $canUpdate = true;
         $canDelete = true;
@@ -48,5 +48,24 @@ class DashboardController extends Controller
             'transactionsTrouble' => $transactionsTrouble,
             'transactionsInProcess' => $transactionsInProcess
         ]);
+    }
+
+    public function viewProductPage(Request $req)
+    {
+        $selected = $req->query('selected', 'FRUIT');
+
+        $products = Product::join('product_categories', 'products.product_category_id', '=', 'product_categories.id')
+        ->where('product_categories.label', $selected)
+            ->select('products.*')
+            ->orderBy('products.id', 'asc')
+            ->paginate(10)
+            ->withQueryString();
+        return view('admin.product', ['products' => $products, 'categoriesLabel' => ['FRUIT', 'VEGETABLE', 'MEAT', 'OTHER'], 'selected' => $selected]);
+    }
+
+    public function viewUpdateProductPage(Product $product)
+    {
+        $categories = ProductCategory::All();
+        return view('admin.updateProduct', ['product' => $product, 'categories' => $categories]);
     }
 }

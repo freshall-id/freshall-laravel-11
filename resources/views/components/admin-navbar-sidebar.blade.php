@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light bg-light sticky-top">
+<nav class="navbar navbar-light bg-light sticky-top" style="z-index: 50">
   <div class="container-fluid">
     <div class="d-flex flex-row gap-3">
       <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
@@ -27,7 +27,7 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Product</a></li>
+              <li><a class="dropdown-item" href="{{ route('admin-product.page') }}">Product</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
