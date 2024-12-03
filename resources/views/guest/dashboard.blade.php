@@ -42,7 +42,7 @@
         </section>
 
         {{-- product categories by label --}}
-        <section class="mt-3 gap-5">
+        <section class="mt-5 mt-sm-3 gap-5">
             <div class="pt-3 pt-sm-5">
                 <h5 class="text-muted">
                     <small>
@@ -79,7 +79,7 @@
                     @endphp
 
                     @foreach ($labels as $label)
-                        <div class="ratio ratio-1x1 border" style="width: 14rem;">
+                        <div class="ratio ratio-1x1 border" style="width: 12rem;">
                             <div class="position-absolute w-100 h-100 top-0 start-0">
                                 <img src="{{ asset($label['image']) }}" class="w-100 h-100"
                                     alt="FRESHALL-CATEGORY-{{ $label['label'] }}">
@@ -99,7 +99,7 @@
         </section>
 
         {{-- product categories  --}}
-        <section class="mt-3 gap-5">
+        <section class="mt-5 mt-sm-3 gap-5">
             <div class="pt-3 pt-sm-5">
                 <h5 class="text-muted">
                     <small>
@@ -126,7 +126,7 @@
         </section>
 
         {{-- voucher --}}
-        <section class="mt-3 gap-5">
+        <section class="mt-5 mt-sm-3 gap-5">
             <div class="pt-3 pt-sm-5">
                 <h5 class="text-muted">
                     <small>

@@ -4,7 +4,7 @@
         <a href="{{ route('product-detail.page', ['product' => $product]) }}">
             <img src="{{ asset($product->image) }}" class="card-img-top" alt="{{ $product->name }}">
         </a>
-        <div class="card-body d-flex flex-column pb-5 pb-md-0 justify-content-between gap-1 gap-sm-3">
+        <div class="card-body d-flex flex-column pb-5 pb-md-0 justify-content-between gap-2 gap-sm-3">
             <div>
                 <p class="card-text m-0 text-muted">
                     {{ $product->weight }}gr
