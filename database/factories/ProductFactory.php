@@ -19,11 +19,10 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         $product_categories = ProductCategory::all();
-        $product_imagePath = Storage::url('public/default/product.png');
         return [
             'sku' => strtolower($this->faker->unique()->word()),
             'name' => $this->faker->unique()->sentence(2),
-            'image' => $product_imagePath,
+            'image' => 'default.jpg',
             'stock' => $this->faker->numberBetween(1, 100),
             'minimum_buy' => $this->faker->numberBetween(1, 5),
             'weight' => $this->faker->numberBetween(1, 10) * 100,

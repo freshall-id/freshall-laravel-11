@@ -11,6 +11,12 @@
             @forelse ($products as $product)
                 @php
                     $price = App\Utils\Formatter::toNumberFormat($product->price);
+                    $productImageBasename = basename($product->image);
+                    $imagePath = 'public/products/' . $productImageBasename;
+                            
+                    $imageUrl = Storage::exists($imagePath)
+                        ? Storage::url($imagePath)
+                        : asset('default/product.png');
                 @endphp
                 <tr>
                     <td>{{$product->id}}</td>
@@ -18,7 +24,7 @@
                     <td>{{$product->name}}</td>
                     <td>
                         <div class="ratio ratio-1x1">
-                            <img src="{{$product->image}}" alt="product-image">
+                            <img src="{{$imageUrl}}" alt="product-image">
                         </div>
                     </td>
                     <td>{{$product->productCategory->label}}</td>
