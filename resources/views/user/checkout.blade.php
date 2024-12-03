@@ -143,7 +143,7 @@
                             <label for="notes" class="text-muted">Provide notes for us <small
                                     class="text-muted">(optional)</small></label>
                             <div class="container p-0">
-                                <textarea name="notes" id="notes" cols="30" rows="5" class="form-control resize-none"
+                                <textarea name="notes" id="notes" cols="30" rows="5" class="form-control" style="resize: none;"
                                     placeholder="Write your notes here"></textarea>
                             </div>
                         </div>

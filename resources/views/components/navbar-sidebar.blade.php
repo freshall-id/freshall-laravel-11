@@ -6,7 +6,7 @@
     <section class="ms-5 mt-5">
         <ul class="list-unstyled d-flex flex-column gap-2">
             <li>
-                <a href="{{route('profile.page')}}" class="text-muted hover-underline">
+                <a href="{{ route('profile.page') }}" class="text-muted hover-underline">
                     Profile
                 </a>
             </li>

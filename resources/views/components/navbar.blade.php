@@ -41,7 +41,7 @@
                     <a class="d-none d-sm-block text-reset h5 pt-3 p-2 me-2" type="button" aria-expanded="false">
                         <i class="fa-regular fa-user"></i>
                     </a>
-                    <ul class="position-absolute z-max d-none bg-white px-3 py-4 border list-unstyled p-0 m-0 end-0"
+                    <ul class="position-absolute d-none bg-white px-3 py-4 border list-unstyled p-0 m-0 end-0" style="z-index: 1000;"
                         onmouseover="expandDropdown(this)" onmouseout="shrinkDropdown(this.parentElement)">
                         @guest
                             <li class="text-reset mb-4">
@@ -50,7 +50,7 @@
                                     Register</a>
                             </li>
                         @endguest
-                        <li><a class="dropdown-item" href="{{route('profile.page')}}">Profile</a></li>
+                        <li><a class="dropdown-item" href="{{ route('profile.page') }}">Profile</a></li>
                         <li><a class="dropdown-item" href="#">Orders</a></li>
                         <li><a class="dropdown-item" href="#">Help and Support</a></li>
 
@@ -101,7 +101,8 @@
 @include('components.navbar-sidebar')
 
 {{-- mobile view navbar --}}
-<nav class="position-fixed bg-white d-sm-none w-100 d-flex bottom-0 m-0 p-0 overflow-hidden p-3 px-3 pt-4 shadow-inner z-max">
+<nav
+    class="position-fixed bg-white d-sm-none w-100 d-flex bottom-0 m-0 p-0 overflow-hidden p-3 px-3 pt-4" style="box-shadow: inset 0 2px 4px 0 rgb(0 0 0 / 0.05); z-index: 1000;">
     <ul class="d-flex flex-row w-100 m-0 p-0 justify-content-between">
         <li class="list-unstyled m-0 p-0">
             <a href="{{ route('dashboard.page') }}" class="text-reset p-3">

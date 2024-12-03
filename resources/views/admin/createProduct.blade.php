@@ -15,17 +15,19 @@
                 @csrf
                 <div class="mb-3">
                     <label for="nameInput" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="nameInput" placeholder="Contoh : Anggur" name = "name" value="{{old('name')}}">
+                    <input type="text" class="form-control" id="nameInput" placeholder="Contoh : Anggur" name = "name"
+                        value="{{ old('name') }}">
                 </div>
                 <div class="mb-3">
                     <label for="skuInput" class="form-label">SKU</label>
-                    <input type="text" class="form-control" id="skuInput" placeholder="Contoh : BUAH-001" name = "sku" value="{{old('sku')}}">
+                    <input type="text" class="form-control" id="skuInput" placeholder="Contoh : BUAH-001" name = "sku"
+                        value="{{ old('sku') }}">
                 </div>
                 <div class="mb-3">
                     <label for="categoryLabelInput" class="form-label">Choose a category label</label>
                     <select class="form-select" id="categoryLabelInput" name="categoryLabel">
-                        @foreach(['OTHER', 'VEGETABLE', 'MEAT', 'FRUIT'] as $categoryLabel)
-                        <option value="{{$categoryLabel}}" @selected(old('categoryLabel')==$categoryLabel)>{{$categoryLabel}}</option>
+                        @foreach (['OTHER', 'VEGETABLE', 'MEAT', 'FRUIT'] as $categoryLabel)
+                            <option value="{{ $categoryLabel }}" @selected(old('categoryLabel') == $categoryLabel)>{{ $categoryLabel }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -38,27 +40,32 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input class="form-control" type="file" id="image" name = "image" value="{{old('image')}}"> 
+                    <input class="form-control" type="file" id="image" name = "image" value="{{ old('image') }}">
                 </div>
                 <div class="mb-3">
                     <label for="stockInput" class="form-label">Stock</label>
-                    <input type="number" class="form-control" id="stockInput" placeholder="Contoh : 20" name = "stock" min="1" max="99999" value="{{old('stock')}}"> 
+                    <input type="number" class="form-control" id="stockInput" placeholder="Contoh : 20" name = "stock"
+                        min="1" max="99999" value="{{ old('stock') }}">
                 </div>
                 <div class="mb-3">
                     <label for="minimumBuyInput" class="form-label">Minimum Buy</label>
-                    <input type="number" class="form-control" id="minimumBuyInput" placeholder="Contoh : 1" name = "minimum_buy" min="1" max="99999" value="{{old('minimum_buy')}}">
+                    <input type="number" class="form-control" id="minimumBuyInput" placeholder="Contoh : 1"
+                        name = "minimum_buy" min="1" max="99999" value="{{ old('minimum_buy') }}">
                 </div>
                 <div class="mb-3">
                     <label for="weightInput" class="form-label">Weight/1pcs</label>
-                    <input type="number" class="form-control" id="weightInput" placeholder="In Grams (G)" name = "weight" value="{{old('weight')}}">
+                    <input type="number" class="form-control" id="weightInput" placeholder="In Grams (G)" name = "weight"
+                        value="{{ old('weight') }}">
                 </div>
                 <div class="mb-3">
                     <label for="priceInput" class="form-label">Price/1pcs</label>
-                    <input type="number" class="form-control" id="priceInput" placeholder="In Rupiah (Rp)" name="price" value="{{old('price')}}">
+                    <input type="number" class="form-control" id="priceInput" placeholder="In Rupiah (Rp)" name="price"
+                        value="{{ old('price') }}">
                 </div>
                 <div class="mb-3">
                     <label for="descriptionInput" class="form-label">Description</label>
-                    <textarea class="form-control" id="descriptionInput" rows="3" name ="description" placeholder="Contoh : Full natural">{{old('description')}}</textarea>
+                    <textarea class="form-control" id="descriptionInput" rows="3" name ="description"
+                        placeholder="Contoh : Full natural">{{ old('description') }}</textarea>
                 </div>
                 <button type="submit" class="btn btn-warning">Submit</button>
             </form>
@@ -77,7 +84,7 @@
         const oldCategoryName = @json(old('categoryName', 'OTHER'));
 
         function updateNameOptions(selectedLabel, oldValue = null) {
-        
+
             // Reset nameInput options
             nameInput.innerHTML = '<option selected disabled>Select name category</option>';
             nameInput.disabled = true;
@@ -115,12 +122,12 @@
             }
         }
 
-        labelInput.addEventListener('change', function () {
+        labelInput.addEventListener('change', function() {
             updateNameOptions(this.value, oldCategoryName);
         });
 
         // Trigger the function on page load to handle old values
         updateNameOptions(labelInput.value, oldCategoryName);
-        
+
     });
 </script>
