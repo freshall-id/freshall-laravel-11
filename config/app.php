@@ -123,4 +123,21 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Google Drive
+    |--------------------------------------------------------------------------
+    |
+    | These configuration is for Google Drive
+    |
+    */
+
+    'gdrive' => [
+        'driver' => env('FILESYSTEM_CLOUD', 'google'),
+        'client_id' => env('GDRIVE_CLIENT_ID', NULL),
+        'client_secret' => env('GDRIVE_CLIENT_SECRET', NULL),
+        'refresh_token' => env('GDRIVE_REFRESH_TOKEN', NULL),
+        'folder_id' => env('GDRIVE_FOLDER_ID', NULL),
+    ],
+
 ];

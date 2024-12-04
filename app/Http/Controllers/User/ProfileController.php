@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Api\GDriveController;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserAddress;
@@ -51,6 +52,14 @@ class ProfileController extends Controller
             'username.regex' => 'Username tidak boleh mengandung spasi.'
         ]);
 
+        if($request->hasFile('profile_image')) {
+            $image = GDriveController::upload($request->file('profile_image'));
+
+
+        } else {
+            dd('no image');
+        }
+
 
         DB::beginTransaction();
 
@@ -59,11 +68,16 @@ class ProfileController extends Controller
                 if ($user->profile_image && Storage::disk('public')->exists($user->profile_image)) {
                     Storage::disk('public')->delete($user->profile_image);
                 }
-                $image = $request->file('profile_image');
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('public/profile', $imageName);
+                // $image = $request->file('profile_image');
+                // $imageName = time() . '.' . $image->getClientOriginalExtension();
+                // $image->storeAs('public/profile', $imageName);
 
-                $profile_image = $imageName;
+                // $profile_image = $imageName;
+
+                $image = GDriveController::upload($request->file('profile_image'));
+
+                $profile_image = $image;
+                
             } else {
                 $profile_image = $user->profile_image;
             }
@@ -164,7 +178,7 @@ class ProfileController extends Controller
             'receiver_name' => ['required', 'max:50'],
             'receiver_phone' => ['required', 'max:20'],
             'latitude' => ['required'],
-            'longitude' =>['required'],
+            'longitude' => ['required'],
             'postal_code' => ['required', 'max:10'],
             'notes' => ['nullable']
         ]);
@@ -184,7 +198,7 @@ class ProfileController extends Controller
                 'postal_code' => $validate_credentials['postal_code'],
                 'notes' => $validate_credentials['notes'],
                 'is_primary' => false,
-                'user_id'=> $user->id
+                'user_id' => $user->id
             ]);
 
             DB::commit();
