@@ -4,9 +4,12 @@
     @auth
         @if (Auth::user()->cart->cartItems->count() > 0)
             <a href="{{ route('cart.page') }}" class="position-relative">
-                <div class="position-fixed d-none d-sm-block text-light m-2 rounded row z-max p-2 shadow" style="background-color: var(--accent-yellow); right: 0.5rem; bottom: 0.5rem;">
-                    <i class="fa-solid fa-bag-shopping d-flex align-items-center justify-content-center p-0 m-0" style="font-size: 2rem; width: 3rem; height: 3rem;"></i>
-                    <span class="position-absolute bg-danger p-0" style="width: 0.8rem; aspect-ratio: 1/1; border-radius: 100%; right: 0.6rem; top: 1rem;">
+                <div class="position-fixed d-none d-sm-block text-light m-2 rounded row p-2 shadow" style="z-index: 1000;"
+                    style="background-color: var(--accent-yellow); right: 0.5rem; bottom: 0.5rem;">
+                    <i class="fa-solid fa-bag-shopping d-flex align-items-center justify-content-center p-0 m-0"
+                        style="font-size: 2rem; width: 3rem; height: 3rem;"></i>
+                    <span class="position-absolute bg-danger p-0"
+                        style="width: 0.8rem; aspect-ratio: 1/1; border-radius: 100%; right: 0.6rem; top: 1rem;">
                     </span>
                 </div>
             </a>
@@ -55,37 +58,37 @@
                             [
                                 'label' => 'FRUIT',
                                 'name' => 'Fruits',
-                                'image' => 'freshall/app/fruits.jpg'
+                                'image' => 'freshall/app/fruits.jpg',
                             ],
                             [
                                 'label' => 'VEGETABLE',
                                 'name' => 'Vegetables',
-                                'image' => 'freshall/app/vegetables.png'
+                                'image' => 'freshall/app/vegetables.png',
                             ],
                             [
                                 'label' => 'MEAT',
                                 'name' => 'Meats',
-                                'image' => 'freshall/app/meats.png'
+                                'image' => 'freshall/app/meats.png',
                             ],
                             [
                                 'label' => 'OTHER',
                                 'name' => 'Others',
-                                'image' => 'freshall/app/others.png'
-                            ]
+                                'image' => 'freshall/app/others.png',
+                            ],
                         ];
                     @endphp
 
                     @foreach ($labels as $label)
                         <div class="ratio ratio-1x1 border" style="width: 12rem;">
                             <div class="position-absolute w-100 h-100 top-0 start-0">
-                                <img src="{{ asset($label["image"]) }}" class="w-100 h-100"
-                                    alt="FRESHALL-CATEGORY-{{$label["label"]}}">
+                                <img src="{{ asset($label['image']) }}" class="w-100 h-100"
+                                    alt="FRESHALL-CATEGORY-{{ $label['label'] }}">
                             </div>
                             <div class="bg-opacity-20 d-flex flex-col align-items-center justify-content-center px-2">
-                                <a href="{{ route('product-category-by-label.page', ['label' => $label["label"]]) }}"
+                                <a href="{{ route('product-category-by-label.page', ['label' => $label['label']]) }}"
                                     class="btn btn-primary position-absolute w-75 d-flex justify-content-between align-items-center"
                                     style="bottom: 1rem;">
-                                    {{{ $label["name"] }}}
+                                    {{ $label['name'] }}
                                     <i class="fa-solid fa-arrow-right text-white"></i>
                                 </a>
                             </div>

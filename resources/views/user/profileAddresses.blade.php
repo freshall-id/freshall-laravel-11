@@ -91,39 +91,34 @@
                                             <label for="full_address" class="form-label mb-0 align-items-center d-flex"
                                                 style="width:140px">Full Address</label>
                                             <input type="text" id="full_address" name="full_address" class="form-control"
-                                                value="{{  $address->full_address }}"
-                                                style="width:200px">
+                                                value="{{ $address->full_address }}" style="width:200px">
                                         </div>
                                         <div class="mb-3 d-flex">
                                             <label for="receiver_name" class="form-label mb-0 align-items-center d-flex"
                                                 style="width:140px">Receiver Name</label>
                                             <input type="text" id="receiver_name" name="receiver_name"
-                                                class="form-control"
-                                                value="{{$address->receiver_name}}"
+                                                class="form-control" value="{{ $address->receiver_name }}"
                                                 style="width:200px">
                                         </div>
                                         <div class="mb-3 d-flex">
                                             <label for="receiver_phone" class="form-label mb-0 align-items-center d-flex"
                                                 style="width:140px">Receiver Phone</label>
                                             <input type="text" id="receiver_phone" name="receiver_phone"
-                                                class="form-control"
-                                                value="{{ $address->receiver_phone }}"
+                                                class="form-control" value="{{ $address->receiver_phone }}"
                                                 style="width:200px">
                                         </div>
                                         <div class="mb-3 d-flex">
                                             <label for="postal_code" class="form-label mb-0 align-items-center d-flex"
                                                 style="width:140px">Postal Code</label>
                                             <input type="text" id="postal_code" name="postal_code"
-                                                class="form-control"
-                                                value="{{  $address->postal_code }}"
+                                                class="form-control" value="{{ $address->postal_code }}"
                                                 style="width:200px">
                                         </div>
 
                                         <div class="mb-3 ">
                                             <label for="notes" class="form-label mb-0 align-items-center d-flex"
                                                 style="width:140px">Note</label>
-                                            <textarea id="notes" name="notes" class="form-control" rows="3"
-                                             style="width:340px">
+                                            <textarea id="notes" name="notes" class="form-control" rows="3" style="width:340px">
                                              {{ $address->notes }}
                                             </textarea>
                                         </div>
@@ -214,8 +209,7 @@
                                     <div class="mb-3 ">
                                         <label for="notes" class="form-label mb-0 align-items-center d-flex"
                                             style="width:140px">Note</label>
-                                        <textarea id="notes" name="notes" class="form-control" rows="3" 
-                                            style="width:340px"> {{old('notes')}}
+                                        <textarea id="notes" name="notes" class="form-control" rows="3" style="width:340px"> {{ old('notes') }}
                                             </textarea>
                                     </div>
                                 </div>

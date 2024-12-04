@@ -29,7 +29,6 @@
                 </h4>
             </div>
 
-
             @auth
                 <form
                     action="{{ route('add-to-cart.action', [
