@@ -39,7 +39,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Voucher</a></li>
+                            <li><a class="dropdown-item" href="{{route('admin-voucher.page')}}">Voucher</a></li>
                         </ul>
                     </li>
                     {{-- <li class="nav-item">
