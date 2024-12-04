@@ -26,7 +26,7 @@
             @endphp
             <div class="d-flex gap-5 ">
                 <div class="card" style="width: 18rem;">
-                    <img id="preview_image" src="{{ $imageUrl }}" class="card-img-top" style="height:300px"
+                    <img id="preview_image" src="{{ Auth::user()->profile_image }}" class="card-img-top" style="height:300px"
                         alt="Profile Picture">
                     <div class="card-body">
                         <input type="file" class="d-none" name="profile_image" id="profile_image" value="Choose Photo"

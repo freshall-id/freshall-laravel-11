@@ -39,7 +39,7 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
         $user = User::find(Auth::id());
-
+        
         $validate_credentials = $request->validate([
             'username' => ['required', 'min:4', 'max:50', 'regex:/^\S*$/', Rule::unique('users', 'username')->ignore($user->id)],
             'name' => ['required', 'min:8', 'max:50'],
@@ -52,32 +52,38 @@ class ProfileController extends Controller
             'username.regex' => 'Username tidak boleh mengandung spasi.'
         ]);
 
-        if($request->hasFile('profile_image')) {
-            $image = GDriveController::upload($request->file('profile_image'));
-
-
-        } else {
-            dd('no image');
-        }
-
-
         DB::beginTransaction();
 
         try {
             if ($request->hasFile('profile_image')) {
-                if ($user->profile_image && Storage::disk('public')->exists($user->profile_image)) {
-                    Storage::disk('public')->delete($user->profile_image);
-                }
+                /**
+                 * Delete old profile image with local storage
+                 */
+                // if ($user->profile_image && Storage::disk('public')->exists($user->profile_image)) {
+                //     Storage::disk('public')->delete($user->profile_image);
+                // }
                 // $image = $request->file('profile_image');
                 // $imageName = time() . '.' . $image->getClientOriginalExtension();
                 // $image->storeAs('public/profile', $imageName);
 
                 // $profile_image = $imageName;
 
-                $image = GDriveController::upload($request->file('profile_image'));
-
-                $profile_image = $image;
+                /**
+                 * Delete old profile image with google drive
+                 */
+                if ($user->profile_image && $user->profile_image != 'user.png') {
+                    $isImageExists = GDriveController::isFileExists($user->profile_image);
+                    if($isImageExists) {
+                        $deleteFile = GDriveController::delete($user->profile_image, 'profile');
+                    }
+                }
                 
+                $image = GDriveController::upload($request->file('profile_image'), 'profile');
+                
+                dd($image);
+                
+                $user->profile_image = $image;
+
             } else {
                 $profile_image = $user->profile_image;
             }
