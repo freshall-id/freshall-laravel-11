@@ -19,7 +19,7 @@
             @csrf
             @method('PUT')
             @php
-                $profileImagePath = 'public/profile/' . $profile->profile_image;
+                $profileImagePath = 'profiles/' . $profile->profile_image;
                 $imageUrl = Storage::exists($profileImagePath)
                     ? asset('storage/' . $profileImagePath)
                     : asset('default/user.png');
