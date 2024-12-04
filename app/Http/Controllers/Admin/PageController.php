@@ -68,4 +68,15 @@ class PageController extends Controller
         $categories = ProductCategory::All();
         return view('admin.updateProduct', ['product' => $product, 'categories' => $categories]);
     }
+
+    public function viewVoucherPage()
+    {
+        $vouchers = Voucher::paginate(10);
+        return view('admin.voucher', ['vouchers' => $vouchers]);
+    }
+
+    public function viewUpdateVoucherPage(Voucher $voucher)
+    {
+        return view ('admin.updateVoucher',['voucher'=> $voucher]);
+    }
 }

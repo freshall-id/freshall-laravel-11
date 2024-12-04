@@ -75,7 +75,7 @@
                     <textarea class="form-control" id="descriptionInput" rows="3" name ="description"
                         placeholder="Contoh : Full natural" data-original-value="{{ $product->description }}">{{ old('description', $product->description) }}</textarea>
                 </div>
-                <button type="submit" id="submitButton" class="btn btn-warning">Submit</button>
+                <button type="submit" id="submitButton" class="btn btn-warning">Update</button>
             </form>
         </div>
         <div class="col-2 d-none d-sm-block">
