@@ -20,9 +20,8 @@ class GDriveController extends Controller
             $client_id = config('app.gdrive.client_id');
             $client_secret = config('app.gdrive.client_secret');
             $refresh_token = config('app.gdrive.refresh_token');
-            $folder_id = config('app.gdrive.folder_id');
 
-            if (!$client_id || !$client_secret || !$refresh_token || !$folder_id) {
+            if (!$client_id || !$client_secret || !$refresh_token) {
                 throw new Exception('Google Drive credentials are not set');
             }
 
