@@ -39,7 +39,7 @@ class ProfileController extends Controller
     public function updateProfile(Request $request)
     {
         $user = User::find(Auth::id());
-        
+
         $validate_credentials = $request->validate([
             'username' => ['required', 'min:4', 'max:50', 'regex:/^\S*$/', Rule::unique('users', 'username')->ignore($user->id)],
             'name' => ['required', 'min:8', 'max:50'],
@@ -73,17 +73,16 @@ class ProfileController extends Controller
                  */
                 if ($user->profile_image && $user->profile_image != 'user.png') {
                     $isImageExists = GDriveController::isFileExists($user->profile_image);
-                    if($isImageExists) {
+                    if ($isImageExists) {
                         $deleteFile = GDriveController::delete($user->profile_image, 'profile');
                     }
                 }
-                
-                $image = GDriveController::upload($request->file('profile_image'), 'profile');
-                
-                dd($image);
-                
-                $user->profile_image = $image;
 
+                $image = GDriveController::upload($request->file('profile_image'), 'profile');
+
+                // dd($image);
+
+                $profile_image = $image;
             } else {
                 $profile_image = $user->profile_image;
             }

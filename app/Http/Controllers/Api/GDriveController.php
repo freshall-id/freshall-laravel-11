@@ -154,7 +154,7 @@ class GDriveController extends Controller
         try {
             $accessToken = self::token();
             $fileId = Str::after($fileId, self::prefixUrl());
-            
+
             $response = Http::withToken($accessToken)
                 ->get("https://www.googleapis.com/drive/v3/files/{$fileId}");
 
@@ -174,7 +174,7 @@ class GDriveController extends Controller
             $accessToken = self::token();
 
             $fileId = Str::after($fileId, self::prefixUrl());
-            
+
             $response = Http::withToken($accessToken)
                 ->delete("https://www.googleapis.com/drive/v3/files/{$fileId}");
 
