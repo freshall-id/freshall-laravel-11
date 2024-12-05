@@ -61,17 +61,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/checkout', [CartController::class, 'viewCheckoutPage'])->name('checkout.page');
 
     Route::put('/update-shipping-provider', [CartController::class, 'updateShippingProvider'])->name('update-shipping-provider.action');
-    
-    Route::get('/profile',[ProfileController::class,'viewProfilePage'])->name('profile.page');
-    
+
+    Route::get('/profile', [ProfileController::class, 'viewProfilePage'])->name('profile.page');
+
     Route::put('/profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 
-    Route::get('/profile/addresses',[ProfileController::class,'viewProfileAddressesPage'])->name('profileAddresses.page');
-    
+    Route::get('/profile/addresses', [ProfileController::class, 'viewProfileAddressesPage'])->name('profileAddresses.page');
+
     Route::put('/profile/addresses/{id}', [ProfileController::class, 'updateAddresses'])->name('profileAddresses.update');
 
-    Route::post('profile/addresses/insert',[ProfileController::class,'addAddresses'])->name('profileAddresses.insert'); 
-    
+    Route::post('profile/addresses/insert', [ProfileController::class, 'addAddresses'])->name('profileAddresses.insert');
+
     Route::prefix('voucher')->group(function () {
         Route::get('/use/{voucher}', [VoucherController::class, 'getVoucher'])->name('use-voucher.page');
         Route::post('/use', [VoucherController::class, 'useVoucher'])->name('use-voucher.action');
@@ -89,12 +89,11 @@ Route::middleware('auth')->group(function () {
 
         Route::delete('/delete-cart-item/{cart_item}', [CartController::class, 'deleteCartItem'])->name('delete-cart-item.action');
     });
-
 });
 
 Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
     Route::get('/dashboard', [AdminPageController::class, 'viewDashboardPage'])->name('admin-dashboard.page');
-    Route::prefix('/product')->group(function (){
+    Route::prefix('/product')->group(function () {
         Route::get('/', [AdminPageController::class, 'viewProductPage'])->name('admin-product.page');
         Route::post('/', [ProductController::class, 'storeCreatedProduct'])->name('create.product.action');
         Route::get('/create', [ProductController::class, 'createProduct'])->name('create.product.page');
@@ -102,6 +101,16 @@ Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
         Route::get('/update/{product}', [AdminPageController::class, 'viewUpdateProductPage'])->name('update-product.page');
         Route::put('/update/{product}', [ProductController::class, 'updateProduct'])->name('update-product.action');
     });
+
+    Route::prefix('/voucher')->group(function () {
+        Route::get('/', [AdminPageController::class, 'viewVoucherPage'])->name('admin-voucher.page');
+        Route::post('/', [VoucherController::class, 'storeCreatedVoucher'])->name('create.voucher.action');
+        Route::get('/create', [VoucherController::class, 'createVoucher'])->name('create.voucher.page');
+        Route::delete('/delete/{voucher}', [VoucherController::class, 'deleteVoucher'])->name('delete-voucher.action');
+        Route::get('/update/{voucher}', [AdminPageController::class, 'viewUpdateVoucherPage'])->name('update-voucher.page');
+        Route::put('/update/{voucher}', [VoucherController::class, 'updateVoucher'])->name('update-voucher.action');
+    });
+    
     Route::put('/update-transaction-header/{id}', [TransactionController::class, 'updateTransactionHeader'])->name('update-transaction-header.action');
     Route::delete('/delete-transaction-header/{transactionHeader}', [TransactionController::class, 'deleteTransactionHeader'])->name('delete-transaction-header.action');
 });
