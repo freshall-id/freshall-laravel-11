@@ -60,8 +60,11 @@ class ProfileController extends Controller
                 }
                 $image = $request->file('profile_image');
                 $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('profiles', $imageName);
-                $profile_image = $imageName;
+                
+                $uploaded_image = $image->storeAs('profiles', $imageName);
+
+                // dd(Storage::url($uploaded_image));
+                $profile_image = Storage::url($uploaded_image);
             } else {
                 $profile_image = $user->profile_image;
             }
