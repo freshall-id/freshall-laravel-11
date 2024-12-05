@@ -29,7 +29,7 @@
                             Manage
                         </a>
                         <ul class="dropdown-menu dropdown-menu-light">
-                            <li><a class="dropdown-item" href="#">User</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin-user.page') }}">User</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

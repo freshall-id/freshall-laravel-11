@@ -113,6 +113,10 @@ Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
     
     Route::put('/update-transaction-header/{id}', [TransactionController::class, 'updateTransactionHeader'])->name('update-transaction-header.action');
     Route::delete('/delete-transaction-header/{transactionHeader}', [TransactionController::class, 'deleteTransactionHeader'])->name('delete-transaction-header.action');
+
+    Route::prefix('/user')->group(function() {
+        Route::get('/', [AdminPageController::class, 'viewUserPage'])->name('admin-user.page');
+    });
 });
 
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');
