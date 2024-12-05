@@ -15,7 +15,8 @@
             </li>
         </ul>
 
-        <form class="mt-4 d-flex flex-column" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+        <form class="mt-4 d-flex flex-column" action="{{ route('profile.update') }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
             @php
@@ -26,7 +27,7 @@
             @endphp
             <div class="d-flex flex-column flex-lg-row gap-5 ">
                 <div class="card" style="width: 18rem;">
-                    <img id="preview_image" src="{{ $imageUrl }}" class="card-img-top" style="height:300px"
+                    <img id="preview_image" src="{{ asset(Auth::user()->profile_image) }}" class="card-img-top" style="height:300px"
                         alt="Profile Picture">
                     <div class="card-body">
                         <input type="file" class="d-none" name="profile_image" id="profile_image" value="Choose Photo"
@@ -116,7 +117,7 @@
                 </div>
             </div>
             <div id="updateButton">
-                <button type="submit" class="btn btn-primary mt-3"  style="width:18em">Update</button>
+                <button type="submit" class="btn btn-primary mt-3" style="width:18em">Update</button>
             </div>
 
         </form>
@@ -124,16 +125,17 @@
 @endsection
 
 <style>
-    @media(max-width:1135px){
-        #profileContainer{
+    @media(max-width:1135px) {
+        #profileContainer {
             flex-direction: column;
             justify-content: center;
-            align-items:center;
-        } 
-        #updateButton{
-            display:flex;
+            align-items: center;
+        }
+
+        #updateButton {
+            display: flex;
             justify-content: center;
-            align-items:center;
+            align-items: center;
         }
     }
 </style>
