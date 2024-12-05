@@ -24,7 +24,7 @@
                     ? asset('storage/' . $profileImagePath)
                     : asset('default/user.png');
             @endphp
-            <div class="d-flex gap-5 " id="profileContainer">
+            <div class="d-flex flex-column flex-lg-row gap-5 ">
                 <div class="card" style="width: 18rem;">
                     <img id="preview_image" src="{{ $imageUrl }}" class="card-img-top" style="height:300px"
                         alt="Profile Picture">

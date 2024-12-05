@@ -66,6 +66,10 @@ class Cart extends Model
             return 0;
         }
 
+        if($this->totalItemPrice() < $this->voucher->min_price) {
+            return 0;
+        }
+
         return $this->totalItemPrice() * $this->voucher->discount / 100;
     }
 
