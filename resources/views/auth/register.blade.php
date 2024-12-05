@@ -4,9 +4,9 @@
     <section class="h-100">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="w-100" style="padding: 0 25%">
-                    <div class="col w-100 card card-registration my-4 shadow-sm">
-                        <div class="row g-0 justify-content-center">
+                <div class="col-12 col-md-8">
+                    <div class="w-100 card card-registration my-4 shadow-sm">
+                        <div class="row col-12 g-0 justify-content-center">
                             <div class="card-body p-md-5 text-black">
                                 <h3 class="mb-5 text-uppercase text-center">Register</h3>
                                 <form action="{{ route('register.action') }}" method="POST">

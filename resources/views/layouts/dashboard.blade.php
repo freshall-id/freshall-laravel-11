@@ -269,6 +269,7 @@
 
 <body>
     @include('components.alert')
+    
     @if (!isset($hideNavbar) || !$hideNavbar)
         @include('components.navbar')
     @endif

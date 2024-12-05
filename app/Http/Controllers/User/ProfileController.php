@@ -112,6 +112,15 @@ class ProfileController extends Controller
                 ]);
             }
 
+            // $profileImagePath = 'public/profile/' . $request->profile_image;
+            // $imageUrl = Storage::exists($profileImagePath)
+            //     ? asset('storage/' . $profileImagePath)
+            //     : asset('default/user.png');
+
+            // if (Storage::exists($imageUrl)) {
+            //     Storage::delete($imageUrl);
+            // }
+    
             $user->update([
                 'username' => $validate_credentials['username'],
                 'name' => $validate_credentials['name'],
@@ -163,7 +172,7 @@ class ProfileController extends Controller
                 'postal_code' => $validate_credentials['postal_code'],
                 'notes' => $validate_credentials['notes'],
             ]);
-
+            
             DB::commit();
         } catch (Exception $e) {
             DB::rollBack();

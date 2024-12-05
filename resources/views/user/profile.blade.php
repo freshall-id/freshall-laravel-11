@@ -15,16 +15,17 @@
             </li>
         </ul>
 
-        <form class="mt-4" action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
+        <form class="mt-4 d-flex flex-column" action="{{ route('profile.update') }}" method="POST"
+            enctype="multipart/form-data">
             @csrf
             @method('PUT')
             @php
-                $profileImagePath = 'public/profile/' . $profile->profile_image;
+                $profileImagePath = 'profiles/' . $profile->profile_image;
                 $imageUrl = Storage::exists($profileImagePath)
                     ? asset('storage/' . $profileImagePath)
                     : asset('default/user.png');
             @endphp
-            <div class="d-flex gap-5 ">
+            <div class="d-flex flex-column flex-lg-row gap-5 ">
                 <div class="card" style="width: 18rem;">
                     <img id="preview_image" src="{{ Auth::user()->profile_image }}" class="card-img-top" style="height:300px"
                         alt="Profile Picture">
@@ -37,7 +38,7 @@
                         </button>
                     </div>
                 </div>
-                <div>
+                <div id="changeProfileContainer">
                     <label class="fw-bold text-secondary"for="">Change Profile</label>
                     <div class="mb-3 d-flex">
                         <label for="username" class="form-label mb-0 align-items-center d-flex"
@@ -90,7 +91,7 @@
                     </div>
 
                 </div>
-                <div>
+                <div id="changePasswordContainer">
                     <label class="fw-bold text-secondary "for="">Change Password</label>
                     <div class="mb-3 d-flex">
                         <label for="Current_password" class="form-label mb-0 align-items-center d-flex"
@@ -115,11 +116,29 @@
 
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary mt-3">Update</button>
+            <div id="updateButton">
+                <button type="submit" class="btn btn-primary mt-3" style="width:18em">Update</button>
+            </div>
 
         </form>
     </div>
 @endsection
+
+<style>
+    @media(max-width:1135px) {
+        #profileContainer {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #updateButton {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+</style>
 
 <script>
     function previewFile() {

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('sku', 50)->unique();
             $table->string('name', 100);
-            $table->string('image', 100)->nullable();
+            $table->string('image', 100)->nullable()->default('default/product.png');
             $table->integer('stock');
             $table->integer('minimum_buy');
             $table->integer('weight');
