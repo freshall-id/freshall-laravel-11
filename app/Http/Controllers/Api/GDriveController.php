@@ -87,7 +87,18 @@ class GDriveController extends Controller
 
     public static function toAccessibleUrl(string $fileId): string
     {
-        return self::prefixUrl() . $fileId;
+        // return self::prefixUrl() . $fileId;
+        return "https://drive.google.com/thumbnail?id={$fileId}&sz=s4000";
+    }
+
+    public static function getFileIdByUrl(string $url): string | null
+    {
+        $parsedUrl = parse_url($url);
+        if (isset($parsedUrl['query'])) {
+            parse_str($parsedUrl['query'], $queryParams);
+            return $queryParams['id'] ?? null;
+        }
+        return null;
     }
 
     public static function upload(UploadedFile $file, string $folder_name): string | object
@@ -99,7 +110,6 @@ class GDriveController extends Controller
 
             $file_name = $file->getClientOriginalName();
             $path = $file->getRealPath();
-
             // Metadata for the file, parent folder ID is required in array format
             $metadata = json_encode([
                 'name' => $file_name,
@@ -119,7 +129,6 @@ class GDriveController extends Controller
                 )
                 ->post('https://www.googleapis.com/upload/drive/v3/files?uploadType=multipart');
 
-            // dd($response->body());
 
             if (!$response->successful()) {
                 throw new Exception('Failed to upload file');
@@ -139,7 +148,6 @@ class GDriveController extends Controller
             if (!$permissionResponse->successful()) {
                 throw new Exception('Failed to make file public');
             }
-
             return self::toAccessibleUrl($fileId);
         } catch (Throwable $th) {
             return response()->json([
@@ -148,32 +156,39 @@ class GDriveController extends Controller
         }
     }
 
-    public static function isFileExists(string $fileId): bool
+    public static function isFileExists(string $url): bool
     {
         try {
             $accessToken = self::token();
-            $fileId = Str::after($fileId, self::prefixUrl());
-
+            // $fileId = Str::after($fileId, self::prefixUrl());
+            $fileId = GDriveController::getFileIdByUrl($url);
+            if (!$fileId){
+                return false;
+            }
             $response = Http::withToken($accessToken)
                 ->get("https://www.googleapis.com/drive/v3/files/{$fileId}");
-
             if (!$response->successful()) {
                 throw new Exception('Failed to check file existence');
             }
-
             return true;
         } catch (Throwable $th) {
             return false;
         }
     }
 
-    public static function delete(string $fileId): object
+    public static function delete(string $url): object
     {
         try {
             $accessToken = self::token();
 
-            $fileId = Str::after($fileId, self::prefixUrl());
+            // $fileId = Str::after($fileId, self::prefixUrl());
+            $fileId = self::getFileIdByUrl($url);
 
+            if (!$fileId) {
+                return response()->json([
+                    'message' => 'File not found'
+                ], 404);
+            }
             $response = Http::withToken($accessToken)
                 ->delete("https://www.googleapis.com/drive/v3/files/{$fileId}");
 

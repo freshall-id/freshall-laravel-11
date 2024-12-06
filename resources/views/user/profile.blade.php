@@ -19,12 +19,6 @@
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            @php
-                $profileImagePath = 'profiles/' . $profile->profile_image;
-                $imageUrl = Storage::exists($profileImagePath)
-                    ? asset('storage/' . $profileImagePath)
-                    : asset('default/user.png');
-            @endphp
             <div class="d-flex flex-column flex-lg-row gap-5 ">
                 <div class="card" style="width: 18rem;">
                     <img id="preview_image" src="{{ Auth::user()->profile_image }}" class="card-img-top" style="height:300px"

@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="row d-flex justify-content-center g-5 pt-4">
-        <div class="col-2 d-flex justify-content-end">
+    <div class="row d-flex justify-content-center g-2 g-md-5 pt-4">
+        <div class="col-1 col-md-2 d-flex justify-content-end">
             <div>
-                <a href="{{ route('admin-product.page') }}" class="btn mt-2" style="height: 30px">
+                <a href="{{ route('admin-voucher.page') }}" class="btn mt-2" style="height: 30px">
                     <i class="fa-solid fa-arrow-left fa-2xl mt-2"></i>
                 </a>
             </div>
         </div>
-        <div class="col-8 border border-3 rounded shadow py-3">
+        <div class="col-9 col-md-8 border border-3 rounded shadow py-3 px-3">
             <h1 class="pb-2">Update Product</h1>
             <form action="{{ route('update-product.action', ['product' => $product]) }}" method="POST"
                 enctype="multipart/form-data">
@@ -45,7 +45,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
-                    <input class="form-control" type="file" id="image" name = "image" value="{{ old('image') }}">
+                    <div class="ratio ratio-1x1 mb-3" id="preview_image_container">
+                        <img class="img-thumbnail" id="preview_image" src="{{ asset($product->image) }}" alt="Product Picture">
+                    </div>
+                    <input class="form-control" type="file" id="image" name = "image" value="{{ old('image') }}" onchange="updatePreviewImage(event)">
                 </div>
                 <div class="mb-3">
                     <label for="stockInput" class="form-label">Stock</label>
@@ -78,12 +81,38 @@
                 <button type="submit" id="submitButton" class="btn btn-warning">Update</button>
             </form>
         </div>
-        <div class="col-2 d-none d-sm-block">
+        <div class="col-2 d-none d-md-block">
         </div>
     </div>
 @endsection
 
+<style>
+    #preview_image_container {
+        height: 300px;
+        width: 300px;
+    }
+    @media (max-width:435px) {
+        #preview_image_container {
+            height: 200px;
+            width: 200px;
+        }
+    }
+</style>
+
 <script>
+    function updatePreviewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('preview_image');
+        console.log(input);
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result; // Set preview image source to the uploaded file
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
         const labelInput = document.getElementById('categoryLabelInput');
         const nameInput = document.getElementById('categoryNameInput');
