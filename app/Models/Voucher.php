@@ -34,6 +34,19 @@ class Voucher extends Model
     {
         return now()->greaterThan($this->expired_at);
     }
+
+    public function minPriceToNumberFormat(): string
+    {
+        return 'Rp ' . number_format($this->min_price, 0, ',', '.');
+    }
+    public function maxDiscountToNumberFormat(): string
+    {
+        return 'Rp ' . number_format($this->max_discount, 0, ',', '.');
+    }
+    public function discountToNumberFormat(): string
+    {
+        return number_format($this->discount, 2, ',') .' %';
+    }
     
 
 }

@@ -17,11 +17,17 @@
                                         <label class="form-label" for="email">Email</label>
                                         <input type="email" id="email" name="email"
                                             class="form-control form-control-lg" />
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="password">Password</label>
                                         <input type="password" id="password" name="password"
                                             class="form-control form-control-lg" />
+                                        @error('password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-outline mb-4">
                                         <div class="form-check">
