@@ -17,6 +17,9 @@
                                                 <label class="form-label" for="username">Username</label>
                                                 <input type="text" id="username" name="username"
                                                     class="form-control form-control-lg" />
+                                                @error('username')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-4">
@@ -24,11 +27,14 @@
                                                 <label class="form-label" for="name">Name</label>
                                                 <input type="text" id="name" name="name"
                                                     class="form-control form-control-lg" />
+                                                @error('name')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                                    <div class="d-md-flex justify-content-start align-items-center  py-2">
 
                                         <h6 class="mb-0 me-4 fw-normal">Gender: </h6>
 
@@ -44,16 +50,25 @@
                                                 value="MALE" />
                                         </div>
                                     </div>
+                                    @error('gender')
+                                        <div class="alert alert-danger" >{{ $message }}</div>
+                                    @enderror
 
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="email">Email</label>
                                         <input type="email" id="email" name="email"
                                             class="form-control form-control-lg" />
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="password">Password</label>
                                         <input type="password" id="password" name="password"
                                             class="form-control form-control-lg" />
+                                        @error('password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="form-check mb-4 d-flex align-items-center">
@@ -75,6 +90,9 @@
                                             </label>
                                         </label>
                                     </div>
+                                    @error('terms_and_conditions')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
 
                                     <div class="modal fade" id="termsandconditionsmodal" tabindex="-1"
                                         aria-labelledby="termsandconditionsLabel" aria-hidden="true">

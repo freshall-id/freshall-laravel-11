@@ -12,9 +12,9 @@
                 <tr>
                     <td>{{ $voucher->id }}</td>
                     <td>{{ $voucher->code }}</td>
-                    <td>{{ $voucher->discount }}</td>
-                    <td>{{ $voucher->min_price }}</td>
-                    <td>{{ $voucher->max_discount }}</td>
+                    <td>{{ $voucher->discountToNumberFormat()}}</td>
+                    <td>{{ $voucher->minPriceToNumberFormat() }}</td>
+                    <td>{{ $voucher->maxDiscountToNumberFormat()}}</td>
                     <td>{{ $voucher->expired_at }}</td>
                     <td>{{ $voucher->quantity }}</td>
                     <td>{{ $voucher->used }}</td>
