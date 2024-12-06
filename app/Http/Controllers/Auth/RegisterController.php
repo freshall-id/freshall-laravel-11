@@ -15,7 +15,7 @@ use Illuminate\Validation\Rule;
 class RegisterController extends Controller
 {
     public function viewRegisterPage(){
-        return view('auth.register');
+        return view('auth.register',['disableToast' => true]);
     }
 
     public function register(Request $req){

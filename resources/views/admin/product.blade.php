@@ -10,12 +10,12 @@
             <div>
                 @if ($selected == $label)
                     <a href=""
-                        class="text-decoration-none fw-bold w-100 mr-1 text-dark cursor-not-allowed border-2 border-black bg-none px-2 py-1 text-sm font-medium">
+                        class="text-decoration-none btn btn-primary btn-sm fw-bold w-100 mr-1 text-dark cursor-not-allowed border-2 border-black bg-none px-2 py-1 text-sm font-medium">
                         {{ $label }}
                     </a>
                 @else
                     <a href="{{ route('admin-product.page', array_merge(request()->query(), ['selected' => $label], ['page' => 1])) }}"
-                        class="w-100 text-decoration-none text-dark mr-1 border-2 border-black px-2 py-1 text-sm font-medium hover:opacity-60">
+                        class="w-100 text-decoration-none  text-dark mr-1 border-2 border-black px-2 py-1 text-sm font-medium hover:opacity-60">
                         {{ $label }}
                     </a>
                 @endif
