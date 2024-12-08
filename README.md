@@ -12,7 +12,6 @@ FRESHALL is a digital fresh market focused on providing fresh products such as f
 FRESHALL contributes to several Sustainable Development Goals, including:
 
 - **SDG 2: Zero Hunger**  
-  By connecting fresh products to consumers, FRESHALL ensures year-round access to fresh, nutritious, and sufficient food, helping improve food security.
-
+  FRESHALL makes it easier for people to get fresh and healthy food, ensuring everyone has access to what they need to eat.
 - **SDG 3: Good Health and Well-being**  
   FRESHALL provides access to fresh and nutritious produce, contributing to healthier diets and better overall health for consumers.
