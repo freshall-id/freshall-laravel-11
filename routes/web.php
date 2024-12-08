@@ -68,6 +68,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profile/addresses', [ProfileController::class, 'viewProfileAddressesPage'])->name('profileAddresses.page');
 
+    Route::get('/profile/transactions',[ProfileController::class,'viewTransactionsPage'])->name('profileTransactions.page');
+
+    Route::get('/profile/transaction/{id}',[ProfileController::class,'viewTransactionDetailPage'])->name('profileTransactionDetail.page');
+
     Route::put('/profile/addresses/{id}', [ProfileController::class, 'updateAddresses'])->name('profileAddresses.update');
 
     Route::post('profile/addresses/insert', [ProfileController::class, 'addAddresses'])->name('profileAddresses.insert');
@@ -111,6 +115,7 @@ Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
         Route::put('/update/{voucher}', [VoucherController::class, 'updateVoucher'])->name('update-voucher.action');
     });
     
+    Route::get('/view-transaction-detail/{id}',[TransactionController::class,'viewTransactionDetail'])->name('view-transaction-detail.page');
     Route::put('/update-transaction-header/{id}', [TransactionController::class, 'updateTransactionHeader'])->name('update-transaction-header.action');
     Route::delete('/delete-transaction-header/{transactionHeader}', [TransactionController::class, 'deleteTransactionHeader'])->name('delete-transaction-header.action');
 });
