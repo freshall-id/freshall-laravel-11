@@ -24,6 +24,7 @@ return new class extends Migration
             $table->date('date_of_birth')->nullable();
             $table->enum('role', ["ADMIN", "USER"]);
 
+            $table->softDeletes();
             $table->rememberToken(); 
             $table->timestamps(); 
         });
