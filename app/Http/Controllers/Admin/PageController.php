@@ -83,8 +83,22 @@ class PageController extends Controller
 
     public function viewUserPage(User $user)
     {
-        $users = User::paginate(10);
+        $users = User::withTrashed()->paginate(10);
 
         return view('admin.viewUser', ['users' => $users]);
+    }
+
+    public function deleteUser(User $user)
+    {
+        $user->delete();
+        
+        return redirect()->route('admin-user.page')->with('success', 'User with id ' . $user->id . ' deleted successfully.');
+    }
+
+    public function restoreUser(User $user)
+    {
+        $user->restore();
+
+        return redirect()->route('admin-user.page')->with('success', 'User with id ' . $user->id . ' recovered successfully.');
     }
 }
