@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light bg-light sticky-top bg-light" style="z-index: 50">
     <div class="container-fluid">
-        <div class="d-flex flex-row gap-3">
+        <div class="d-flex flex-row gap-3 pt-1">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
                 aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

@@ -14,7 +14,7 @@
                 @endphp
                 <tr>
                     <td>{{ $transaction->id }}</td>
-                    <td>{{ $transaction->user->name }}</td>
+                    <td>{{ $transaction->user ? $transaction->user->name : 'Deleted User' }}</td>
                     <td>{{ $price_total }}</td>
                     <td>{{ $transaction->status }}</td>
                     <td>{{ $transaction->created_at->format('d F Y H:i:s') }}</td>
