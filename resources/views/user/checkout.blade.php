@@ -110,7 +110,7 @@
                                         </div>
                                     @endempty
 
-                                    <a href="" class="btn btn-primary">
+                                    <a href="{{ route('profileAddresses.page') }}" class="btn btn-primary">
                                         Edit or Add Address
                                     </a>
                                 </div>

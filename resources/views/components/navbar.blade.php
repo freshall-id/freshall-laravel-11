@@ -51,7 +51,7 @@
                             </li>
                         @endguest
                         <li><a class="dropdown-item" href="{{ route('profile.page') }}">Profile</a></li>
-                        <li><a class="dropdown-item" href="#">Orders</a></li>
+                        <li><a class="dropdown-item" href="{{ route('profileTransactions.page') }}">Orders</a></li>
                         <li><a class="dropdown-item" href="#">Help and Support</a></li>
 
                         @auth
@@ -115,7 +115,7 @@
             </a>
         </li>
         <li class="list-unstyled m-0 p-0">
-            <a href="" class="text-reset p-3">
+            <a href="{{ route('profileTransactions.page') }}" class="text-reset p-3">
                 <i class="fa-solid fa-receipt"></i>
             </a>
         </li>
