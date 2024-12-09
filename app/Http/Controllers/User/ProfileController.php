@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\UserAddress;
+use App\Models\TransactionHeader;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,16 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function viewTransactionsPage()
+    {
+        $profile = Auth::user();
+        $transactionHeaders = Auth::user()->transactionHeaders;
+        return view('user.profileTransactions',[
+            'profile' => $profile,
+            'transactions' => $transactionHeaders
+        ]);
+    }
+    
     public function updateProfile(Request $request)
     {
         $user = User::find(Auth::id());
@@ -204,5 +215,10 @@ class ProfileController extends Controller
             return back()->with('error', 'An error occurred while updating your information. Please try again.');
         }
         return redirect()->route('profileAddresses.page')->with('success', 'Address updated successfully.');
+    }
+
+    public function viewTransactionDetailPage($id){
+        $transactionHeader = TransactionHeader::where('id',$id)->where('user_id',Auth::user()->id)->first();
+        return view('user.profileTransactionDetail',['transactionHeader' => $transactionHeader]);
     }
 }

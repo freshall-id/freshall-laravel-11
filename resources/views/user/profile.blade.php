@@ -13,6 +13,9 @@
             <li class="nav-item">
                 <a class="nav-link text-muted" href="{{ route('profileAddresses.page') }}">Address List</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted" href="{{ route('profileTransactions.page') }}">Transactions</a>
+            </li>
         </ul>
 
         <form class="mt-4 d-flex flex-column" action="{{ route('profile.update') }}" method="POST"
