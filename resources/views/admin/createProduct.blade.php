@@ -1,15 +1,15 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="row d-flex justify-content-center g-5 pt-4">
-        <div class="col-2 d-flex justify-content-end">
+    <div class="row d-flex justify-content-center g-2 g-md-5 pt-4">
+        <div class="col-1 col-md-2 justify-content-end">
             <div>
                 <a href="{{ url()->previous() }}" class="btn mt-2" style="height: 30px">
                     <i class="fa-solid fa-arrow-left fa-2xl mt-2"></i>
                 </a>
             </div>
         </div>
-        <div class="col-8 border border-3 rounded shadow py-3">
+        <div class="col-9 col-md-8 border border-3 rounded shadow py-3 px-3">
             <h1 class="pb-2">Create Product</h1>
             <form action="{{ route('create.product.action') }}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -70,7 +70,7 @@
                 <button type="submit" class="btn btn-warning">Submit</button>
             </form>
         </div>
-        <div class="col-2 d-none d-sm-block">
+        <div class="col-2 d-none d-md-block">
         </div>
     </div>
 @endsection
