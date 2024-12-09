@@ -10,7 +10,7 @@
             <div>
                 @if ($selected == $label)
                     <a href=""
-                        class="text-decoration-none fw-bold w-100 mr-1 text-dark cursor-not-allowed border-2 border-black bg-none px-2 py-1 text-sm font-medium">
+                        class="text-decoration-none btn btn-primary btn-sm fw-bold fw-bold w-100 mr-1 text-dark cursor-not-allowed border-2 border-black bg-none px-2 py-1 text-sm font-medium">
                         {{ $label }}
                     </a>
                 @else
