@@ -60,8 +60,6 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request, Product $product){
         try {
-            $product->productCategory;
-
             $request->validate([
                 'name' => 'required|string|max:100',
                 'sku' => 'required|unique:products,sku,' . $product->id,

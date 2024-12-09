@@ -87,4 +87,18 @@ class PageController extends Controller
 
         return view('admin.viewUser', ['users' => $users]);
     }
+
+    public function viewProductCategoryPage(Request $req)
+    {
+        $selected = $req->query('selected', 'FRUIT');
+
+        $productCategories = ProductCategory::where('label', $selected)->paginate(10)->withQueryString();
+        return view('admin.productCategory', ['productCategories' => $productCategories, 'categoriesLabel' => ['FRUIT', 'VEGETABLE', 'MEAT', 'OTHER'], 'selected' => $selected]);
+    }
+
+    public function viewUpdateProductCategoryPage(ProductCategory $productCategory)
+    {
+        $categories = ProductCategory::All();
+        return view('admin.updateProductCategory', ['productCategory' => $productCategory, 'categories' => $categories]);
+    }
 }

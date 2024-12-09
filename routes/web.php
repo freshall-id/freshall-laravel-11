@@ -111,6 +111,15 @@ Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
         Route::put('/update/{voucher}', [VoucherController::class, 'updateVoucher'])->name('update-voucher.action');
     });
     
+    Route::prefix('/productCategory')->group(function () {
+        Route::get('/', [AdminPageController::class, 'viewProductCategoryPage'])->name('admin-productCategory.page');
+        Route::post('/', [ProductCategoryController::class, 'storeCreatedProductCategory'])->name('create.productCategory.action');
+        Route::get('/create', [ProductCategoryController::class, 'createProductCategory'])->name('create.productCategory.page');
+        Route::delete('/delete/{productCategory}', [ProductCategoryController::class, 'deleteProductCategory'])->name('delete-productCategory.action');
+        Route::get('/update/{productCategory}', [AdminPageController::class, 'viewUpdateProductCategoryPage'])->name('update-productCategory.page');
+        Route::put('/update/{productCategory}', [ProductCategoryController::class, 'updateProductCategory'])->name('update-productCategory.action');
+    });
+    
     Route::put('/update-transaction-header/{id}', [TransactionController::class, 'updateTransactionHeader'])->name('update-transaction-header.action');
     Route::delete('/delete-transaction-header/{transactionHeader}', [TransactionController::class, 'deleteTransactionHeader'])->name('delete-transaction-header.action');
 

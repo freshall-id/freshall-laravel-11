@@ -37,7 +37,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Category</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin-productCategory.page') }}">Category</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
