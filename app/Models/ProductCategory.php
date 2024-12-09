@@ -11,6 +11,7 @@ class ProductCategory extends Model
     use HasFactory;
 
     protected $fillable = [
+        'label',
         'name',
         'image',
         'description',

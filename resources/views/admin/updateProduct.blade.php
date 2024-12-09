@@ -4,7 +4,7 @@
     <div class="row d-flex justify-content-center g-2 g-md-5 pt-4">
         <div class="col-1 col-md-2 d-flex justify-content-end">
             <div>
-                <a href="{{ route('admin-voucher.page') }}" class="btn mt-2" style="height: 30px">
+                <a href="{{ route('admin-product.page') }}" class="btn mt-2" style="height: 30px">
                     <i class="fa-solid fa-arrow-left fa-2xl mt-2"></i>
                 </a>
             </div>

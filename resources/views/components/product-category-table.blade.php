@@ -2,46 +2,36 @@
     <table class="table table-hover table-bordered text-center align-middle">
         <thead class="table-warning">
             <tr>
-                @foreach (['Id', 'SKU', 'Product Name', 'Product Image', 'Category', 'Stock', 'Minimum Buy', 'Weight', 'Price', 'Description', 'Total Sold', 'Rating', 'Last Modified', 'Action'] as $th)
+                @foreach (['Id', 'label', 'Name', 'Image', 'Description', 'Last Modified', 'Action'] as $th)
                     <th style="min-width: 10vw">{{ $th }}</th>
                 @endforeach
             </tr>
         </thead>
         <tbody>
-            @forelse ($products as $product)
+            @forelse ($productCategories as $productCategory)
                 <tr>
-                    <td>{{ $product->id }}</td>
-                    <td>{{ $product->sku }}</td>
-                    <td>{{ $product->name }}</td>
+                    <td>{{ $productCategory->id }}</td>
+                    <td>{{ $productCategory->label }}</td>
+                    <td>{{ $productCategory->name }}</td>
                     <td>
                         <div class="ratio ratio-1x1">
-                            <img src="{{ asset($product->image) }}" alt="product-image">
+                            <img src="{{ asset($productCategory->image) }}" alt="productCategory-image">
                         </div>
                     </td>
-                    <td>{{ $product->productCategory->label }}</td>
-                    <td>{{ $product->stock }}</td>
-                    <td>{{ $product->minimum_buy }}</td>
-                    <td>{{ $product->weight }}</td>
-                    <td>{{ $product->priceToNumberFormat() }}</td>
-                    <td>{{ $product->description }}</td>
-                    <td>{{ $product->total_sold }}</td>
-                    <td>{{ $product->rating }}</td>
-                    <td>{{ $product->updated_at->format('d F Y H:i:s') }}</td>
+                    <td>{{ $productCategory->description }}</td>
+                    <td>{{ $productCategory->updated_at->format('d F Y H:i:s') }}</td>
                     <td>
                         <div class="d-flex flex-column gap-2 px-3">
-                            <a href="#productDetail.page" class="btn btn-primary btn-sm">
-                                <i class="fa-solid fa-magnifying-glass" style="color: white"></i>
-                            </a>
-                            {{-- button edit product --}}
-                            <a href="{{ route('update-product.page', ['product' => $product]) }}"
+                            {{-- button edit productCategory --}}
+                            <a href="{{ route('update-productCategory.page', ['productCategory' => $productCategory]) }}"
                                 class="btn btn-success btn-sm">
                                 <i class="fa-solid fa-pen-to-square" style="color: white"></i>
                             </a>
-                            {{-- button delete product --}}
+                            {{-- button delete productCategory --}}
                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal"
-                                data-title="Delete product"
-                                data-content="Are you sure you want to delete product ID: {{ $product->id }}?"
-                                data-route="{{ route('delete-product.action', ['product' => $product]) }}"">
+                                data-title="Delete productCategory"
+                                data-content="Are you sure you want to delete productCategory ID: {{ $productCategory->id }}?"
+                                data-route="{{ route('delete-productCategory.action', ['productCategory' => $productCategory]) }}"">
                                 <i class="fa-solid fa-trash" style="color: white"></i>
                             </button>
                             {{-- Modal action --}}
@@ -68,8 +58,8 @@
                                                             {{-- Select Current Status --}}
                                                             <select class="form-select"
                                                                 aria-label="Current Status Selection" disabled>
-                                                                <option value="{{ $product->status }}" selected>
-                                                                    {{ $product->status }}
+                                                                <option value="{{ $productCategory->status }}" selected>
+                                                                    {{ $productCategory->status }}
                                                                 </option>
                                                             </select>
                                                         </div>
@@ -80,7 +70,7 @@
                                                                 aria-label="New Status Selection" name="new_status">
                                                                 @foreach (['PENDING', 'INPROCESS', 'COMPLETED', 'CANCELED', 'FAILED', 'TROUBLE', 'ONHOLD'] as $option)
                                                                     <option value="{{ $option }}"
-                                                                        {{ $option === $product->status ? 'selected' : '' }}>
+                                                                        {{ $option === $productCategory->status ? 'selected' : '' }}>
                                                                         {{ $option }}
                                                                     </option>
                                                                 @endforeach
@@ -104,13 +94,13 @@
                 </tr>
             @empty
                 <tr>
-                    <td colspan="10" class="text-center">No products</td>
+                    <td colspan="10" class="text-center">No product category</td>
                 </tr>
             @endforelse
 
         </tbody>
     </table>
-    {{ $products->links() }}
+    {{ $productCategories->links() }}
 </div>
 
 <script>
@@ -150,7 +140,7 @@
 
             editOrDeleteForm.action = route;
 
-            if (title.includes('Delete product')) {
+            if (title.includes('Delete productCategory')) {
                 const hiddenMethodInput = document.querySelector('input[name="_method"]');
                 hiddenMethodInput.value = 'DELETE';
 
