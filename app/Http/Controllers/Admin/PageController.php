@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\TransactionHeader;
+use App\Models\User;
 use App\Models\Voucher;
 use App\Utils\Formatter;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class PageController extends Controller
 
         $earningsMonthly = $transactionsMonthly->sum('price_total');
         $earningsMonthly = Formatter::ToNumberFormat($earningsMonthly);
-        
+
         $totalTransactionsMonthly = $transactionsMonthly->count();
 
         $transactionsTrouble = $allTransactions->where('status', 'TROUBLE')->count();
@@ -55,7 +56,7 @@ class PageController extends Controller
         $selected = $req->query('selected', 'FRUIT');
 
         $products = Product::join('product_categories', 'products.product_category_id', '=', 'product_categories.id')
-        ->where('product_categories.label', $selected)
+            ->where('product_categories.label', $selected)
             ->select('products.*')
             ->orderBy('products.id', 'asc')
             ->paginate(10)
@@ -77,6 +78,27 @@ class PageController extends Controller
 
     public function viewUpdateVoucherPage(Voucher $voucher)
     {
-        return view ('admin.updateVoucher',['voucher'=> $voucher]);
+        return view('admin.updateVoucher', ['voucher' => $voucher]);
+    }
+
+    public function viewUserPage(User $user)
+    {
+        $users = User::withTrashed()->paginate(10);
+
+        return view('admin.viewUser', ['users' => $users]);
+    }
+
+    public function deleteUser(User $user)
+    {
+        $user->delete();
+        
+        return redirect()->route('admin-user.page')->with('success', 'User with id ' . $user->id . ' deleted successfully.');
+    }
+
+    public function restoreUser(User $user)
+    {
+        $user->restore();
+
+        return redirect()->route('admin-user.page')->with('success', 'User with id ' . $user->id . ' recovered successfully.');
     }
 }

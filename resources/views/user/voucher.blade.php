@@ -12,5 +12,12 @@
         </div>
 
         <x-voucher-card :voucher="$voucher" />
+
+        <div class="text-end mt-5">
+
+            <a href="{{ route('cart.page') }}" class="btn btn-primary">
+                View Cart
+            </a>
+        </div>
     </section>
 @endsection

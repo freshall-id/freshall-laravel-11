@@ -1,52 +1,28 @@
-@if ($errors->any())
-    <div class="toast position-fixed bg-danger" style="opacity: 1; z-index: 100; right: 1rem; top: 1rem;" role="alert"
-        aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">Warning</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body text-light">
-            @foreach ($errors->all() as $error)
-                <p>{{ $error }}</p>
-            @endforeach
-        </div>
+@if ($errors->any() && empty($disableToast))
+    <div class="position-fixed p-0 m-0 w-75 text-truncate" style="z-index: 1000; right: 2rem; top: 2rem;">
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ "Error: " . $error ?? "" }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
     </div>
 @endif
 
 @session('error')
-    <div class="toast position-fixed bg-danger fade" style="opacity: 1; z-index: 100; right: 1rem; top: 1rem;"
-        role="alert" aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">Warning</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body text-light">
-            {{ session('error') }}
+    <div class="position-fixed p-0 m-0 w-75 text-truncate" style="z-index: 1000; right: 2rem; top: 2rem;">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{ "Error: " . $value ?? "" }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
 @endsession
 
 @session('success')
-    <div class="toast position-fixed bg-success" style="opacity: 1; z-index: 100; right: 1rem; top: 1rem;" role="alert"
-        aria-live="assertive" aria-atomic="true">
-        <div class="toast-header">
-            <strong class="me-auto">Success</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-        </div>
-        <div class="toast-body text-light">
-            {{ session('success') }}
+    <div class="position-fixed p-0 m-0 w-75 text-truncate" style="z-index: 1000; right: 2rem; top: 2rem;">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ "Success: " . $value ?? "" }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     </div>
 @endsession
-
-<script>
-    var closeBtns = document.querySelectorAll(".btn-close");
-    closeBtns.forEach(function(btn) {
-        btn.addEventListener("click", function() {
-            var toasts = document.querySelectorAll(".toast");
-            toasts.forEach(function(toast) {
-                toast.remove();
-            });
-        });
-    });
-</script>

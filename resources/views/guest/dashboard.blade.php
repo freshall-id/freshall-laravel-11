@@ -4,7 +4,7 @@
     @auth
         @if (Auth::user()->cart->cartItems->count() > 0)
             <a href="{{ route('cart.page') }}" class="position-relative">
-                <div class="position-fixed d-none d-sm-block text-light m-2 rounded row p-2 shadow" style="z-index: 1000;"
+                <div class="position-fixed d-none d-sm-block text-light m-2 rounded row p-2 shadow" style="z-index: 1000; bottom: 2rem; right: 2rem; background-color: var(--accent-yellow);"
                     style="background-color: var(--accent-yellow); right: 0.5rem; bottom: 0.5rem;">
                     <i class="fa-solid fa-bag-shopping d-flex align-items-center justify-content-center p-0 m-0"
                         style="font-size: 2rem; width: 3rem; height: 3rem;"></i>
@@ -29,12 +29,12 @@
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#promotionCarousel"
                         data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-prev-icon" style="filter: invert(1);" aria-hidden="true"></span>
                         <span class="visually-hidden">Previous</span>
                     </button>
                     <button class="carousel-control-next" type="button" data-bs-target="#promotionCarousel"
                         data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="carousel-control-next-icon" style="filter: invert(1);" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
                 </div>

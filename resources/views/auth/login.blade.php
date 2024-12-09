@@ -4,7 +4,7 @@
     <section class="h-100">
         <div class="container h-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
-                <div class="w-100" style="padding: 0 25%">
+                <div class="col-12 col-md-8">
                     <div class="col w-100 card card-registration my-4 shadow-sm">
                         <div class="row g-0 justify-content-center">
                             <div class="card-body p-md-5 pt-3 text-black">
@@ -17,11 +17,17 @@
                                         <label class="form-label" for="email">Email</label>
                                         <input type="email" id="email" name="email"
                                             class="form-control form-control-lg" />
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-outline mb-4">
                                         <label class="form-label" for="password">Password</label>
                                         <input type="password" id="password" name="password"
                                             class="form-control form-control-lg" />
+                                        @error('password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-outline mb-4">
                                         <div class="form-check">

@@ -9,27 +9,20 @@
         </thead>
         <tbody>
             @forelse ($products as $product)
-                @php
-                    $price = App\Utils\Formatter::toNumberFormat($product->price);
-                    $productImageBasename = basename($product->image);
-                    $imagePath = 'public/products/' . $productImageBasename;
-
-                    $imageUrl = Storage::exists($imagePath) ? Storage::url($imagePath) : asset('default/product.png');
-                @endphp
                 <tr>
                     <td>{{ $product->id }}</td>
                     <td>{{ $product->sku }}</td>
                     <td>{{ $product->name }}</td>
                     <td>
                         <div class="ratio ratio-1x1">
-                            <img src="{{ $imageUrl }}" alt="product-image">
+                            <img src="{{ asset($product->image) }}" alt="product-image">
                         </div>
                     </td>
                     <td>{{ $product->productCategory->label }}</td>
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->minimum_buy }}</td>
                     <td>{{ $product->weight }}</td>
-                    <td>{{ $price }}</td>
+                    <td>{{ $product->priceToNumberFormat() }}</td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->total_sold }}</td>
                     <td>{{ $product->rating }}</td>

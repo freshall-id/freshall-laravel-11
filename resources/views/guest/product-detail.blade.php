@@ -44,7 +44,7 @@
                     </form>
                 @else
                     <div class="mt-4">
-                        <a href="{{ route('login.page') }}" class="btn w-100"
+                        <a href="{{ route('login') }}" class="btn w-100"
                             style="background-color: var(--accent-yellow); color: white">
                             Add to Cart
                         </a>

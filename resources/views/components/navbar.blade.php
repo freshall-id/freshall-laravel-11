@@ -120,7 +120,7 @@
             </a>
         </li>
         <li class="list-unstyled m-0 p-0">
-            <a href="" class="text-reset p-3">
+            <a href="{{ route('profile.page') }}" class="text-reset p-3">
                 <i class="fa-regular fa-user"></i>
             </a>
         </li>

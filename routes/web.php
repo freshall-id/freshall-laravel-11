@@ -114,10 +114,17 @@ Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
         Route::get('/update/{voucher}', [AdminPageController::class, 'viewUpdateVoucherPage'])->name('update-voucher.page');
         Route::put('/update/{voucher}', [VoucherController::class, 'updateVoucher'])->name('update-voucher.action');
     });
-    
+  
     Route::get('/view-transaction-detail/{id}',[TransactionController::class,'viewTransactionDetail'])->name('view-transaction-detail.page');
+
     Route::put('/update-transaction-header/{id}', [TransactionController::class, 'updateTransactionHeader'])->name('update-transaction-header.action');
     Route::delete('/delete-transaction-header/{transactionHeader}', [TransactionController::class, 'deleteTransactionHeader'])->name('delete-transaction-header.action');
+
+    Route::prefix('/user')->group(function () {
+        Route::get('/', [AdminPageController::class, 'viewUserPage'])->name('admin-user.page');
+        Route::delete('/delete/{user}', [AdminPageController::class, 'deleteUser'])->name('admin-delete-user.action');
+        Route::patch('/restore/{user}', [AdminPageController::class, 'restoreUser'])->withTrashed()->name('admin-restore-user.action');
+    });
 });
 
 Route::get('/', [DashboardController::class, 'viewDashboardPage'])->name('dashboard.page');

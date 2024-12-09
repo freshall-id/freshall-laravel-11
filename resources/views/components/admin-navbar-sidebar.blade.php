@@ -1,6 +1,6 @@
-<nav class="navbar navbar-light bg-light sticky-top" style="z-index: 50">
+<nav class="navbar navbar-light bg-light sticky-top bg-light" style="z-index: 50">
     <div class="container-fluid">
-        <div class="d-flex flex-row gap-3">
+        <div class="d-flex flex-row gap-3 pt-1">
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
                 aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -10,9 +10,11 @@
             </a>
         </div>
         <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
-            aria-labelledby="offcanvasDarkNavbarLabel">
+            aria-labelledby="offcanvasDarkNavbarLabel" style="background-color: white !important;">
             <div class="offcanvas-header">
-                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Freshall</h5>
+                <a href="{{ route('admin-dashboard.page') }}" class="col-sm-3 d-none d-sm-block">
+                    <img width="120" src="{{ asset('freshall/logo-with-text.svg') }}" alt="FRESHALL">
+                </a>
                 <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
             </div>
@@ -27,7 +29,7 @@
                             Manage
                         </a>
                         <ul class="dropdown-menu dropdown-menu-light">
-                            <li><a class="dropdown-item" href="#">User</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin-user.page') }}">User</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -39,7 +41,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="{{route('admin-voucher.page')}}">Voucher</a></li>
+                            <li><a class="dropdown-item" href="{{ route('admin-voucher.page') }}">Voucher</a></li>
                         </ul>
                     </li>
                     {{-- <li class="nav-item">

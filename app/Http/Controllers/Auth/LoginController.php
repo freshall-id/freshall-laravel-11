@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function viewLoginpage(){
-        return view('auth.login');
+        return view('auth.login',['disableToast'=>true]);
     }
     
     public function login(Request $req){
