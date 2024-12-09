@@ -13,6 +13,9 @@
             <li class="nav-item">
                 <a class="nav-link active" aria-current="page" href="{{ route('profileAddresses.page') }}">Address List</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted" href="{{ route('profileTransactions.page') }}">Transactions</a>
+            </li>
         </ul>
 
         <div class="mt-3 d-flex flex-column ">
