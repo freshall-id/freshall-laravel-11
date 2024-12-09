@@ -100,7 +100,7 @@
                             <div class="col-12 d-flex justify-content-between mt-4" style="margin:0%;padding:0%;">
                                 <div class="d-flex flex-row">
                                     <div class="border me-4">
-                                        <img src="{{ asset('storage/products/' . $detail->product->image) }}"
+                                        <img src="{{ asset($detail->product->image) }}"
                                             alt="" style="width:100px;height:100px;">
                                     </div>
                                     <div>

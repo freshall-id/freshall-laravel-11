@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li>
-                <a href="" class="text-muted hover-underline">
+                <a href="{{ route('profileTransactions.page') }}" class="text-muted hover-underline">
                     Orders
                 </a>
             </li>
