@@ -25,4 +25,9 @@ class TransactionController extends Controller
 
         return redirect()->route('admin-dashboard.page')->with('success', 'Transaction with id ' . $transactionHeader->id . ' deleted successfully.');
     }
+
+    public function viewTransactionDetail($id){
+        $transactionHeader = TransactionHeader::find($id);
+        return view('admin.viewTransactionDetails',['transactionHeader' => $transactionHeader]);
+    }
 }

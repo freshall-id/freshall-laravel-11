@@ -54,4 +54,9 @@ class TransactionHeader extends Model
     {
         return $this->hasMany(TransactionDetail::class);
     }
+
+    public function priceToNumberFormat($number): string
+    {
+        return 'Rp ' . number_format($number, 0, ',', '.');
+    }
 }
