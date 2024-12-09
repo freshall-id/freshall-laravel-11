@@ -29,9 +29,6 @@
                     <td>{{ $product->updated_at->format('d F Y H:i:s') }}</td>
                     <td>
                         <div class="d-flex flex-column gap-2 px-3">
-                            <a href="#productDetail.page" class="btn btn-primary btn-sm">
-                                <i class="fa-solid fa-magnifying-glass" style="color: white"></i>
-                            </a>
                             {{-- button edit product --}}
                             <a href="{{ route('update-product.page', ['product' => $product]) }}"
                                 class="btn btn-success btn-sm">

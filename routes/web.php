@@ -68,6 +68,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/profile/addresses', [ProfileController::class, 'viewProfileAddressesPage'])->name('profileAddresses.page');
 
+    Route::get('/profile/transactions',[ProfileController::class,'viewTransactionsPage'])->name('profileTransactions.page');
+
+    Route::get('/profile/transaction/{id}',[ProfileController::class,'viewTransactionDetailPage'])->name('profileTransactionDetail.page');
+
     Route::put('/profile/addresses/{id}', [ProfileController::class, 'updateAddresses'])->name('profileAddresses.update');
 
     Route::post('profile/addresses/insert', [ProfileController::class, 'addAddresses'])->name('profileAddresses.insert');
@@ -110,12 +114,13 @@ Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
         Route::get('/update/{voucher}', [AdminPageController::class, 'viewUpdateVoucherPage'])->name('update-voucher.page');
         Route::put('/update/{voucher}', [VoucherController::class, 'updateVoucher'])->name('update-voucher.action');
     });
+  
+    Route::get('/view-transaction-detail/{id}',[TransactionController::class,'viewTransactionDetail'])->name('view-transaction-detail.page');
     
     Route::prefix('/productCategory')->group(function () {
         Route::get('/', [AdminPageController::class, 'viewProductCategoryPage'])->name('admin-productCategory.page');
         Route::post('/', [ProductCategoryController::class, 'storeCreatedProductCategory'])->name('create.productCategory.action');
         Route::get('/create', [ProductCategoryController::class, 'createProductCategory'])->name('create.productCategory.page');
-        Route::delete('/delete/{productCategory}', [ProductCategoryController::class, 'deleteProductCategory'])->name('delete-productCategory.action');
         Route::get('/update/{productCategory}', [AdminPageController::class, 'viewUpdateProductCategoryPage'])->name('update-productCategory.page');
         Route::put('/update/{productCategory}', [ProductCategoryController::class, 'updateProductCategory'])->name('update-productCategory.action');
     });

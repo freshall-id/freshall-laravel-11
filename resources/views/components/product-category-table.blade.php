@@ -27,13 +27,6 @@
                                 class="btn btn-success btn-sm">
                                 <i class="fa-solid fa-pen-to-square" style="color: white"></i>
                             </a>
-                            {{-- button delete productCategory --}}
-                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal"
-                                data-title="Delete productCategory"
-                                data-content="Are you sure you want to delete productCategory ID: {{ $productCategory->id }}?"
-                                data-route="{{ route('delete-productCategory.action', ['productCategory' => $productCategory]) }}"">
-                                <i class="fa-solid fa-trash" style="color: white"></i>
-                            </button>
                             {{-- Modal action --}}
                             <div class="modal fade" id="modal" tabindex="-1" role="dialog"
                                 aria-labelledby="modalLabel" aria-hidden="true">

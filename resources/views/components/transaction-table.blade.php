@@ -23,7 +23,7 @@
                         {{ $transaction->notes ? $transaction->notes : '-' }}</td>
                     <td>
                         <div class="d-flex flex-column gap-2 px-3">
-                            <a href="#transactionDetail.page" class="btn btn-primary btn-sm">
+                            <a href="{{route('view-transaction-detail.page',['id'=>$transaction->id])}}" class="btn btn-primary btn-sm">
                                 <i class="fa-solid fa-magnifying-glass" style="color: white"></i>
                             </a>
                             {{-- button edit status --}}
