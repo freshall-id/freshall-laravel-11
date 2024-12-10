@@ -116,7 +116,15 @@ Route::middleware(AdminMiddleware::class)->prefix('/admin')->group(function () {
     });
   
     Route::get('/view-transaction-detail/{id}',[TransactionController::class,'viewTransactionDetail'])->name('view-transaction-detail.page');
-
+    
+    Route::prefix('/productCategory')->group(function () {
+        Route::get('/', [AdminPageController::class, 'viewProductCategoryPage'])->name('admin-productCategory.page');
+        Route::post('/', [ProductCategoryController::class, 'storeCreatedProductCategory'])->name('create.productCategory.action');
+        Route::get('/create', [ProductCategoryController::class, 'createProductCategory'])->name('create.productCategory.page');
+        Route::get('/update/{productCategory}', [AdminPageController::class, 'viewUpdateProductCategoryPage'])->name('update-productCategory.page');
+        Route::put('/update/{productCategory}', [ProductCategoryController::class, 'updateProductCategory'])->name('update-productCategory.action');
+    });
+    
     Route::put('/update-transaction-header/{id}', [TransactionController::class, 'updateTransactionHeader'])->name('update-transaction-header.action');
     Route::delete('/delete-transaction-header/{transactionHeader}', [TransactionController::class, 'deleteTransactionHeader'])->name('delete-transaction-header.action');
 
